@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export function Lab() {
   return (
-    <section id="lab" className="py-24 relative z-10 bg-[var(--color-background)]">
+    <section id="lab" className="py-24 relative z-10 bg-background">
       <div className="container mx-auto px-6 max-w-5xl">
         <ScrollReveal>
           <SectionHeader
@@ -36,9 +36,9 @@ export function Lab() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                     </span>
-                    <span className="text-sm font-medium text-[var(--color-muted)] uppercase tracking-wider">In Development</span>
+                    <span className="text-sm font-medium text-muted uppercase tracking-wider">In Development</span>
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-[var(--color-text)] tracking-tight">
+                  <h3 className="text-3xl md:text-4xl font-bold text-text tracking-tight">
                     Algorithmic Trading Platform
                   </h3>
                 </div>
@@ -46,12 +46,12 @@ export function Lab() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
-                  <p className="text-lg text-[var(--color-muted)] leading-relaxed mb-8">
+                  <p className="text-lg text-muted leading-relaxed mb-8">
                     An end-to-end distributed system focused on high-throughput automation, resilient backend architecture, and quantitative research. Built as an engineering challenge to master real-time data streams and low-latency execution.
                   </p>
 
                   <div className="space-y-6">
-                    <h4 className="text-sm font-semibold text-[var(--color-text)] uppercase tracking-wider">Core Challenges</h4>
+                    <h4 className="text-sm font-semibold text-text uppercase tracking-wider">Core Challenges</h4>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {[
@@ -62,9 +62,9 @@ export function Lab() {
                         { icon: Cloud, label: "Cloud Deployment" },
                         { icon: Server, label: "Distributed Systems" }
                       ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 p-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)]">
-                          <item.icon size={16} className="text-[var(--color-primary)]" />
-                          <span className="text-sm font-medium text-[var(--color-text)]">{item.label}</span>
+                        <div key={i} className="flex items-center gap-3 p-3 rounded-lg border border-border bg-background">
+                          <item.icon size={16} className="text-primary" />
+                          <span className="text-sm font-medium text-text">{item.label}</span>
                         </div>
                       ))}
                     </div>
@@ -72,7 +72,7 @@ export function Lab() {
                 </div>
 
                 <div className="flex flex-col justify-between">
-                  <div className="bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl p-6 h-full flex flex-col justify-center relative overflow-hidden">
+                  <div className="bg-background border border-border rounded-xl p-6 h-full flex flex-col justify-center relative overflow-hidden">
                     {/* Simulated chart animation */}
                     <div className="absolute inset-0 opacity-20">
                       <svg viewBox="0 0 400 200" preserveAspectRatio="none" className="w-full h-full">
@@ -104,8 +104,8 @@ export function Lab() {
                     </div>
                     
                     <div className="relative z-10 text-center">
-                      <div className="text-[var(--color-muted-dark)] text-sm font-mono mb-2">LATENCY</div>
-                      <div className="text-4xl font-bold font-mono text-[var(--color-text)]">
+                      <div className="text-muted-dark text-sm font-mono mb-2">LATENCY</div>
+                      <div className="text-4xl font-bold font-mono text-text">
                         <motion.span
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
@@ -117,7 +117,7 @@ export function Lab() {
                     </div>
                   </div>
                   
-                  <div className="mt-8 pt-6 border-t border-[var(--color-border)]">
+                  <div className="mt-8 pt-6 border-t border-border">
                     <div className="flex flex-wrap gap-2">
                       {["Python", "FastAPI", "Upstox APIs", "WebSockets", "PostgreSQL", "Azure VM", "Linux", "OAuth2"].map(tech => (
                         <TechTag key={tech} name={tech} />

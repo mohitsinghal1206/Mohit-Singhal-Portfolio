@@ -20,27 +20,27 @@ export function Education() {
         <ScrollReveal delay={0.2} direction="up">
           <GlowCard className="mt-12 p-8 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-start gap-6">
-              <div className="hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-primary)]">
+              <div className="hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-background border border-border text-primary">
                 <GraduationCap size={28} />
               </div>
               
               <div>
-                <h3 className="text-2xl font-bold text-[var(--color-text)] mb-2">
+                <h3 className="text-2xl font-bold text-text mb-2">
                   B.Tech in Computer Science & Engineering
                 </h3>
-                <div className="text-lg text-[var(--color-primary)] font-medium mb-2">
+                <div className="text-lg text-primary font-medium mb-2">
                   Uttaranchal University
                 </div>
-                <div className="text-[var(--color-muted)] flex items-center gap-2">
+                <div className="text-muted flex items-center gap-2">
                   <span>2021 – 2025</span>
                 </div>
               </div>
             </div>
 
             <div className="flex-shrink-0">
-              <div className="inline-flex flex-col items-center justify-center px-6 py-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] shadow-inner">
-                <span className="text-xs font-semibold text-[var(--color-muted-dark)] uppercase tracking-wider mb-1">CGPA</span>
-                <span className="text-3xl font-bold text-[var(--color-text)] font-mono">8.5</span>
+              <div className="inline-flex flex-col items-center justify-center px-6 py-4 rounded-xl border border-border bg-background shadow-inner">
+                <span className="text-xs font-semibold text-muted-dark uppercase tracking-wider mb-1">CGPA</span>
+                <span className="text-3xl font-bold text-text font-mono">8.5</span>
               </div>
             </div>
           </GlowCard>

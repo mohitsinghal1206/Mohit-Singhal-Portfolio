@@ -58,7 +58,7 @@ export function GlowCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] transition-colors duration-500",
+        "relative overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-500",
         className
       )}
     >

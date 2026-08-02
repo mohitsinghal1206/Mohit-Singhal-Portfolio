@@ -10,7 +10,7 @@ interface ArchitectureDiagramProps {
 
 export function ArchitectureDiagram({ architecture, isInView }: ArchitectureDiagramProps) {
   return (
-    <div className="w-full h-full min-h-[300px] relative overflow-hidden bg-[var(--color-card)] rounded-xl border border-[var(--color-border)] p-4 flex items-center justify-center group">
+    <div className="w-full h-full min-h-[300px] relative overflow-hidden bg-card rounded-xl border border-border p-4 flex items-center justify-center group">
       {/* Grid background for the diagram */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,var(--color-border)_1px,transparent_0)] bg-[size:20px_20px] opacity-30" />
       
@@ -79,7 +79,7 @@ export function ArchitectureDiagram({ architecture, isInView }: ArchitectureDiag
               width="100"
               height="40"
               rx="6"
-              className={`arch-node ${node.highlight ? "stroke-[var(--color-primary)] shadow-lg" : ""}`}
+              className={`arch-node ${node.highlight ? "stroke-primary shadow-lg" : ""}`}
               style={{
                 filter: node.highlight ? "drop-shadow(0 0 10px rgba(59, 130, 246, 0.3))" : "none"
               }}
@@ -88,7 +88,7 @@ export function ArchitectureDiagram({ architecture, isInView }: ArchitectureDiag
               x="50"
               y="25"
               textAnchor="middle"
-              className="text-xs font-medium fill-[var(--color-text)] font-sans"
+              className="text-xs font-medium fill-text font-sans"
             >
               {node.label}
             </text>
@@ -98,7 +98,7 @@ export function ArchitectureDiagram({ architecture, isInView }: ArchitectureDiag
                 cx="90"
                 cy="10"
                 r="3"
-                className="fill-[var(--color-primary)] animate-pulse"
+                className="fill-primary animate-pulse"
               />
             )}
           </motion.g>

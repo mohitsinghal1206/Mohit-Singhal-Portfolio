@@ -62,7 +62,7 @@ export function Navbar() {
             onClick={(e) => handleNavClick(e, "body")}
             className="text-lg font-bold tracking-tighter"
           >
-            MS<span className="text-[var(--color-primary)]">.</span>
+            MS<span className="text-primary">.</span>
           </a>
 
           {/* Desktop Nav */}
@@ -73,10 +73,10 @@ export function Navbar() {
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className="text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)] relative group py-2"
+                    className="text-sm font-medium text-muted transition-colors hover:text-text relative group py-2"
                   >
                     {item.label}
-                    <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-[var(--color-primary)] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                    <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                   </a>
                 </li>
               ))}
@@ -93,7 +93,7 @@ export function Navbar() {
 
           {/* Mobile Toggle */}
           <button
-            className="md:hidden p-2 text-[var(--color-text)]"
+            className="md:hidden p-2 text-text"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -119,7 +119,7 @@ export function Navbar() {
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-2xl font-medium text-[var(--color-text)]"
+                className="text-2xl font-medium text-text"
               >
                 {item.label}
               </a>

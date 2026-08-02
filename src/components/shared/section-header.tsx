@@ -32,7 +32,7 @@ export function SectionHeader({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs font-medium tracking-[0.15em] text-[var(--color-muted)] uppercase"
+          className="text-xs font-medium tracking-[0.15em] text-muted uppercase"
         >
           {label}
         </motion.span>
@@ -43,7 +43,7 @@ export function SectionHeader({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-3xl md:text-5xl font-semibold tracking-tight text-[var(--color-text)]"
+        className="text-3xl md:text-5xl font-semibold tracking-tight text-text"
       >
         {title}
       </motion.h2>
@@ -54,7 +54,7 @@ export function SectionHeader({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg text-[var(--color-muted)] max-w-2xl"
+          className="text-lg text-muted max-w-2xl"
         >
           {description}
         </motion.p>

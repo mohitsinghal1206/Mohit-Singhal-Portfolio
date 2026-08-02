@@ -26,7 +26,7 @@ export function Experience() {
 
         <div className="relative mt-16">
           {/* Animated Timeline Line */}
-          <div className="absolute left-[15px] top-4 bottom-0 w-[2px] bg-[var(--color-border)]">
+          <div className="absolute left-[15px] top-4 bottom-0 w-[2px] bg-border">
             <motion.div 
               className="absolute top-0 left-0 right-0 timeline-line origin-top"
               initial={{ scaleY: 0 }}
@@ -52,8 +52,8 @@ export function Experience() {
                     className={cn(
                       "absolute left-[11px] top-6 w-[10px] h-[10px] rounded-full z-10 transform -translate-x-1/2 -translate-y-1/2",
                       exp.current 
-                        ? "bg-[var(--color-primary)] timeline-dot" 
-                        : "bg-[var(--color-muted)] border-2 border-[var(--color-background)]"
+                        ? "bg-primary timeline-dot" 
+                        : "bg-muted border-2 border-background"
                     )}
                   />
 
@@ -64,14 +64,14 @@ export function Experience() {
                         onClick={() => setExpandedId(isExpanded ? null : exp.id)}
                       >
                         <div>
-                          <h3 className="text-xl md:text-2xl font-bold text-[var(--color-text)] mb-1">
+                          <h3 className="text-xl md:text-2xl font-bold text-text mb-1">
                             {exp.role}
                           </h3>
-                          <div className="text-[var(--color-primary)] font-medium mb-3">
+                          <div className="text-primary font-medium mb-3">
                             {exp.company}
                           </div>
                           
-                          <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--color-muted)]">
+                          <div className="flex flex-wrap items-center gap-4 text-sm text-muted">
                             <span className="flex items-center gap-1.5">
                               <Calendar size={14} />
                               {exp.period}
@@ -85,14 +85,14 @@ export function Experience() {
 
                         <div className="flex items-center gap-4">
                           {exp.current && (
-                            <span className="px-3 py-1 text-xs font-medium bg-[var(--color-glow-blue)] text-[var(--color-primary)] rounded-full border border-[var(--color-border-hover)]">
+                            <span className="px-3 py-1 text-xs font-medium bg-glow-blue text-primary rounded-full border border-border-hover">
                               Current
                             </span>
                           )}
                           <motion.div
                             animate={{ rotate: isExpanded ? 180 : 0 }}
                             transition={{ duration: 0.3 }}
-                            className="w-8 h-8 rounded-full bg-[var(--color-background)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-muted)] group-hover:text-white transition-colors"
+                            className="w-8 h-8 rounded-full bg-background border border-border flex items-center justify-center text-muted group-hover:text-white transition-colors"
                           >
                             <ChevronDown size={16} />
                           </motion.div>
@@ -108,15 +108,15 @@ export function Experience() {
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="overflow-hidden"
                           >
-                            <div className="pt-6 mt-6 border-t border-[var(--color-border)]">
-                              <p className="text-[var(--color-text)] text-base mb-6 leading-relaxed">
+                            <div className="pt-6 mt-6 border-t border-border">
+                              <p className="text-text text-base mb-6 leading-relaxed">
                                 {exp.description}
                               </p>
                               
                               <ul className="space-y-3 mb-8">
                                 {exp.highlights.map((highlight, i) => (
-                                  <li key={i} className="flex items-start gap-3 text-[var(--color-muted)]">
-                                    <span className="text-[var(--color-primary)] mt-1">•</span>
+                                  <li key={i} className="flex items-start gap-3 text-muted">
+                                    <span className="text-primary mt-1">•</span>
                                     <span>{highlight}</span>
                                   </li>
                                 ))}
@@ -143,10 +143,10 @@ export function Experience() {
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
-                className="absolute left-[11px] top-2 w-[10px] h-[10px] rounded-full border-2 border-[var(--color-muted-dark)] bg-[var(--color-background)] z-10 transform -translate-x-1/2 -translate-y-1/2"
+                className="absolute left-[11px] top-2 w-[10px] h-[10px] rounded-full border-2 border-muted-dark bg-background z-10 transform -translate-x-1/2 -translate-y-1/2"
               />
               <ScrollReveal delay={0.2}>
-                <div className="text-[var(--color-muted-dark)] text-sm font-medium italic">
+                <div className="text-muted-dark text-sm font-medium italic">
                   Future opportunities...
                 </div>
               </ScrollReveal>

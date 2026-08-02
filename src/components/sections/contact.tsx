@@ -15,7 +15,7 @@ export function Contact() {
             Let's Build Something Together.
           </h2>
           
-          <p className="text-xl text-[var(--color-muted)] max-w-2xl mx-auto mb-16 leading-relaxed">
+          <p className="text-xl text-muted max-w-2xl mx-auto mb-16 leading-relaxed">
             Have a project in mind? I'm always open to discussing AI engineering opportunities, complex system architectures, and intelligent automation solutions.
           </p>
         </ScrollReveal>

@@ -38,26 +38,26 @@ export function WorkflowVisualization() {
                   stiffness: 200,
                   damping: 15
                 }}
-                className="flex items-center gap-4 w-64 p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] shadow-lg relative group"
+                className="flex items-center gap-4 w-64 p-4 rounded-xl border border-border bg-background shadow-lg relative group"
               >
                 {/* Node highlight glow */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)] opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
                 
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[var(--color-card-hover)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-secondary)] group-hover:scale-110 group-hover:text-[var(--color-primary)] transition-all duration-300">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-card-hover border border-border flex items-center justify-center text-secondary group-hover:scale-110 group-hover:text-primary transition-all duration-300">
                   <Icon size={20} />
                 </div>
                 
-                <span className="font-medium text-[var(--color-text)] tracking-wide">{step.label}</span>
+                <span className="font-medium text-text tracking-wide">{step.label}</span>
               </motion.div>
               
               {!isLast && (
                 <div className="h-12 w-px relative my-2">
                   {/* Static line */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-border)] to-[var(--color-border-hover)]" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-border to-border-hover" />
                   
                   {/* Animated flow */}
                   <motion.div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--color-secondary)] shadow-[0_0_8px_rgba(139,92,246,0.8)]"
+                    className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(139,92,246,0.8)]"
                     initial={{ top: "0%", opacity: 0 }}
                     whileInView={{ top: "100%", opacity: [0, 1, 1, 0] }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -70,7 +70,7 @@ export function WorkflowVisualization() {
                   />
                   
                   {/* Arrow head */}
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-[var(--color-border-hover)]" />
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
                 </div>
               )}
             </div>

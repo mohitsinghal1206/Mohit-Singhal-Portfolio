@@ -48,12 +48,12 @@ export function Hero() {
             className="flex flex-col items-start"
           >
             <motion.div variants={item} className="mb-6 flex items-center gap-3">
-              <div className="flex items-center justify-center px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-card)] glass">
+              <div className="flex items-center justify-center px-3 py-1.5 rounded-full border border-border bg-card glass">
                 <span className="relative flex h-2 w-2 mr-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary)] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-primary)]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                <span className="text-xs font-medium text-[var(--color-text)]">Available for opportunities</span>
+                <span className="text-xs font-medium text-text">Available for opportunities</span>
               </div>
             </motion.div>
 
@@ -68,9 +68,9 @@ export function Hero() {
 
             <motion.p 
               variants={item}
-              className="text-lg md:text-xl text-[var(--color-muted)] max-w-lg mb-10 leading-relaxed"
+              className="text-lg md:text-xl text-muted max-w-lg mb-10 leading-relaxed"
             >
-              AI Engineer building enterprise LLM applications, agentic AI systems, and intelligent automation at <span className="text-[var(--color-text)] font-medium">{siteConfig.company}</span>.
+              AI Engineer building enterprise LLM applications, agentic AI systems, and intelligent automation at <span className="text-text font-medium">{siteConfig.company}</span>.
             </motion.p>
 
             <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-12">
@@ -93,7 +93,7 @@ export function Hero() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[var(--color-muted)] hover:text-white transition-colors p-2 -m-2 group"
+                  className="text-muted hover:text-white transition-colors p-2 -m-2 group"
                   aria-label={social.label}
                 >
                   <social.icon size={24} className="group-hover:scale-110 transition-transform" />
@@ -109,8 +109,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
             className="relative lg:h-[600px] flex items-center justify-center lg:justify-end float-animation"
           >
-            <div className="relative w-[280px] h-[360px] md:w-[360px] md:h-[460px] rounded-3xl overflow-hidden glass border border-[var(--color-border)] p-2 z-10">
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[var(--color-background)]">
+            <div className="relative w-[280px] h-[360px] md:w-[360px] md:h-[460px] rounded-3xl overflow-hidden glass border border-border p-2 z-10">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-background">
                 <Image
                   src={siteConfig.profileImage}
                   alt={siteConfig.name}
@@ -120,7 +120,7 @@ export function Hero() {
                   sizes="(max-width: 768px) 280px, 360px"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
               </div>
             </div>
 

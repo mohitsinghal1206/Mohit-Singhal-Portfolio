@@ -57,11 +57,11 @@ export function MagneticButton({
       case "primary":
         return "bg-white text-black hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.15)]";
       case "secondary":
-        return "bg-[var(--color-card)] border border-[var(--color-border)] text-white hover:border-[var(--color-primary)] hover:bg-[var(--color-card-hover)]";
+        return "bg-card border border-border text-white hover:border-primary hover:bg-card-hover";
       case "outline":
         return "border border-white/20 text-white hover:bg-white/10";
       case "ghost":
-        return "text-[var(--color-muted)] hover:text-white hover:bg-white/5";
+        return "text-muted hover:text-white hover:bg-white/5";
       default:
         return "";
     }

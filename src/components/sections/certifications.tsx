@@ -8,7 +8,7 @@ import { ExternalLink, Award } from "lucide-react";
 
 export function Certifications() {
   return (
-    <section id="certifications" className="py-24 relative z-10 bg-[var(--color-background)]">
+    <section id="certifications" className="py-24 relative z-10 bg-background">
       <div className="container mx-auto px-6 max-w-5xl">
         <ScrollReveal>
           <SectionHeader
@@ -28,23 +28,23 @@ export function Certifications() {
                     className={`h-full p-8 flex flex-col group ${cert.highlighted ? 'border-transparent' : ''}`}
                   >
                     {cert.highlighted && (
-                      <div className="absolute top-0 right-0 px-3 py-1 bg-[var(--color-primary)] text-white text-[10px] font-bold tracking-widest uppercase rounded-bl-lg rounded-tr-xl z-10 shadow-lg">
+                      <div className="absolute top-0 right-0 px-3 py-1 bg-primary text-white text-[10px] font-bold tracking-widest uppercase rounded-bl-lg rounded-tr-xl z-10 shadow-lg">
                         Highlighted
                       </div>
                     )}
                     
                     <div className="flex items-start justify-between mb-6">
-                      <div className={`p-3 rounded-lg border ${cert.highlighted ? 'bg-[var(--color-glow-blue)] border-[var(--color-primary)]/30 text-[var(--color-primary)]' : 'bg-[var(--color-background)] border-[var(--color-border)] text-[var(--color-muted)] group-hover:text-white'} transition-colors`}>
+                      <div className={`p-3 rounded-lg border ${cert.highlighted ? 'bg-glow-blue border-primary/30 text-primary' : 'bg-background border-border text-muted group-hover:text-white'} transition-colors`}>
                         <Award size={24} />
                       </div>
-                      <ExternalLink size={20} className="text-[var(--color-border)] group-hover:text-[var(--color-primary)] transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      <ExternalLink size={20} className="text-border group-hover:text-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </div>
                     
-                    <h3 className="text-xl font-bold text-[var(--color-text)] mb-2 flex-grow">
+                    <h3 className="text-xl font-bold text-text mb-2 flex-grow">
                       {cert.name}
                     </h3>
                     
-                    <p className="text-[var(--color-muted)] font-medium">
+                    <p className="text-muted font-medium">
                       {cert.issuer}
                     </p>
                   </GlowCard>

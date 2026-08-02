@@ -48,21 +48,21 @@ export function Automation() {
                   className="h-full"
                 >
                   <GlowCard color="purple" className="h-full p-8 flex flex-col group">
-                    <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-secondary)] group-hover:bg-[var(--color-secondary)] group-hover:text-white transition-all duration-300">
+                    <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-background border border-border text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-300">
                       <Icon size={24} strokeWidth={1.5} />
                     </div>
                     
-                    <h3 className="text-xl font-bold text-[var(--color-text)] mb-3">
+                    <h3 className="text-xl font-bold text-text mb-3">
                       {project.title}
                     </h3>
                     
-                    <p className="text-[var(--color-muted)] mb-6 text-sm leading-relaxed flex-grow">
+                    <p className="text-muted mb-6 text-sm leading-relaxed flex-grow">
                       {project.description}
                     </p>
                     
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {project.capabilities.map(cap => (
-                        <span key={cap} className="text-xs font-medium px-2 py-1 rounded bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-muted-dark)] group-hover:border-[var(--color-secondary)]/30 group-hover:text-[var(--color-secondary)] transition-colors">
+                        <span key={cap} className="text-xs font-medium px-2 py-1 rounded bg-background border border-border text-muted-dark group-hover:border-secondary/30 group-hover:text-secondary transition-colors">
                           {cap}
                         </span>
                       ))}
