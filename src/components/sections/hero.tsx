@@ -75,7 +75,7 @@ export function Hero() {
           <span key={`preload-${i}`}>{k.icon}</span>
         ))}
       </div>
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+      <div className="container mx-auto px-6 max-w-5xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Content */}
           <motion.div
@@ -218,7 +218,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative lg:col-span-5 hidden md:flex items-center justify-center lg:justify-end float-animation"
+            className="relative lg:col-span-5 hidden md:flex items-center justify-center lg:justify-start float-animation"
           >
             {/* Hexagon Tech Border */}
             <div className="relative w-[320px] h-[369px] flex items-center justify-center z-10 group">
