@@ -82,13 +82,22 @@ export function Navbar() {
               ))}
             </ul>
             
-            <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, "#contact")}
-              className="px-4 py-2 text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
-            >
-              Get in Touch
-            </a>
+            <div className="flex items-center gap-4">
+              <a
+                href="#lab"
+                onClick={(e) => handleNavClick(e, "#lab")}
+                className="hidden lg:block px-4 py-2 text-sm font-medium rounded-full border border-border text-muted hover:text-text hover:border-primary/50 transition-colors"
+              >
+                Beyond the Work
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="px-4 py-2 text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
+              >
+                Get in Touch
+              </a>
+            </div>
           </div>
 
           {/* Mobile Toggle */}
@@ -131,13 +140,22 @@ export function Navbar() {
             transition={{ duration: 0.3, delay: siteConfig.nav.length * 0.1 }}
             className="mt-4"
           >
-             <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, "#contact")}
-              className="px-8 py-3 text-lg font-medium rounded-full bg-white text-black"
-            >
-              Get in Touch
-            </a>
+             <div className="flex flex-col gap-4 w-full px-8">
+               <a
+                href="#lab"
+                onClick={(e) => handleNavClick(e, "#lab")}
+                className="w-full text-center py-3 text-lg font-medium rounded-full border border-border text-muted"
+              >
+                Beyond the Work
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="w-full text-center py-3 text-lg font-medium rounded-full bg-white text-black"
+              >
+                Get in Touch
+              </a>
+            </div>
           </motion.li>
         </ul>
       </div>

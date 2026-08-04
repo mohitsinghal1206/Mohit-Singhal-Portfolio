@@ -2,129 +2,102 @@
 
 import { motion } from "framer-motion";
 import { Project } from "@/data/projects";
-import { User, MessageCircle, GitMerge, Brain, Database, MessageSquare, Search, Sparkles, Globe, FileText, CheckSquare, FileOutput, MessageSquareCode, ClipboardList, GitPullRequest, Users, Activity } from "lucide-react";
+import { User, MessageCircle, GitMerge, Brain, Database, MessageSquare, Search, Sparkles, Globe, FileText, CheckSquare, FileOutput, MessageSquareCode, ClipboardList, GitPullRequest, Users, Activity, Webhook } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const getNodeIcon = (id: string) => {
   switch (id) {
-    case 'user':
-    case 'employee': return <User size={14} className="text-muted group-hover:text-foreground transition-colors" />;
-    case 'whatsapp': return <MessageCircle size={14} className="text-[#25D366]" />;
-    case 'wati':
-    case 'copilot': return <MessageSquareCode size={14} className="text-primary" />;
-    case 'n8n': return <GitMerge size={14} className="text-[#FF6E6B]" />;
-    case 'gpt4': return <Brain size={14} className="text-[#10A37F]" />;
-    case 'pinecone':
-    case 'postgres': return <Database size={14} className="text-secondary" />;
-    case 'response': return <MessageSquare size={14} className="text-muted group-hover:text-foreground transition-colors" />;
-    case 'query': return <Search size={14} className="text-muted group-hover:text-foreground transition-colors" />;
-    case 'gemini': return <Sparkles size={14} className="text-[#8B5CF6]" />;
-    case 'tavily': return <Globe size={14} className="text-[#3B82F6]" />;
-    case 'scraper': return <FileText size={14} className="text-muted group-hover:text-foreground transition-colors" />;
-    case 'critique': return <CheckSquare size={14} className="text-amber-500" />;
-    case 'report': return <FileOutput size={14} className="text-primary" />;
-    case 'assessment': return <ClipboardList size={14} className="text-primary" />;
-    case 'devops': return <GitPullRequest size={14} className="text-[#0078D4]" />;
-    case 'zoho': return <Users size={14} className="text-[#F59E0B]" />;
-    default: return <Activity size={14} className="text-muted group-hover:text-foreground transition-colors" />;
+    case 'user': return <User size={20} className="text-muted group-hover:text-foreground transition-colors" />;
+    case 'whatsapp': return <MessageCircle size={20} className="text-[#25D366]" />;
+    case 'webhook': return <Webhook size={20} className="text-secondary" />;
+    case 'copilot': return <MessageSquareCode size={20} className="text-primary" />;
+    case 'n8n': return <GitMerge size={20} className="text-[#FF6E6B]" />;
+    case 'brain': return <Brain size={20} className="text-[#10A37F]" />;
+    case 'database': return <Database size={20} className="text-secondary" />;
+    case 'message': return <MessageSquare size={20} className="text-muted group-hover:text-foreground transition-colors" />;
+    case 'query': return <Search size={20} className="text-muted group-hover:text-foreground transition-colors" />;
+    case 'gemini': return <Sparkles size={20} className="text-[#8B5CF6]" />;
+    case 'globe': return <Globe size={20} className="text-[#3B82F6]" />;
+    case 'scraper': return <FileText size={20} className="text-muted group-hover:text-foreground transition-colors" />;
+    case 'critique': return <CheckSquare size={20} className="text-amber-500" />;
+    case 'report': return <FileOutput size={20} className="text-primary" />;
+    case 'assessment': return <ClipboardList size={20} className="text-primary" />;
+    case 'devops': return <GitPullRequest size={20} className="text-[#0078D4]" />;
+    case 'zoho': return <Users size={20} className="text-[#F59E0B]" />;
+    default: return <Activity size={20} className="text-muted group-hover:text-foreground transition-colors" />;
   }
 };
 
 interface ArchitectureDiagramProps {
-  architecture: Project["architecture"];
+  workflow: Project["workflow"];
   isInView: boolean;
 }
 
-export function ArchitectureDiagram({ architecture, isInView }: ArchitectureDiagramProps) {
+export function ArchitectureDiagram({ workflow, isInView }: ArchitectureDiagramProps) {
   return (
-    <div className="w-full h-full min-h-[300px] relative overflow-hidden bg-card rounded-xl border border-border p-4 flex items-center justify-center group">
-      {/* Grid background for the diagram */}
+    <div className="w-full h-full min-h-[400px] relative overflow-hidden bg-card rounded-2xl border border-border flex items-center justify-center p-6">
+      {/* Background grid */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,var(--color-border)_1px,transparent_0)] bg-[size:20px_20px] opacity-30" />
       
-      <svg
-        viewBox="0 0 900 250"
-        className="w-full h-full max-h-[250px] relative z-10"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {/* Draw connections */}
-        {architecture.connections.map((conn, i) => {
-          const fromNode = architecture.nodes.find(n => n.id === conn.from);
-          const toNode = architecture.nodes.find(n => n.id === conn.to);
+      <div className="relative z-10 flex flex-col items-center w-full py-4">
+        {workflow.map((step, index) => {
+          const isLast = index === workflow.length - 1;
           
-          if (!fromNode || !toNode) return null;
-
-          // Calculate path connecting centers of nodes (nodes are 100x40 rectangles)
-          const startX = fromNode.x + 50;
-          const startY = fromNode.y + 20;
-          const endX = toNode.x + 50;
-          const endY = toNode.y + 20;
-
-          // Create a nice curved path if they are not on the same Y line
-          let d = `M ${startX} ${startY}`;
-          if (Math.abs(startY - endY) > 10) {
-            d += ` C ${startX + 50} ${startY}, ${endX - 50} ${endY}, ${endX} ${endY}`;
-          } else {
-            d += ` L ${endX} ${endY}`;
-          }
-
           return (
-            <g key={`conn-${i}`}>
-              <motion.path
-                d={d}
-                className="arch-line"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                transition={{ duration: 1, delay: 0.5 + i * 0.1, ease: "easeInOut" }}
-              />
+            <div key={index} className="flex flex-col items-center w-full max-w-[280px]">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: index * 0.15,
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 15
+                }}
+                className="flex items-center gap-4 w-full p-4 rounded-xl border border-border bg-background shadow-lg relative group transition-all hover:border-primary/50"
+              >
+                {/* Node highlight glow */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+                
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-card-hover border border-border flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  {getNodeIcon(step.icon)}
+                </div>
+                
+                <div className="flex flex-col">
+                  <span className="font-semibold text-text text-sm">{step.step}</span>
+                  <span className="text-xs text-muted leading-tight mt-0.5">{step.detail}</span>
+                </div>
+              </motion.div>
               
-              {/* Animated data flow dot */}
-              {isInView && (
-                <circle r="3" className="arch-flow-dot">
-                  <animateMotion
-                    dur="3s"
-                    repeatCount="indefinite"
-                    path={d}
-                    begin={`${i * 0.5}s`}
-                  />
-                </circle>
+              {!isLast && (
+                <div className="h-10 w-px relative my-1">
+                  {/* Static line */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-border to-border-hover" />
+                  
+                  {/* Animated flow */}
+                  {isInView && (
+                    <motion.div
+                      className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
+                      initial={{ top: "0%", opacity: 0 }}
+                      animate={{ top: "100%", opacity: [0, 1, 1, 0] }}
+                      transition={{
+                        duration: 1.5,
+                        delay: index * 0.2 + 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 1
+                      }}
+                    />
+                  )}
+                  
+                  {/* Arrow head */}
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
+                </div>
               )}
-            </g>
+            </div>
           );
         })}
-
-        {/* Draw nodes */}
-        {architecture.nodes.map((node, i) => (
-          <motion.g
-            key={node.id}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.1, type: "spring" }}
-            transform={`translate(${node.x}, ${node.y})`}
-            className="cursor-pointer"
-          >
-            <foreignObject width="120" height="50" x="-10" y="-5">
-              <div 
-                className={`w-[100px] h-[40px] m-[5px] flex items-center justify-center gap-2 rounded-lg border bg-card/80 backdrop-blur-sm shadow-sm transition-all hover:scale-110 group ${
-                  node.highlight 
-                    ? "border-primary shadow-[0_0_15px_rgba(59,130,246,0.2)] bg-primary/10" 
-                    : "border-border hover:border-primary/50"
-                }`}
-              >
-                {getNodeIcon(node.id)}
-                <span className={`text-[11px] font-medium leading-tight text-center px-1 ${node.highlight ? "text-primary font-bold" : "text-text group-hover:text-foreground transition-colors"}`}>
-                  {node.label}
-                </span>
-                
-                {node.highlight && (
-                  <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                  </span>
-                )}
-              </div>
-            </foreignObject>
-          </motion.g>
-        ))}
-      </svg>
+      </div>
     </div>
   );
 }

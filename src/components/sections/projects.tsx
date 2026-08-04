@@ -39,9 +39,9 @@ function ProjectShowcase({ project, index }: { project: typeof projects[0], inde
           </span>
         </div>
         
-        {/* Architecture Diagram instead of static image */}
-        <div className="w-full rounded-2xl overflow-hidden aspect-[4/3] flex items-center justify-center p-2 bg-gradient-to-br from-card to-background border border-border shadow-xl shadow-black/50">
-          <ArchitectureDiagram architecture={project.architecture} isInView={isInView} />
+        {/* Vertical Workflow Diagram */}
+        <div className="w-full h-auto py-8 rounded-2xl overflow-hidden flex items-center justify-center p-2 bg-gradient-to-br from-card to-background border border-border shadow-xl shadow-black/50">
+          <ArchitectureDiagram workflow={project.workflow} isInView={isInView} />
         </div>
       </motion.div>
 

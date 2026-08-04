@@ -1,14 +1,7 @@
-export interface ArchNode {
-  id: string;
-  label: string;
-  x: number;
-  y: number;
-  highlight?: boolean;
-}
-
-export interface ArchConnection {
-  from: string;
-  to: string;
+export interface WorkflowStep {
+  step: string;
+  detail: string;
+  icon: string;
 }
 
 export interface Project {
@@ -26,10 +19,7 @@ export interface Project {
     demo?: string;
     docs?: string;
   };
-  architecture: {
-    nodes: ArchNode[];
-    connections: ArchConnection[];
-  };
+  workflow: WorkflowStep[];
 }
 
 export const projects: Project[] = [
@@ -63,27 +53,13 @@ export const projects: Project[] = [
     links: {
       docs: "https://app.notion.com/p/AI-WhatsApp-Customer-Support-Lead-Qualification-System-3721ed779b4d80e28cb5e1c3a0cd480e",
     },
-    architecture: {
-      nodes: [
-        { id: "user", label: "User", x: 50, y: 50 },
-        { id: "whatsapp", label: "WhatsApp", x: 200, y: 50 },
-        { id: "wati", label: "WATI", x: 350, y: 50 },
-        { id: "n8n", label: "n8n", x: 500, y: 50 },
-        { id: "gpt4", label: "GPT-4.1", x: 650, y: 50, highlight: true },
-        { id: "pinecone", label: "Pinecone", x: 500, y: 170 },
-        { id: "postgres", label: "PostgreSQL", x: 650, y: 170 },
-        { id: "response", label: "Response", x: 800, y: 50 },
-      ],
-      connections: [
-        { from: "user", to: "whatsapp" },
-        { from: "whatsapp", to: "wati" },
-        { from: "wati", to: "n8n" },
-        { from: "n8n", to: "gpt4" },
-        { from: "n8n", to: "pinecone" },
-        { from: "gpt4", to: "postgres" },
-        { from: "gpt4", to: "response" },
-      ],
-    },
+    workflow: [
+      { step: "User Request", detail: "Customer sends message via WhatsApp", icon: "user" },
+      { step: "WATI Trigger", detail: "Webhook received and forwarded to n8n", icon: "whatsapp" },
+      { step: "Vector Search", detail: "Query Pinecone for company knowledge", icon: "database" },
+      { step: "LLM Processing", detail: "GPT-4 synthesizes the final response", icon: "brain" },
+      { step: "Response", detail: "Reply sent back to user on WhatsApp", icon: "message" },
+    ],
   },
   {
     id: "deep-research",
@@ -115,23 +91,14 @@ export const projects: Project[] = [
       github: "https://github.com/mohitsinghal1206/DeepResearch-Agent",
       demo: "https://deepresearch-agent-ew4cwegqrcdoplftnz26iv.streamlit.app/",
     },
-    architecture: {
-      nodes: [
-        { id: "query", label: "Query", x: 50, y: 50 },
-        { id: "gemini", label: "Gemini", x: 200, y: 50, highlight: true },
-        { id: "tavily", label: "Tavily", x: 350, y: 50 },
-        { id: "scraper", label: "Scraper", x: 500, y: 50 },
-        { id: "critique", label: "Critique", x: 650, y: 50 },
-        { id: "report", label: "Report", x: 800, y: 50 },
-      ],
-      connections: [
-        { from: "query", to: "gemini" },
-        { from: "gemini", to: "tavily" },
-        { from: "tavily", to: "scraper" },
-        { from: "scraper", to: "critique" },
-        { from: "critique", to: "report" },
-      ],
-    },
+    workflow: [
+      { step: "Query Input", detail: "User provides research topic", icon: "query" },
+      { step: "Agent Planning", detail: "Gemini creates research plan", icon: "brain" },
+      { step: "Web Search", detail: "Tavily finds relevant sources", icon: "globe" },
+      { step: "Content Scraping", detail: "Scrape content from sources", icon: "scraper" },
+      { step: "Validation", detail: "Self-critique findings", icon: "critique" },
+      { step: "Final Report", detail: "Generate comprehensive report", icon: "report" },
+    ],
   },
   {
     id: "employee-assessment",
@@ -162,22 +129,12 @@ export const projects: Project[] = [
     links: {
       docs: "https://app.notion.com/p/AI-Powered-Employee-Assessment-Compliance-Agent-3721ed779b4d803d96f6cb5106724150",
     },
-    architecture: {
-      nodes: [
-        { id: "employee", label: "Employee", x: 50, y: 50 },
-        { id: "copilot", label: "Copilot Studio", x: 230, y: 50 },
-        { id: "gpt4", label: "GPT-4.1", x: 430, y: 50, highlight: true },
-        { id: "assessment", label: "Assessment", x: 630, y: 50 },
-        { id: "devops", label: "Azure DevOps", x: 330, y: 170 },
-        { id: "zoho", label: "Zoho People", x: 530, y: 170 },
-      ],
-      connections: [
-        { from: "employee", to: "copilot" },
-        { from: "copilot", to: "gpt4" },
-        { from: "gpt4", to: "assessment" },
-        { from: "devops", to: "gpt4" },
-        { from: "zoho", to: "gpt4" },
-      ],
-    },
+    workflow: [
+      { step: "Trigger", detail: "Employee initiates assessment", icon: "user" },
+      { step: "Copilot Studio", detail: "Chatbot collects initial context", icon: "copilot" },
+      { step: "Data Retrieval", detail: "Fetch DevOps & Zoho records", icon: "database" },
+      { step: "LLM Evaluation", detail: "GPT-4 analyzes against policy", icon: "brain" },
+      { step: "Assessment", detail: "Generate compliance report", icon: "assessment" },
+    ],
   },
 ];
