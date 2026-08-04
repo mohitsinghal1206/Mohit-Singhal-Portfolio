@@ -13,11 +13,11 @@ import { cn } from "@/lib/utils";
 
 export function Hero() {
   const keywords = [
-    { text: "LLM's", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="LLMs" /> },
-    { text: "Agentic AI", icon: <Bot className="text-[#8B5CF6]" size="0.9em" /> },
-    { text: "RAG", icon: <Database className="text-[#F59E0B]" size="0.9em" /> },
+    { text: "LLMs", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="LLM's" /> },
+    { text: "Agentic AI", icon: null },
+    { text: "RAG", icon: null },
     { text: "LangChain", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/langchain-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="LangChain" /> },
-    { text: "LangGraph", icon: <Network className="text-[#F43F5E]" size="0.9em" /> },
+    { text: "LangGraph", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/langgraph-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="LangGraph" /> },
     { text: "FastAPI", icon: <img src="https://cdn.simpleicons.org/fastapi/009688" style={{ height: '0.9em', width: 'auto' }} alt="FastAPI" /> },
     { text: "Python", icon: <img src="https://cdn.simpleicons.org/python/3776AB" style={{ height: '0.9em', width: 'auto' }} alt="Python" /> },
     { text: "OpenAI", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="OpenAI" /> },
@@ -100,11 +100,11 @@ export function Hero() {
 
             <motion.h1 
               variants={item}
-              className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 font-display leading-tight"
+              className="text-4xl md:text-7xl font-bold tracking-tighter mb-8 font-display leading-tight"
             >
               Building Enterprise AI <br />
               with&nbsp;
-              <span className="inline-block whitespace-nowrap">
+              <span className="inline-block whitespace-nowrap min-h-[1.25em] align-bottom">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={index}
@@ -112,11 +112,13 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.15 }}
-                    className="inline-flex items-center gap-3"
+                    className="inline-flex items-center gap-3 h-[1.2em]"
                   >
-                    <span className="flex items-center justify-center">
-                      {keywords[index].icon}
-                    </span>
+                    {keywords[index].icon && (
+                      <span className="flex items-center justify-center">
+                        {keywords[index].icon}
+                      </span>
+                    )}
                     <span className="gradient-text">{keywords[index].text}</span>
                   </motion.span>
                 </AnimatePresence>
@@ -162,9 +164,10 @@ export function Hero() {
 
           {/* Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.8, y: 40 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="relative lg:col-span-5 flex items-center justify-center lg:justify-end float-animation"
           >
             {/* Hexagon Tech Border */}

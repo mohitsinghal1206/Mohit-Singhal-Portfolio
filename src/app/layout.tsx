@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Mohit Singhal — AI Engineer | Open to Opportunities",
   description:
-    "Building production-ready AI applications using LLMs, RAG, Agentic AI, and Automation to solve real-world business challenges.",
+    "Building production-ready AI applications using LLM's, RAG, Agentic AI, and Automation to solve real-world business challenges.",
   keywords: [
     "AI Engineer",
     "LLM",
