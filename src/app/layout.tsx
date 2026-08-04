@@ -17,9 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mohit Singhal — AI Engineer | Building Production-Ready AI Systems",
+  title: "Mohit Singhal — AI Engineer | Open to Opportunities",
   description:
-    "AI Engineer specializing in enterprise LLM applications, agentic AI systems, RAG pipelines, and intelligent automation. Building production-grade AI solutions at CodeStore Technologies.",
+    "Building production-ready AI applications using LLMs, RAG, Agentic AI, and Automation to solve real-world business challenges.",
   keywords: [
     "AI Engineer",
     "LLM",

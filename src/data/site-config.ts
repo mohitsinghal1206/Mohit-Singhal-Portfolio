@@ -7,7 +7,7 @@ export const siteConfig = {
   github: "https://github.com/mohitsinghal1206",
   linkedin: "https://linkedin.com/in/mohit-singhal-600326226",
   resumeUrl: "#", // placeholder until resume is uploaded
-  profileImage: "/images/profile.jpg",
+  profileImage: "/images/profile.png",
 
   nav: [
     { label: "Experience", href: "#experience" },
