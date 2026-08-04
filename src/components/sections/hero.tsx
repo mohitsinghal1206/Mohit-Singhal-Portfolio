@@ -103,9 +103,9 @@ export function Hero() {
               className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tighter mb-8 font-display leading-tight"
             >
               Building Enterprise AI <br />
-              <span className="whitespace-nowrap">
+              <span className="inline-flex items-center whitespace-nowrap">
                 with&nbsp;
-                <span className="inline-block min-h-[1.25em] align-bottom">
+                <span className="inline-flex items-center min-h-[1.25em]">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={index}
@@ -113,7 +113,7 @@ export function Hero() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.15 }}
-                      className="inline-flex items-center gap-2 md:gap-3 h-[1.2em]"
+                      className="inline-flex items-center gap-2 md:gap-3"
                     >
                     {keywords[index].icon && (
                       <span className="flex items-center justify-center">
