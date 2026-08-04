@@ -73,33 +73,71 @@ export function Lab() {
 
                 <div className="flex flex-col justify-between">
                   <div className="bg-background border border-border rounded-xl p-6 h-full flex flex-col justify-center relative overflow-hidden">
-                    {/* Simulated chart animation */}
-                    <div className="absolute inset-0 opacity-20">
+                    {/* Premium Financial Chart Animation */}
+                    <div className="absolute inset-0 opacity-40">
                       <svg viewBox="0 0 400 200" preserveAspectRatio="none" className="w-full h-full">
+                        <defs>
+                          <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.4" />
+                            <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0" />
+                          </linearGradient>
+                          <linearGradient id="chart-line" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stopColor="var(--color-secondary)" />
+                            <stop offset="50%" stopColor="var(--color-primary)" />
+                            <stop offset="100%" stopColor="#00F098" />
+                          </linearGradient>
+                          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                          </filter>
+                        </defs>
+                        
+                        {/* Grid Lines */}
+                        <g stroke="var(--color-border)" strokeWidth="1" strokeDasharray="4,4" opacity="0.5">
+                          <path d="M0,50 L400,50 M0,100 L400,100 M0,150 L400,150" />
+                          <path d="M50,0 L50,200 M150,0 L150,200 M250,0 L250,200 M350,0 L350,200" />
+                        </g>
+
+                        {/* Animated Main Line */}
                         <motion.path 
-                          d="M0,150 L40,120 L80,140 L120,80 L160,110 L200,60 L240,90 L280,30 L320,50 L360,20 L400,40" 
+                          d="M0,160 L40,120 L80,140 L120,70 L160,90 L200,40 L240,70 L280,20 L320,50 L360,10 L400,30" 
                           fill="none" 
-                          stroke="var(--color-primary)" 
-                          strokeWidth="2"
+                          stroke="url(#chart-line)" 
+                          strokeWidth="3"
+                          filter="url(#glow)"
                           initial={{ pathLength: 0 }}
                           whileInView={{ pathLength: 1 }}
                           viewport={{ once: true }}
                           transition={{ duration: 2, ease: "easeInOut" }}
                         />
+                        
+                        {/* Animated Area Fill */}
                         <motion.path 
-                          d="M0,150 L40,120 L80,140 L120,80 L160,110 L200,60 L240,90 L280,30 L320,50 L360,20 L400,40 L400,200 L0,200 Z" 
-                          fill="url(#grad)" 
+                          d="M0,160 L40,120 L80,140 L120,70 L160,90 L200,40 L240,70 L280,20 L320,50 L360,10 L400,30 L400,200 L0,200 Z" 
+                          fill="url(#chart-grad)" 
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 2, ease: "easeInOut" }}
+                          transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
                         />
-                        <defs>
-                          <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.2" />
-                            <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0" />
-                          </linearGradient>
-                        </defs>
+                        
+                        {/* Live Price Pulsing Dot */}
+                        <motion.circle 
+                          cx="400" cy="30" r="4" 
+                          fill="#00F098"
+                          initial={{ opacity: 0, scale: 0 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 2 }}
+                        />
+                        <motion.circle 
+                          cx="400" cy="30" r="10" 
+                          fill="#00F098"
+                          initial={{ opacity: 0, scale: 0 }}
+                          whileInView={{ opacity: [0, 0.4, 0], scale: [1, 2.5, 1] }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 2, duration: 2, repeat: Infinity }}
+                        />
                       </svg>
                     </div>
                     
