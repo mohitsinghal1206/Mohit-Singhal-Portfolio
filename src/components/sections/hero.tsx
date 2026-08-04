@@ -162,16 +162,16 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Visual */}
+          {/* Mobile Visual: Scroll Reveal with Blur */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 40, filter: "blur(20px)" }}
             whileInView={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative lg:col-span-5 flex items-center justify-center lg:justify-end float-animation"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative lg:col-span-5 flex md:hidden items-center justify-center float-animation"
           >
             {/* Hexagon Tech Border */}
-            <div className="relative w-[280px] h-[323px] md:w-[320px] md:h-[369px] flex items-center justify-center z-10 group">
+            <div className="relative w-[280px] h-[323px] flex items-center justify-center z-10 group">
               {/* The dynamic theme border background */}
               <div 
                 className="absolute inset-0 bg-gradient-to-br from-primary/50 to-secondary/50 group-hover:from-primary group-hover:to-secondary transition-colors duration-700 animate-pulse" 
@@ -180,17 +180,62 @@ export function Hero() {
               
               {/* The inner dark hexagon to create the border thickness */}
               <div 
-                className="absolute inset-[4px] md:inset-[6px] bg-background" 
+                className="absolute inset-[4px] bg-background" 
                 style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
               />
 
               {/* The cutouts for the brackets on the left and right */}
-              <div className="absolute top-[34%] bottom-[34%] left-[-2px] w-[14px] md:w-[20px] bg-background z-10" />
-              <div className="absolute top-[34%] bottom-[34%] right-[-2px] w-[14px] md:w-[20px] bg-background z-10" />
+              <div className="absolute top-[34%] bottom-[34%] left-[-2px] w-[14px] bg-background z-10" />
+              <div className="absolute top-[34%] bottom-[34%] right-[-2px] w-[14px] bg-background z-10" />
 
               {/* The actual image inside the inner hexagon */}
               <div 
-                className="absolute inset-[10px] md:inset-[14px] overflow-hidden"
+                className="absolute inset-[10px] overflow-hidden"
+                style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+              >
+                <Image
+                  src={siteConfig.profileImage}
+                  alt={siteConfig.name}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 768px) 300px, 340px"
+                />
+              </div>
+            </div>
+
+            {/* Decorative glow behind the hexagon */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-primary/20 blur-[100px] rounded-full z-0 pointer-events-none transition-all duration-700 group-hover:bg-primary/40 animate-pulse" />
+          </motion.div>
+
+          {/* PC Visual: Immediate Load without Blur */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="relative lg:col-span-5 hidden md:flex items-center justify-center lg:justify-end float-animation"
+          >
+            {/* Hexagon Tech Border */}
+            <div className="relative w-[320px] h-[369px] flex items-center justify-center z-10 group">
+              {/* The dynamic theme border background */}
+              <div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/50 to-secondary/50 group-hover:from-primary group-hover:to-secondary transition-colors duration-700 animate-pulse" 
+                style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+              />
+              
+              {/* The inner dark hexagon to create the border thickness */}
+              <div 
+                className="absolute inset-[6px] bg-background" 
+                style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+              />
+
+              {/* The cutouts for the brackets on the left and right */}
+              <div className="absolute top-[34%] bottom-[34%] left-[-2px] w-[20px] bg-background z-10" />
+              <div className="absolute top-[34%] bottom-[34%] right-[-2px] w-[20px] bg-background z-10" />
+
+              {/* The actual image inside the inner hexagon */}
+              <div 
+                className="absolute inset-[14px] overflow-hidden"
                 style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
               >
                 <Image
