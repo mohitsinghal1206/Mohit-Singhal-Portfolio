@@ -141,17 +141,17 @@ export function Navbar() {
             className="mt-4"
           >
              <div className="flex flex-col gap-4 w-full px-8">
-               <a
+              <a
                 href="#lab"
                 onClick={(e) => handleNavClick(e, "#lab")}
-                className="w-full text-center py-3 text-lg font-medium rounded-full bg-white/10 text-white border border-white/20"
+                className="w-full text-center py-3 text-lg font-semibold tracking-wide rounded-full bg-white/10 text-white border border-white/20"
               >
                 Beyond the Work
               </a>
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="w-full text-center py-3 text-lg font-medium rounded-full bg-white text-black"
+                className="w-full text-center py-3 text-lg font-semibold tracking-wide rounded-full bg-white text-black"
               >
                 Get in Touch
               </a>
