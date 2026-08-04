@@ -18,8 +18,7 @@ export function Experience() {
       <div className="container mx-auto px-6 max-w-4xl">
         <ScrollReveal>
           <SectionHeader
-            label="Experience"
-            title="Where I've Built AI Systems"
+            title="Experience"
             centered
           />
         </ScrollReveal>
@@ -137,20 +136,7 @@ export function Experience() {
               );
             })}
 
-            {/* Future Indicator */}
-            <div className="relative pl-12 md:pl-16">
-              <motion.div 
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                className="absolute left-[11px] top-2 w-[10px] h-[10px] rounded-full border-2 border-muted-dark bg-background z-10 transform -translate-x-1/2 -translate-y-1/2"
-              />
-              <ScrollReveal delay={0.2}>
-                <div className="text-muted-dark text-sm font-medium italic">
-                  Future opportunities...
-                </div>
-              </ScrollReveal>
-            </div>
+
           </div>
         </div>
       </div>

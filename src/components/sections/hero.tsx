@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 export function Hero() {
   const keywords = [
-    { text: "LLMs", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="LLMs" /> },
+    { text: "LLM's", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="LLMs" /> },
     { text: "Agentic AI", icon: <Bot className="text-[#8B5CF6]" size="0.9em" /> },
     { text: "RAG", icon: <Database className="text-[#F59E0B]" size="0.9em" /> },
     { text: "LangChain", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/langchain-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="LangChain" /> },
@@ -73,37 +73,38 @@ export function Hero() {
         ))}
       </div>
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Content */}
           <motion.div
             variants={container}
             initial="hidden"
             animate="show"
-            className="flex flex-col items-start"
+            className="flex flex-col items-start lg:col-span-7"
           >
             <motion.div variants={item} className="mb-6 flex items-center gap-3">
-              <div className="flex items-center justify-center px-3 py-1.5 rounded-full border border-border bg-card glass">
-                <span className="relative flex h-2 w-2 mr-2">
+              <div className="flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 rounded-full border border-border bg-card glass shadow-sm">
+                <span className="relative flex h-3 w-3 mr-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                 </span>
-                <span className="text-xs font-medium text-text">Open to opportunities</span>
+                <span className="text-base md:text-lg font-bold text-foreground">Open to opportunities</span>
               </div>
             </motion.div>
 
             <motion.h2 
               variants={item} 
-              className="text-xl md:text-2xl font-medium text-muted mb-4 font-display"
+              className="text-3xl md:text-5xl font-medium text-muted mb-4 font-display"
             >
-              Hi, I&apos;m <span className="text-foreground font-bold">{siteConfig.name}</span>
+              Hi, I&apos;m <span className="font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{siteConfig.name}</span>
             </motion.h2>
 
             <motion.h1 
               variants={item}
-              className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 font-display"
+              className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 font-display leading-tight"
             >
-              Building Intelligent Automation with <br />
-              <span className="inline-block">
+              Building Enterprise AI <br />
+              with&nbsp;
+              <span className="inline-block whitespace-nowrap">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={index}
@@ -164,13 +165,13 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-            className="relative lg:h-[600px] flex items-center justify-center lg:justify-end float-animation"
+            className="relative lg:col-span-5 flex items-center justify-center lg:justify-end float-animation"
           >
             {/* Hexagon Tech Border */}
-            <div className="relative w-[280px] h-[323px] md:w-[380px] md:h-[438px] flex items-center justify-center z-10 group">
+            <div className="relative w-[280px] h-[323px] md:w-[320px] md:h-[369px] flex items-center justify-center z-10 group">
               {/* The dynamic theme border background */}
               <div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/50 to-secondary/50 group-hover:from-primary group-hover:to-secondary transition-colors duration-700" 
+                className="absolute inset-0 bg-gradient-to-br from-primary/50 to-secondary/50 group-hover:from-primary group-hover:to-secondary transition-colors duration-700 animate-pulse" 
                 style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
               />
               
@@ -181,8 +182,8 @@ export function Hero() {
               />
 
               {/* The cutouts for the brackets on the left and right */}
-              <div className="absolute top-[38%] bottom-[38%] left-[-2px] w-[10px] md:w-[14px] bg-background z-10" />
-              <div className="absolute top-[38%] bottom-[38%] right-[-2px] w-[10px] md:w-[14px] bg-background z-10" />
+              <div className="absolute top-[34%] bottom-[34%] left-[-2px] w-[14px] md:w-[20px] bg-background z-10" />
+              <div className="absolute top-[34%] bottom-[34%] right-[-2px] w-[14px] md:w-[20px] bg-background z-10" />
 
               {/* The actual image inside the inner hexagon */}
               <div 
@@ -195,13 +196,13 @@ export function Hero() {
                   fill
                   priority
                   className="object-cover"
-                  sizes="(max-width: 768px) 300px, 400px"
+                  sizes="(max-width: 768px) 300px, 340px"
                 />
               </div>
             </div>
 
             {/* Decorative glow behind the hexagon */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-primary/20 blur-[100px] rounded-full z-0 pointer-events-none transition-all duration-700 group-hover:bg-primary/40" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-primary/20 blur-[100px] rounded-full z-0 pointer-events-none transition-all duration-700 group-hover:bg-primary/40 animate-pulse" />
           </motion.div>
         </div>
       </div>

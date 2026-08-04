@@ -2,6 +2,32 @@
 
 import { motion } from "framer-motion";
 import { Project } from "@/data/projects";
+import { User, MessageCircle, GitMerge, Brain, Database, MessageSquare, Search, Sparkles, Globe, FileText, CheckSquare, FileOutput, MessageSquareCode, ClipboardList, GitPullRequest, Users, Activity } from "lucide-react";
+
+const getNodeIcon = (id: string) => {
+  switch (id) {
+    case 'user':
+    case 'employee': return <User size={14} className="text-muted group-hover:text-foreground transition-colors" />;
+    case 'whatsapp': return <MessageCircle size={14} className="text-[#25D366]" />;
+    case 'wati':
+    case 'copilot': return <MessageSquareCode size={14} className="text-primary" />;
+    case 'n8n': return <GitMerge size={14} className="text-[#FF6E6B]" />;
+    case 'gpt4': return <Brain size={14} className="text-[#10A37F]" />;
+    case 'pinecone':
+    case 'postgres': return <Database size={14} className="text-secondary" />;
+    case 'response': return <MessageSquare size={14} className="text-muted group-hover:text-foreground transition-colors" />;
+    case 'query': return <Search size={14} className="text-muted group-hover:text-foreground transition-colors" />;
+    case 'gemini': return <Sparkles size={14} className="text-[#8B5CF6]" />;
+    case 'tavily': return <Globe size={14} className="text-[#3B82F6]" />;
+    case 'scraper': return <FileText size={14} className="text-muted group-hover:text-foreground transition-colors" />;
+    case 'critique': return <CheckSquare size={14} className="text-amber-500" />;
+    case 'report': return <FileOutput size={14} className="text-primary" />;
+    case 'assessment': return <ClipboardList size={14} className="text-primary" />;
+    case 'devops': return <GitPullRequest size={14} className="text-[#0078D4]" />;
+    case 'zoho': return <Users size={14} className="text-[#F59E0B]" />;
+    default: return <Activity size={14} className="text-muted group-hover:text-foreground transition-colors" />;
+  }
+};
 
 interface ArchitectureDiagramProps {
   architecture: Project["architecture"];
@@ -75,32 +101,27 @@ export function ArchitectureDiagram({ architecture, isInView }: ArchitectureDiag
             transform={`translate(${node.x}, ${node.y})`}
             className="cursor-pointer"
           >
-            <rect
-              width="100"
-              height="40"
-              rx="6"
-              className={`arch-node ${node.highlight ? "stroke-primary shadow-lg" : ""}`}
-              style={{
-                filter: node.highlight ? "drop-shadow(0 0 10px rgba(59, 130, 246, 0.3))" : "none"
-              }}
-            />
-            <text
-              x="50"
-              y="25"
-              textAnchor="middle"
-              className="text-xs font-medium fill-text font-sans"
-            >
-              {node.label}
-            </text>
-            
-            {node.highlight && (
-              <circle
-                cx="90"
-                cy="10"
-                r="3"
-                className="fill-primary animate-pulse"
-              />
-            )}
+            <foreignObject width="120" height="50" x="-10" y="-5">
+              <div 
+                className={`w-[100px] h-[40px] m-[5px] flex items-center justify-center gap-2 rounded-lg border bg-card/80 backdrop-blur-sm shadow-sm transition-all hover:scale-110 group ${
+                  node.highlight 
+                    ? "border-primary shadow-[0_0_15px_rgba(59,130,246,0.2)] bg-primary/10" 
+                    : "border-border hover:border-primary/50"
+                }`}
+              >
+                {getNodeIcon(node.id)}
+                <span className={`text-[11px] font-medium leading-tight text-center px-1 ${node.highlight ? "text-primary font-bold" : "text-text group-hover:text-foreground transition-colors"}`}>
+                  {node.label}
+                </span>
+                
+                {node.highlight && (
+                  <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                  </span>
+                )}
+              </div>
+            </foreignObject>
           </motion.g>
         ))}
       </svg>
