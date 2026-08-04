@@ -47,7 +47,7 @@ export function GlowCard({
   };
 
   const glowColor =
-    color === "blue" ? "rgba(59, 130, 246, 0.15)" : "rgba(139, 92, 246, 0.15)";
+    color === "blue" ? "var(--color-glow-blue)" : "var(--color-glow-purple)";
 
   return (
     <div
