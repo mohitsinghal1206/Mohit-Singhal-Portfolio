@@ -164,8 +164,8 @@ export function Hero() {
 
           {/* Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 40 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8, y: 40, filter: "blur(20px)" }}
+            whileInView={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="relative lg:col-span-5 flex items-center justify-center lg:justify-end float-animation"
