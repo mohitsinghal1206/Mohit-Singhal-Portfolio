@@ -100,20 +100,21 @@ export function Hero() {
 
             <motion.h1 
               variants={item}
-              className="text-4xl md:text-7xl font-bold tracking-tighter mb-8 font-display leading-tight"
+              className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tighter mb-8 font-display leading-tight"
             >
               Building Enterprise AI <br />
-              with&nbsp;
-              <span className="inline-block whitespace-nowrap min-h-[1.25em] align-bottom">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.15 }}
-                    className="inline-flex items-center gap-3 h-[1.2em]"
-                  >
+              <span className="whitespace-nowrap">
+                with&nbsp;
+                <span className="inline-block min-h-[1.25em] align-bottom">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.15 }}
+                      className="inline-flex items-center gap-2 md:gap-3 h-[1.2em]"
+                    >
                     {keywords[index].icon && (
                       <span className="flex items-center justify-center">
                         {keywords[index].icon}
@@ -122,6 +123,7 @@ export function Hero() {
                     <span className="gradient-text">{keywords[index].text}</span>
                   </motion.span>
                 </AnimatePresence>
+                </span>
               </span> <br />
 
             </motion.h1>
