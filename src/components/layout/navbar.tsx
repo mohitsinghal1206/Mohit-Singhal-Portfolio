@@ -86,7 +86,7 @@ export function Navbar() {
               <a
                 href="#lab"
                 onClick={(e) => handleNavClick(e, "#lab")}
-                className="hidden lg:block px-4 py-2 text-sm font-medium rounded-full border border-border text-muted hover:text-text hover:border-primary/50 transition-colors"
+                className="hidden lg:block px-4 py-2 text-sm font-medium rounded-full bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors"
               >
                 Beyond the Work
               </a>
@@ -144,7 +144,7 @@ export function Navbar() {
                <a
                 href="#lab"
                 onClick={(e) => handleNavClick(e, "#lab")}
-                className="w-full text-center py-3 text-lg font-medium rounded-full border border-border text-muted"
+                className="w-full text-center py-3 text-lg font-medium rounded-full bg-white/10 text-white border border-white/20"
               >
                 Beyond the Work
               </a>
