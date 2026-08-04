@@ -10,6 +10,7 @@ import { Mail, Bot, Database, Link, Network, Building2, Brain, Cloud, GitMerge, 
 import { SiFastapi, SiPython, SiHuggingface } from "react-icons/si";
 import { GithubIcon, LinkedinIcon } from "../shared/brand-icons";
 import { cn } from "@/lib/utils";
+import { LangGraph, Zapier, Mcp } from "@lobehub/icons";
 
 export function Hero() {
   const keywords = [
@@ -17,15 +18,17 @@ export function Hero() {
     { text: "Agentic AI", icon: null },
     { text: "RAG", icon: null },
     { text: "LangChain", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/langchain-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="LangChain" /> },
-    { text: "LangGraph", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/langgraph-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="LangGraph" /> },
+    { text: "LangGraph", icon: <LangGraph size="0.9em" /> },
     { text: "FastAPI", icon: <img src="https://cdn.simpleicons.org/fastapi/009688" style={{ height: '0.9em', width: 'auto' }} alt="FastAPI" /> },
     { text: "Python", icon: <img src="https://cdn.simpleicons.org/python/3776AB" style={{ height: '0.9em', width: 'auto' }} alt="Python" /> },
+    { text: "Power Automate", icon: <img src="https://cdn.simpleicons.org/microsoft/5E968C" style={{ height: '0.9em', width: 'auto' }} alt="Power Automate" /> },
+    { text: "Copilot Studio", icon: <img src="https://cdn.simpleicons.org/githubcopilot/ffffff" style={{ height: '0.9em', width: 'auto' }} alt="Copilot" /> },
+    { text: "Zapier", icon: <Zapier size="0.9em" /> },
+    { text: "MCP", icon: <Mcp size="0.9em" /> },
     { text: "OpenAI", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="OpenAI" /> },
     { text: "Azure", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/azure-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="Azure" /> },
     { text: "HuggingFace", icon: <SiHuggingface className="text-[#FFD21E]" size="0.9em" /> },
     { text: "n8n", icon: <img src="https://cdn.simpleicons.org/n8n/FF6E6B" style={{ height: '0.9em', width: 'auto' }} alt="n8n" /> },
-    { text: "Copilot Studio", icon: <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/microsoft-copilot.svg" style={{ height: '0.9em', width: 'auto' }} alt="Copilot" /> },
-    { text: "Power Automate", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-power-automate.svg" style={{ height: '0.9em', width: 'auto' }} alt="Power Automate" /> },
 
   ];
 
