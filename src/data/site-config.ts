@@ -6,7 +6,7 @@ export const siteConfig = {
   email: "mohitsinghal2003.ms@gmail.com",
   github: "https://github.com/mohitsinghal1206",
   linkedin: "https://linkedin.com/in/mohit-singhal-600326226",
-  resumeUrl: "#", // placeholder until resume is uploaded
+  resumeUrl: "/Mohit_Singhal_Resume.pdf",
   profileImage: "/images/profile.png",
 
   nav: [
