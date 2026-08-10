@@ -142,7 +142,7 @@ export function Hero() {
               <MagneticButton href="#projects" variant="primary">
                 View Projects
               </MagneticButton>
-              <MagneticButton href={siteConfig.resumeUrl} variant="outline">
+              <MagneticButton href={siteConfig.resumeUrl} variant="outline" download="Mohit_Singhal_Resume.pdf">
                 Resume
               </MagneticButton>
             </motion.div>

@@ -11,6 +11,7 @@ interface MagneticButtonProps {
   className?: string;
   variant?: "primary" | "secondary" | "outline" | "ghost";
   onClick?: () => void;
+  download?: boolean | string;
 }
 
 export function MagneticButton({
@@ -19,6 +20,7 @@ export function MagneticButton({
   className,
   variant = "primary",
   onClick,
+  download,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -114,6 +116,14 @@ export function MagneticButton({
         </a>
       );
     }
+    if (download) {
+      return (
+        <a href={href} download={download} className="inline-block" target="_blank" rel="noopener noreferrer">
+          {content}
+        </a>
+      );
+    }
+    
     return <Link href={href} className="inline-block">{content}</Link>;
   }
 

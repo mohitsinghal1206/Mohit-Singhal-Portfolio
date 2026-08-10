@@ -37,7 +37,7 @@ export function Contact() {
               GitHub
             </MagneticButton>
             
-            <MagneticButton href={siteConfig.resumeUrl} variant="outline" className="py-4 px-8 text-base">
+            <MagneticButton href={siteConfig.resumeUrl} variant="outline" className="py-4 px-8 text-base" download="Mohit_Singhal_Resume.pdf">
               <FileText size={20} />
               Resume
             </MagneticButton>
