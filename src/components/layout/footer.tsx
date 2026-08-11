@@ -67,12 +67,9 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-dark">
+        <div className="pt-8 border-t border-border flex justify-center items-center">
+          <p className="text-sm text-muted-dark text-center">
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
-          </p>
-          <p className="text-sm text-muted-dark">
-            Designed & Built with Next.js & Tailwind CSS.
           </p>
         </div>
       </div>
