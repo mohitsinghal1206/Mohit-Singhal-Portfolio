@@ -11,7 +11,7 @@ import { ChevronDown, MapPin, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Experience() {
-  const [expandedId, setExpandedId] = useState<string | null>(experiences[0].id);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
     <section id="experience" className="py-24 relative z-10">

@@ -1,12 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { projects } from "@/data/projects";
 import { SectionHeader } from "../shared/section-header";
 import { TechTag } from "../shared/tech-tag";
 import { ArchitectureDiagram } from "../animations/architecture-diagram";
-import { ExternalLink, FileText, CheckCircle2 } from "lucide-react";
+import { ExternalLink, FileText, CheckCircle2, ChevronDown } from "lucide-react";
 import { GithubIcon } from "../shared/brand-icons";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +15,7 @@ function ProjectShowcase({ project, index }: { project: typeof projects[0], inde
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
   const isEven = index % 2 === 0;
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div 
@@ -60,56 +62,82 @@ function ProjectShowcase({ project, index }: { project: typeof projects[0], inde
           {project.description}
         </p>
 
-        <div className="space-y-6 mb-8">
-          {project.sections.map((section, idx) => (
-            <div key={idx}>
-              <h4 className="text-sm font-semibold text-text uppercase tracking-wider mb-2 flex items-center gap-2">
-                <div className={cn("w-1.5 h-1.5 rounded-full", idx === 0 ? "bg-red-500" : "bg-primary")} />
-                {section.title}
-              </h4>
-              <p className="text-muted text-sm leading-relaxed whitespace-pre-line">{section.content}</p>
-            </div>
-          ))}
+        <div 
+          className="cursor-pointer group flex items-center justify-between py-4 border-y border-border/50 mb-4"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          <span className="font-semibold text-text group-hover:text-primary transition-colors">View Project Details</span>
+          <motion.div
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-8 h-8 rounded-full bg-background border border-border flex items-center justify-center text-muted group-hover:text-white transition-colors"
+          >
+            <ChevronDown size={16} />
+          </motion.div>
         </div>
 
-        <div className="mb-8">
-          <h4 className="text-sm font-semibold text-text uppercase tracking-wider mb-3">Key Results</h4>
-          <ul className="space-y-2">
-            {project.results.map((result, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-sm text-muted">
-                <CheckCircle2 size={16} className="text-primary mt-0.5 flex-shrink-0" />
-                <span>{result}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="pt-4 space-y-6 mb-8">
+                {project.sections.map((section, idx) => (
+                  <div key={idx}>
+                    <h4 className="text-sm font-semibold text-text uppercase tracking-wider mb-2 flex items-center gap-2">
+                      <div className={cn("w-1.5 h-1.5 rounded-full", idx === 0 ? "bg-red-500" : "bg-primary")} />
+                      {section.title}
+                    </h4>
+                    <p className="text-muted text-sm leading-relaxed whitespace-pre-line">{section.content}</p>
+                  </div>
+                ))}
+              </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
-          {project.technologies.map(tech => (
-            <TechTag key={tech} name={tech} />
-          ))}
-        </div>
+              <div className="mb-8">
+                <h4 className="text-sm font-semibold text-text uppercase tracking-wider mb-3">Key Results</h4>
+                <ul className="space-y-2">
+                  {project.results.map((result, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-muted">
+                      <CheckCircle2 size={16} className="text-primary mt-0.5 flex-shrink-0" />
+                      <span>{result}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-        <div className="flex items-center gap-6 mt-auto pt-6 border-t border-border">
-          {project.links.demo && (
-            <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-white hover:text-primary transition-colors group">
-              <ExternalLink size={16} className="group-hover:scale-110 transition-transform" />
-              Live Demo
-            </a>
+              <div className="flex flex-wrap gap-2 mb-8">
+                {project.technologies.map(tech => (
+                  <TechTag key={tech} name={tech} />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-6 pt-6 border-t border-border">
+                {project.links.demo && (
+                  <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-white hover:text-primary transition-colors group">
+                    <ExternalLink size={16} className="group-hover:scale-110 transition-transform" />
+                    Live Demo
+                  </a>
+                )}
+                {project.links.github && (
+                  <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-muted hover:text-white transition-colors group">
+                    <GithubIcon size={16} className="group-hover:scale-110 transition-transform" />
+                    Source Code
+                  </a>
+                )}
+                {project.links.docs && (
+                  <a href={project.links.docs} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-muted hover:text-white transition-colors group">
+                    <FileText size={16} className="group-hover:scale-110 transition-transform" />
+                    Documentation
+                  </a>
+                )}
+              </div>
+            </motion.div>
           )}
-          {project.links.github && (
-            <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-muted hover:text-white transition-colors group">
-              <GithubIcon size={16} className="group-hover:scale-110 transition-transform" />
-              Source Code
-            </a>
-          )}
-          {project.links.docs && (
-            <a href={project.links.docs} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-muted hover:text-white transition-colors group">
-              <FileText size={16} className="group-hover:scale-110 transition-transform" />
-              Documentation
-            </a>
-          )}
-        </div>
+        </AnimatePresence>
       </motion.div>
     </div>
   );
