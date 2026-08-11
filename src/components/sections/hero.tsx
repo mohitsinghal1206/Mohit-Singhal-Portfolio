@@ -137,26 +137,85 @@ export function Hero() {
               AI Engineer passionate about building LLM applications, agentic AI systems, and intelligent workflows.
             </motion.p>
 
-            <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-12">
-              <MagneticButton href="#projects" variant="primary">
-                View Projects
-              </MagneticButton>
-              <MagneticButton href={siteConfig.resumeUrl} variant="outline" download="Mohit_Singhal_Resume.pdf">
-                Resume
-              </MagneticButton>
-              
-              <button 
-                onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
-                className="group relative inline-flex h-11 md:h-12 items-center justify-center overflow-hidden rounded-full bg-primary/10 px-6 font-medium text-primary border border-primary/30 transition-all hover:bg-primary/20 hover:border-primary/50 hover:shadow-[0_0_20px_rgba(255,197,61,0.2)] hover:scale-105 active:scale-95"
-              >
-                <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-150%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(150%)]">
-                  <div className="relative h-full w-8 bg-white/20" />
-                </div>
-                <span className="flex items-center gap-2 relative z-10">
-                  <Bot size={18} className="group-hover:animate-bounce" />
-                  Why Mohit? (Ask AI Agent)
-                </span>
-              </button>
+            <motion.div variants={item} className="flex flex-col items-start gap-6 mb-12 w-full">
+              {/* "Out of the box" Functional ChatGPT style input CTA */}
+              <div className="relative w-full max-w-lg group">
+                {/* Glowing border effect */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/60 via-secondary/60 to-primary/60 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-500 group-hover:duration-200 animate-pulse"></div>
+                
+                {/* Input Bar Form */}
+                <form 
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const input = e.currentTarget.querySelector('input');
+                    if (input && input.value.trim().length > 0) {
+                      window.dispatchEvent(new CustomEvent('open-chatbot'));
+                    }
+                  }}
+                  className="relative flex items-center bg-black/90 backdrop-blur-xl border border-primary/40 rounded-full py-2 sm:py-2.5 px-5 sm:px-6 shadow-[0_0_30px_rgba(255,197,61,0.3)] hover:bg-black transition-colors focus-within:bg-black focus-within:border-primary"
+                >
+                  <Bot size={22} className="text-primary mr-3 sm:mr-4 flex-shrink-0 drop-shadow-[0_0_5px_rgba(255,197,61,0.8)]" />
+                  
+                  {/* Real Input and Animated Placeholder Wrapper */}
+                  <div className="flex-1 relative flex items-center h-10">
+                    <input 
+                      type="text"
+                      className="peer absolute inset-0 w-full h-full bg-transparent text-sm sm:text-base text-white font-medium focus:outline-none z-20 placeholder-transparent"
+                      placeholder="Ask AI..."
+                      onChange={(e) => {
+                        // We use a peer-focus and peer-valid trick, or just CSS to hide the placeholder
+                        const target = e.target as HTMLInputElement;
+                        const overlay = target.nextElementSibling as HTMLElement;
+                        if (overlay) {
+                          overlay.style.opacity = target.value.length > 0 ? '0' : '1';
+                        }
+                      }}
+                    />
+                    
+                    {/* Animated Streaming Placeholder Overlay */}
+                    <div className="absolute inset-0 flex items-center pointer-events-none z-10 overflow-hidden transition-opacity duration-200">
+                      <span className="text-sm sm:text-base text-white/50 font-medium tracking-wide flex items-center">
+                        {"Ask AI: Is Mohit a fit for our team?".split("").map((char, index) => (
+                          <motion.span
+                            key={index}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5 + index * 0.05, duration: 0.1 }}
+                          >
+                            {char === " " ? "\u00A0" : char}
+                          </motion.span>
+                        ))}
+                        <motion.span
+                          animate={{ opacity: [1, 0] }}
+                          transition={{ repeat: Infinity, duration: 0.8 }}
+                          className="inline-block w-[2px] h-4 sm:h-5 bg-primary/50 ml-1 sm:translate-y-0.5"
+                        />
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Send Button */}
+                  <button 
+                    type="submit"
+                    className="ml-3 flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/80 flex items-center justify-center hover:bg-primary transition-all duration-300 shadow-[0_0_15px_rgba(255,197,61,0.6)] hover:shadow-[0_0_20px_rgba(255,197,61,1)] hover:scale-110 z-20"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-black transition-colors">
+                      <path d="m5 12 7-7 7 7"/>
+                      <path d="M12 19V5"/>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+
+              {/* Normal Buttons below */}
+              <div className="flex flex-wrap items-center gap-4">
+                <MagneticButton href="#projects" variant="primary">
+                  View Projects
+                </MagneticButton>
+                <MagneticButton href={siteConfig.resumeUrl} variant="outline" download="Mohit_Singhal_Resume.pdf">
+                  Resume
+                </MagneticButton>
+              </div>
             </motion.div>
 
             <motion.div variants={item} className="flex items-center gap-2 md:gap-4 -ml-2">
