@@ -6,8 +6,9 @@ import Image from "next/image";
 import { siteConfig } from "@/data/site-config";
 import { AmbientBackground } from "../animations/ambient-background";
 import { MagneticButton } from "../shared/magnetic-button";
-import { Mail, Bot, Database, Link, Network, Building2, Brain, Cloud, GitMerge, MessageSquareCode, Zap, Github, Linkedin } from "lucide-react";
+import { Bot, Database, Link, Network, Building2, Brain, Cloud, GitMerge, MessageSquareCode, Zap } from "lucide-react";
 import { SiFastapi, SiPython, SiHuggingface } from "react-icons/si";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 import { LangGraph, Zapier, MCP } from "@lobehub/icons";
 
@@ -148,9 +149,9 @@ export function Hero() {
 
             <motion.div variants={item} className="flex items-center gap-2 md:gap-4 -ml-2">
               {[
-                { icon: Github, href: siteConfig.github, label: "GitHub", colorClass: "text-[#8957E5]" },
-                { icon: Linkedin, href: siteConfig.linkedin, label: "LinkedIn", colorClass: "text-[#0A66C2]" },
-                { icon: Mail, href: `mailto:${siteConfig.email}`, label: "Email", colorClass: "text-[#EA4335]" },
+                { icon: FiGithub, href: siteConfig.github, label: "GitHub", colorClass: "text-[#8957E5]" },
+                { icon: FiLinkedin, href: siteConfig.linkedin, label: "LinkedIn", colorClass: "text-[#0A66C2]" },
+                { icon: FiMail, href: `mailto:${siteConfig.email}`, label: "Email", colorClass: "text-[#EA4335]" },
               ].map((social, i) => (
                 <a
                   key={i}
