@@ -154,7 +154,7 @@ export function Hero() {
                 </div>
                 <span className="flex items-center gap-2 relative z-10">
                   <Bot size={18} className="group-hover:animate-bounce" />
-                  Chat with my AI 
+                  Why Mohit? (Ask AI Agent)
                 </span>
               </button>
             </motion.div>
