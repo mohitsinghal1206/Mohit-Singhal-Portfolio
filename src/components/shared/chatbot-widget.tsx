@@ -195,10 +195,10 @@ export function ChatbotWidget() {
         whileTap={{ scale: 0.95 }}
         onClick={handleOpen}
         className={cn(
-          "w-14 h-14 rounded-full text-black flex items-center justify-center transition-all duration-300 group relative z-50",
+          "w-14 h-14 rounded-full text-white flex items-center justify-center transition-all duration-300 group relative z-50 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500",
           hasUnread && !isOpen 
-            ? "bg-primary animate-pulse shadow-[0_0_30px_rgba(255,197,61,0.6)]" 
-            : "bg-primary shadow-[0_0_20px_rgba(255,197,61,0.3)] hover:shadow-[0_0_30px_rgba(255,197,61,0.5)]"
+            ? "animate-pulse shadow-[0_0_30px_rgba(168,85,247,0.6)]" 
+            : "shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)]"
         )}
       >
         <AnimatePresence>
@@ -233,7 +233,7 @@ export function ChatbotWidget() {
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.15 }}
             >
-              <MessageSquare size={24} className={hasUnread ? "animate-bounce" : "group-hover:animate-pulse"} />
+              <Sparkles size={24} className={hasUnread ? "animate-bounce" : "group-hover:animate-pulse"} />
             </motion.div>
           )}
         </AnimatePresence>
