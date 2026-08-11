@@ -158,10 +158,10 @@ export function ChatbotWidget() {
                     Hi there! 👋 I&apos;m Mac (Mohit&apos;s AI Clone). 
                   </p>
                   <p className="mb-3">
-                    I&apos;m currently being trained on his resume, projects, and codebase using a Python/LangChain RAG pipeline. Once active, you can ask me anything about his experience!
+                    I am currently offline while my knowledge base is being updated with Mohit&apos;s latest projects and experience. Please reach out to Mohit directly in the meantime!
                   </p>
                   <p className="text-cyan-400 font-medium flex items-center gap-2">
-                    <Sparkles size={14} /> Full Integration Coming soon
+                    <Sparkles size={14} /> System Maintenance
                   </p>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export function ChatbotWidget() {
                 <input 
                   type="text" 
                   disabled
-                  placeholder="Chat integration coming soon..." 
+                  placeholder="Chat temporarily unavailable..." 
                   className="w-full bg-black/30 border border-border rounded-full pl-5 pr-12 py-3 text-sm text-white placeholder:text-muted focus:outline-none transition-colors opacity-70 cursor-not-allowed"
                 />
                 <button 
