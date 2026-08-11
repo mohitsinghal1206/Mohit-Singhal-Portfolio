@@ -14,15 +14,15 @@ import { LangGraph, Zapier, MCP } from "@lobehub/icons";
 
 const TYPEWRITER_PREFIX = "Ask Mac:\u00A0";
 const TYPEWRITER_PHRASES = [
-  "Does he know automation?",
+  "Does he know AI Automation?",
   "Does he know n8n?",
-  "How much experience does he have?",
   "Does he know LangChain?",
-  "Is Mohit a good cultural fit?",
+  "How much experience does he have?",
   "Can he lead a project?",
   "What are his hobbies?",
-  "What are his strengths & weekness?",
+  "What are his strengths & weakness?",
   "What are his technical skills?",
+  "Is Mohit a good cultural fit?",
   "Is Mohit a good communicator?",
   "Is Mohit available for hire?"
 ];
@@ -86,11 +86,7 @@ export function Hero() {
       } else {
         setIsDeleting(false);
         setPhraseIndex(nextIndex);
-        let newlyNext;
-        do {
-          newlyNext = Math.floor(Math.random() * TYPEWRITER_PHRASES.length);
-        } while (newlyNext === nextIndex);
-        setNextIndex(newlyNext);
+        setNextIndex((prev) => (prev + 1) % TYPEWRITER_PHRASES.length);
       }
     } else {
       if (typewriterText.length < currentFullPhrase.length) {
