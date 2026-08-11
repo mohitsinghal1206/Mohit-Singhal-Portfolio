@@ -150,6 +150,11 @@ export function Hero() {
                     const input = e.currentTarget.querySelector('input');
                     if (input && input.value.trim().length > 0) {
                       window.dispatchEvent(new CustomEvent('open-chatbot'));
+                      // Clear the input after submission
+                      input.value = "";
+                      // Restore the placeholder overlay
+                      const overlay = input.nextElementSibling as HTMLElement;
+                      if (overlay) overlay.style.opacity = '1';
                     }
                   }}
                   className="relative flex items-center bg-black/90 backdrop-blur-xl border border-primary/40 rounded-full py-2 sm:py-2.5 px-5 sm:px-6 shadow-[0_0_30px_rgba(255,197,61,0.3)] hover:bg-black transition-colors focus-within:bg-black focus-within:border-primary"
