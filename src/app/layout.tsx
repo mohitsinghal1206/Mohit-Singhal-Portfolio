@@ -56,6 +56,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { ChatbotWidget } from "@/components/shared/chatbot-widget";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,6 +69,7 @@ export default function RootLayout({
         className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
+        <ChatbotWidget />
       </body>
     </html>
   );
