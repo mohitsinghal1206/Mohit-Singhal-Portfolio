@@ -161,7 +161,7 @@ export function Hero() {
                     <input 
                       type="text"
                       className="peer absolute inset-0 w-full h-full bg-transparent text-sm sm:text-base text-white font-medium focus:outline-none z-20 placeholder-transparent"
-                      placeholder="Ask AI..."
+                      placeholder="Ask Mac..."
                       onChange={(e) => {
                         // We use a peer-focus and peer-valid trick, or just CSS to hide the placeholder
                         const target = e.target as HTMLInputElement;
@@ -175,7 +175,7 @@ export function Hero() {
                     {/* Animated Streaming Placeholder Overlay */}
                     <div className="absolute inset-0 flex items-center pointer-events-none z-10 overflow-hidden transition-opacity duration-200">
                       <span className="text-sm sm:text-base text-white/50 font-medium tracking-wide flex items-center">
-                        {"Ask AI: Is Mohit a fit for our team?".split("").map((char, index) => (
+                        {"Ask Mac: Is Mohit a fit for our team?".split("").map((char, index) => (
                           <motion.span
                             key={index}
                             initial={{ opacity: 0 }}

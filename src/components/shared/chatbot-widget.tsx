@@ -102,10 +102,10 @@ export function ChatbotWidget() {
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-text flex items-center gap-1.5">
-                    Mohit&apos;s AI Assistant
+                    Mac
                     <Sparkles size={12} className="text-primary" />
                   </h3>
-                  <p className="text-[10px] text-muted-dark font-mono uppercase tracking-wider">GPT-4o / LangChain</p>
+                  <p className="text-[10px] text-muted-dark font-mono uppercase tracking-wider">Mohit&apos;s AI Clone</p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
@@ -142,7 +142,7 @@ export function ChatbotWidget() {
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-4 text-sm md:text-base text-muted leading-relaxed shadow-sm">
                   <p className="mb-3 text-white font-medium">
-                    Hi there! 👋 I&apos;m Mohit&apos;s AI assistant. 
+                    Hi there! 👋 I&apos;m Mac (Mohit&apos;s AI Clone). 
                   </p>
                   <p className="mb-3">
                     I&apos;m currently being trained on his resume, projects, and codebase using a Python/LangChain RAG pipeline. Once active, you can ask me anything about his experience!
