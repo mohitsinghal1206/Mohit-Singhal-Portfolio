@@ -21,6 +21,8 @@ const TYPEWRITER_PHRASES = [
   "Is Mohit a good cultural fit?",
   "Can he lead a project?",
   "What are his hobbies?",
+  "What are his strengths & weekness?",
+  "What are his technical skills?",
   "Is Mohit a good communicator?",
   "Is Mohit available for hire?"
 ];
@@ -54,25 +56,41 @@ export function Hero() {
   }, []);
 
   const [phraseIndex, setPhraseIndex] = useState(0);
+  const [nextIndex, setNextIndex] = useState(1);
   const [typewriterText, setTypewriterText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
     const currentFullPhrase = TYPEWRITER_PHRASES[phraseIndex];
+    const nextFullPhrase = TYPEWRITER_PHRASES[nextIndex];
+    
+    let commonPrefixLen = 0;
+    while (
+      commonPrefixLen < currentFullPhrase.length &&
+      commonPrefixLen < nextFullPhrase.length &&
+      currentFullPhrase[commonPrefixLen] === nextFullPhrase[commonPrefixLen]
+    ) {
+      commonPrefixLen++;
+    }
+
+    // Special rule: only stop at complete words, don't stop mid-word if they happen to share characters
+    // e.g., "how much" and "how many" shares "how m", but we should backspace to "how "
+    while (commonPrefixLen > 0 && currentFullPhrase[commonPrefixLen - 1] !== ' ') {
+      commonPrefixLen--;
+    }
 
     if (isDeleting) {
-      if (typewriterText.length > 0) {
+      if (typewriterText.length > commonPrefixLen) {
         timeout = setTimeout(() => setTypewriterText(currentFullPhrase.substring(0, typewriterText.length - 1)), 30);
       } else {
         setIsDeleting(false);
-        setPhraseIndex((prev) => {
-          let next;
-          do {
-            next = Math.floor(Math.random() * TYPEWRITER_PHRASES.length);
-          } while (next === prev);
-          return next;
-        });
+        setPhraseIndex(nextIndex);
+        let newlyNext;
+        do {
+          newlyNext = Math.floor(Math.random() * TYPEWRITER_PHRASES.length);
+        } while (newlyNext === nextIndex);
+        setNextIndex(newlyNext);
       }
     } else {
       if (typewriterText.length < currentFullPhrase.length) {
@@ -83,7 +101,7 @@ export function Hero() {
     }
 
     return () => clearTimeout(timeout);
-  }, [typewriterText, isDeleting, phraseIndex]);
+  }, [typewriterText, isDeleting, phraseIndex, nextIndex]);
 
   const container: Variants = {
     hidden: { opacity: 0 },
