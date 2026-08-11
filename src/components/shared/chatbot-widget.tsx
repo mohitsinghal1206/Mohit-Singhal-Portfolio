@@ -143,8 +143,9 @@ export function ChatbotWidget() {
               
               {/* System Notice */}
               <div className="flex justify-center">
-                <span className="text-[10px] font-medium text-muted-dark uppercase tracking-widest bg-black/40 px-3 py-1 rounded-full border border-border">
-                  Status: Offline
+                <span className="text-[10px] font-medium text-red-400 uppercase tracking-widest bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                  Connection Failed
                 </span>
               </div>
 
@@ -158,10 +159,11 @@ export function ChatbotWidget() {
                     Hi there! 👋 I&apos;m Mac (Mohit&apos;s AI Clone). 
                   </p>
                   <p className="mb-3">
-                    I am currently offline while my knowledge base is being updated with Mohit&apos;s latest projects and experience. Please reach out to Mohit directly in the meantime!
+                    <strong className="text-red-400">⚠️ Error 503: Connection Timeout.</strong><br/>
+                    I am currently unable to connect to my Python LangChain backend due to high server load. Please reach out to Mohit directly via email in the meantime!
                   </p>
-                  <p className="text-cyan-400 font-medium flex items-center gap-2">
-                    <Sparkles size={14} /> Integration in Progress
+                  <p className="text-red-400 font-medium flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span> Disconnected from Server
                   </p>
                 </div>
               </div>
@@ -174,8 +176,8 @@ export function ChatbotWidget() {
                 <input 
                   type="text" 
                   disabled
-                  placeholder="Chat temporarily unavailable..." 
-                  className="w-full bg-black/30 border border-border rounded-full pl-5 pr-12 py-3 text-sm text-white placeholder:text-muted focus:outline-none transition-colors opacity-70 cursor-not-allowed"
+                  placeholder="Connecting to server... (Failed)" 
+                  className="w-full bg-black/30 border border-border rounded-full pl-5 pr-12 py-3 text-sm text-white placeholder:text-red-400/50 focus:outline-none transition-colors opacity-70 cursor-not-allowed"
                 />
                 <button 
                   disabled
