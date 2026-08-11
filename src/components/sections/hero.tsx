@@ -147,7 +147,7 @@ export function Hero() {
               </MagneticButton>
             </motion.div>
 
-            <motion.div variants={item} className="flex items-center gap-6">
+            <motion.div variants={item} className="flex items-center gap-5 md:gap-6">
               {[
                 { icon: GithubIcon, href: siteConfig.github, label: "GitHub", colorClass: "text-[#8957E5]" },
                 { icon: LinkedinIcon, href: siteConfig.linkedin, label: "LinkedIn", colorClass: "text-[#0A66C2]" },
@@ -158,10 +158,10 @@ export function Hero() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={cn("transition-colors p-2 -m-2 group hover:opacity-80", social.colorClass)}
+                  className={cn("flex items-center justify-center transition-colors p-2 -ml-2 group hover:opacity-80", social.colorClass)}
                   aria-label={social.label}
                 >
-                  <social.icon size={24} className="group-hover:scale-110 transition-transform" />
+                  <social.icon size={26} className="group-hover:scale-110 transition-transform" />
                 </a>
               ))}
             </motion.div>
