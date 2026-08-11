@@ -10,8 +10,7 @@ export interface Project {
   category: string;
   title: string;
   description: string;
-  problem: string;
-  solution: string;
+  sections: { title: string; content: string }[];
   technologies: string[];
   results: string[];
   links: {
@@ -27,13 +26,18 @@ export const projects: Project[] = [
     id: "whatsapp-agent",
     index: "01",
     category: "Enterprise AI",
-    title: "AI WhatsApp Customer Support Agent",
-    description:
-      "Multi-agent AI customer support and lead qualification platform powered by LLMs and RAG.",
-    problem:
-      "Manual customer support doesn't scale. Businesses lose leads due to slow response times, inconsistent answers, and lack of 24/7 availability.",
-    solution:
-      "AI-powered multi-agent system with semantic search over knowledge bases, automated follow-ups, shared agent memory, intelligent AI-to-human handoff, real-time monitoring, and production-grade reliability workflows.",
+    title: "AI WhatsApp Customer Support System",
+    description: "A multi-agent AI system built to automate customer support, lead follow-ups, and lead qualification over WhatsApp while maintaining shared conversation context and human handoff for high-value conversations.",
+    sections: [
+      {
+        title: "RAG Pipeline",
+        content: "Built an end-to-end RAG pipeline with a document ingestion workflow that loads product documentation and knowledge-base content, chunks the content, generates embeddings using OpenAI text-embedding-3-large, and stores the resulting vectors in Pinecone.\n\nDuring customer conversations, the retrieval pipeline uses semantic search to retrieve relevant product context from the vector database and provides the retrieved information to GPT-4.1-mini for grounded response generation."
+      },
+      {
+        title: "Agent Architecture",
+        content: "• Customer Support Agent: Handles product-related customer questions using RAG over approved product documentation.\n• Follow-up Agent: Detects inactive leads and generates contextual follow-up messages based on previous conversation history instead of relying only on static templates.\n• Lead Qualification Agent: Analyzes conversation history, evaluates customer intent and engagement, classifies leads as Hot, Warm, or Cold, and provides qualification information to the sales team.\n\nAll agents use shared conversation context so that information from previous interactions is available across the different workflows. When a conversation requires human intervention or becomes sales-ready, the workflow transfers ownership to the sales team and disables further AI responses."
+      }
+    ],
     technologies: [
       "GPT-4.1-mini",
       "n8n",
@@ -42,23 +46,25 @@ export const projects: Project[] = [
       "WATI API",
       "Webhooks",
       "Google Sheets",
-      "Gmail",
+      "Telegram",
     ],
     results: [
-      "Automated customer support with 24/7 availability",
-      "Intelligent lead qualification and scoring",
-      "Seamless AI-to-human handoff when needed",
-      "Production-grade reliability with monitoring",
+      "Reduced manual lead qualification workload by approximately 25%",
+      "Automated repetitive customer support interactions",
+      "Automated follow-up workflows",
+      "Improved lead prioritization",
+      "Reduced operational workload and support costs",
+      "Enabled 24/7 AI-assisted customer interactions"
     ],
     links: {
       docs: "https://app.notion.com/p/AI-WhatsApp-Customer-Support-Lead-Qualification-System-3721ed779b4d80e28cb5e1c3a0cd480e",
     },
     workflow: [
-      { step: "User Request", detail: "Customer sends message via WhatsApp", icon: "user" },
-      { step: "WATI Trigger", detail: "Webhook received and forwarded to n8n", icon: "whatsapp" },
-      { step: "Vector Search", detail: "Query Pinecone for company knowledge", icon: "database" },
-      { step: "LLM Processing", detail: "GPT-4 synthesizes the final response", icon: "brain" },
-      { step: "Response", detail: "Reply sent back to user on WhatsApp", icon: "message" },
+      { step: "WhatsApp via WATI", detail: "Customer interactions trigger webhooks", icon: "whatsapp" },
+      { step: "n8n Orchestration", detail: "Routes messages and manages context", icon: "user" },
+      { step: "Pinecone Retrieval", detail: "Semantic search via text-embedding-3-large", icon: "database" },
+      { step: "GPT-4.1-mini", detail: "Generates grounded responses & classifies leads", icon: "brain" },
+      { step: "Google Sheets / Telegram", detail: "Logs leads and alerts sales team", icon: "message" },
     ],
   },
   {
@@ -66,17 +72,22 @@ export const projects: Project[] = [
     index: "02",
     category: "Research AI",
     title: "DeepResearch Agent",
-    description:
-      "Autonomous multi-agent research platform capable of searching, reading, critiquing, and generating comprehensive research reports.",
-    problem:
-      "Manual research is time-consuming and often incomplete. Researchers need to search multiple sources, cross-reference information, and synthesize findings — a process that takes hours.",
-    solution:
-      "4-stage Agentic AI workflow using LangGraph and LCEL with tool-calling, web search, content scraping, automated critique, and a Streamlit dashboard for interactive research sessions.",
+    description: "An autonomous multi-agent research pipeline that searches, retrieves, analyzes, critiques, and synthesizes information into structured research reports.",
+    sections: [
+      {
+        title: "Agentic Architecture",
+        content: "Designed a 4-stage Agentic Architecture comprising a Search Agent, Reader Agent, Writer Chain, and Critic Chain using LCEL and Gemini 2.5 Flash. This enables autonomous task orchestration and tool-based reasoning for complex research queries."
+      },
+      {
+        title: "Autonomous Execution",
+        content: "Implemented tool-using agents with web search and web scraping capabilities for autonomous information retrieval. The system conducts multi-stage reasoning, generates a draft research report, applies automated critique and validation, and delivers a final synthesis—all monitored via a real-time Streamlit dashboard."
+      }
+    ],
     technologies: [
       "Python",
       "LangChain",
       "LangGraph",
-      "Gemini",
+      "Gemini 2.5 Flash",
       "Tavily API",
       "BeautifulSoup",
       "Streamlit",
@@ -92,33 +103,37 @@ export const projects: Project[] = [
       demo: "https://deepresearch-agent-ew4cwegqrcdoplftnz26iv.streamlit.app/",
     },
     workflow: [
-      { step: "Query Input", detail: "User provides research topic", icon: "query" },
-      { step: "Agent Planning", detail: "Gemini creates research plan", icon: "brain" },
-      { step: "Web Search", detail: "Tavily finds relevant sources", icon: "globe" },
-      { step: "Content Scraping", detail: "Scrape content from sources", icon: "scraper" },
-      { step: "Validation", detail: "Self-critique findings", icon: "critique" },
-      { step: "Final Report", detail: "Generate comprehensive report", icon: "report" },
+      { step: "Search Agent", detail: "Tavily web search retrieves sources", icon: "globe" },
+      { step: "Reader Agent", detail: "BeautifulSoup scrapes source content", icon: "scraper" },
+      { step: "Writer Chain", detail: "Synthesizes information into draft", icon: "brain" },
+      { step: "Critic Chain", detail: "Validates and critiques draft", icon: "critique" },
+      { step: "Final Research Report", detail: "Delivered via Streamlit dashboard", icon: "report" },
     ],
   },
   {
     id: "employee-assessment",
     index: "03",
     category: "Enterprise AI",
-    title: "AI Employee Assessment Agent",
-    description:
-      "Enterprise RAG-based employee assessment platform that generates dynamic policy-based assessments from knowledge bases.",
-    problem:
-      "Employee assessments are manual, inconsistent, and disconnected from company policies. HR teams spend hours creating assessments that may not align with current guidelines.",
-    solution:
-      "RAG-based assessment platform integrated with Azure DevOps Wiki and HR knowledge bases, using Microsoft Graph and Zoho People APIs for automated compliance reporting and analytics dashboards.",
+    title: "AI-Powered Employee Assessment",
+    description: "An enterprise RAG-based assessment and compliance platform that transforms organizational policies and departmental knowledge into dynamic employee assessments, automates the assessment lifecycle, and centralizes assessment data within the Zoho ecosystem.",
+    sections: [
+      {
+        title: "Knowledge Integrations",
+        content: "The system retrieves approved organizational knowledge—including HR Policies, Sales Policies, Manager Guidelines, and Department SOPs—through Azure DevOps Wiki and Microsoft Graph integrations."
+      },
+      {
+        title: "Assessment Engine",
+        content: "Uses GPT-4.1-mini to generate policy-grounded assessments and contextual explanations. Features include dynamic question generation, semantic retrieval, context-aware questioning, dynamic assessment sizing based on source complexity, answer evaluation, and performance summaries.\n\nThe solution was developed in the Zoho People Sandbox environment using the Zoho ZET CLI SDK and APIs. Assessment data is stored back in Zoho People, displaying final results in Zoho People records for administrator review, deeply integrating with the operational HR workflow."
+      }
+    ],
     technologies: [
-      "Copilot Studio",
-      "GPT-4.1-mini",
+      "Microsoft Copilot Studio",
       "Power Automate",
-      "React",
-      "Microsoft Graph",
-      "Azure DevOps",
+      "GPT-4.1-mini",
       "Zoho People",
+      "Azure DevOps Wiki",
+      "Microsoft Graph APIs",
+      "React",
     ],
     results: [
       "Dynamic policy-based assessments from knowledge bases",
@@ -130,11 +145,11 @@ export const projects: Project[] = [
       docs: "https://app.notion.com/p/AI-Powered-Employee-Assessment-Compliance-Agent-3721ed779b4d803d96f6cb5106724150",
     },
     workflow: [
-      { step: "Trigger", detail: "Employee initiates assessment", icon: "user" },
-      { step: "Copilot Studio", detail: "Chatbot collects initial context", icon: "copilot" },
-      { step: "Data Retrieval", detail: "Fetch DevOps & Zoho records", icon: "database" },
-      { step: "LLM Evaluation", detail: "GPT-4 analyzes against policy", icon: "brain" },
-      { step: "Assessment", detail: "Generate compliance report", icon: "assessment" },
+      { step: "Zoho People", detail: "Initiates webhook for assessment", icon: "user" },
+      { step: "Integration Layer", detail: "Power Automate orchestrates data flow", icon: "database" },
+      { step: "Copilot Studio", detail: "RAG over Azure DevOps Wiki & Graph", icon: "copilot" },
+      { step: "Employee Assessment", detail: "AI conducts dynamic evaluation", icon: "assessment" },
+      { step: "Results to Zoho People", detail: "Records written back for HR review", icon: "report" },
     ],
   },
 ];

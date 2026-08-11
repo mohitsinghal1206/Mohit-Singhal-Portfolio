@@ -61,21 +61,15 @@ function ProjectShowcase({ project, index }: { project: typeof projects[0], inde
         </p>
 
         <div className="space-y-6 mb-8">
-          <div>
-            <h4 className="text-sm font-semibold text-text uppercase tracking-wider mb-2 flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
-              The Problem
-            </h4>
-            <p className="text-muted text-sm leading-relaxed">{project.problem}</p>
-          </div>
-          
-          <div>
-            <h4 className="text-sm font-semibold text-text uppercase tracking-wider mb-2 flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-              The Solution
-            </h4>
-            <p className="text-muted text-sm leading-relaxed">{project.solution}</p>
-          </div>
+          {project.sections.map((section, idx) => (
+            <div key={idx}>
+              <h4 className="text-sm font-semibold text-text uppercase tracking-wider mb-2 flex items-center gap-2">
+                <div className={cn("w-1.5 h-1.5 rounded-full", idx === 0 ? "bg-red-500" : "bg-primary")} />
+                {section.title}
+              </h4>
+              <p className="text-muted text-sm leading-relaxed whitespace-pre-line">{section.content}</p>
+            </div>
+          ))}
         </div>
 
         <div className="mb-8">

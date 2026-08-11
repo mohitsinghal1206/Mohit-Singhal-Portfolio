@@ -5,13 +5,20 @@ import { SectionHeader } from "../shared/section-header";
 import { ScrollReveal } from "../shared/scroll-reveal";
 import { GlowCard } from "../shared/glow-card";
 import { WorkflowVisualization } from "../animations/workflow-visualization";
-import { MessageCircle, Mail, Building, Plug } from "lucide-react";
+import { MessageCircle, Mail, Building, Plug, Users, Network, Activity, Globe, Video, Briefcase, RefreshCw } from "lucide-react";
 
 const iconMap: Record<string, React.ElementType> = {
   "message-circle": MessageCircle,
   mail: Mail,
   building: Building,
   plug: Plug,
+  users: Users,
+  network: Network,
+  activity: Activity,
+  globe: Globe,
+  youtube: Video,
+  linkedin: Briefcase,
+  "refresh-cw": RefreshCw,
 };
 
 export function Automation() {
