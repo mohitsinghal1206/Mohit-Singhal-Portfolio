@@ -129,7 +129,7 @@ export function Navbar() {
           mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
-        <ul className="flex flex-col items-center gap-8">
+        <ul className="flex flex-col items-center gap-8 w-full">
           {siteConfig.nav.map((item, i) => (
             <motion.li
               key={item.label}
@@ -150,20 +150,20 @@ export function Navbar() {
             initial={{ opacity: 0, y: 20 }}
             animate={mobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3, delay: siteConfig.nav.length * 0.1 }}
-            className="mt-4"
+            className="mt-4 w-full max-w-[280px]"
           >
-             <div className="flex flex-col gap-4 w-full px-8">
+             <div className="flex flex-col gap-4 w-full">
               <a
                 href="#lab"
                 onClick={(e) => handleNavClick(e, "#lab")}
-                className="w-full text-center py-3 text-lg font-semibold tracking-wide rounded-full bg-white/10 text-white border border-white/20"
+                className="w-full text-center py-3 px-6 text-lg font-semibold tracking-wide rounded-full bg-white/10 text-white border border-white/20 whitespace-nowrap"
               >
                 Beyond the Work
               </a>
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="w-full text-center py-3 text-lg font-semibold tracking-wide rounded-full bg-white text-black"
+                className="w-full text-center py-3 px-6 text-lg font-semibold tracking-wide rounded-full bg-white text-black whitespace-nowrap"
               >
                 Get in Touch
               </a>
