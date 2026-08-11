@@ -60,9 +60,12 @@ export function Navbar() {
           <a 
             href="#" 
             onClick={(e) => handleNavClick(e, "body")}
-            className="text-lg font-bold tracking-tighter"
+            className="text-lg md:text-xl font-bold tracking-tighter flex items-center gap-1.5 font-mono hover:opacity-80 transition-opacity"
           >
-            MS<span className="text-primary">.</span>
+            <span className="text-cyan-400">import</span>
+            <span className="text-primary">AI_Engineer</span>
+            <span className="text-cyan-400">from</span>
+            <span className="text-white">"mohit"</span>
           </a>
 
           {/* Desktop Nav */}
@@ -86,14 +89,14 @@ export function Navbar() {
               <a
                 href="#lab"
                 onClick={(e) => handleNavClick(e, "#lab")}
-                className="hidden lg:block px-4 py-2 text-sm font-medium rounded-full bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors"
+                className="hidden lg:block px-5 py-2 text-sm font-medium rounded-full bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors whitespace-nowrap flex-shrink-0"
               >
                 Beyond the Work
               </a>
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="px-4 py-2 text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
+                className="px-5 py-2 text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors whitespace-nowrap flex-shrink-0"
               >
                 Get in Touch
               </a>
