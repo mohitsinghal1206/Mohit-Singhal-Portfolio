@@ -216,10 +216,10 @@ export function Hero() {
                       if (overlay) overlay.style.opacity = '1';
                     }
                   }}
-                  className="relative flex items-center bg-black/90 backdrop-blur-xl border border-primary/40 rounded-full py-2 sm:py-2.5 px-5 sm:px-6 shadow-[0_0_30px_rgba(255,197,61,0.3)] hover:bg-black transition-colors focus-within:bg-black focus-within:border-primary"
+                  className="relative flex items-center bg-black/90 backdrop-blur-xl border border-primary/40 rounded-full py-2 sm:py-2.5 px-3 sm:px-6 shadow-[0_0_30px_rgba(255,197,61,0.3)] hover:bg-black transition-colors focus-within:bg-black focus-within:border-primary"
                 >
                   {/* Cyan Icon only */}
-                  <Sparkles size={22} className="text-cyan-400 mr-3 sm:mr-4 flex-shrink-0 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                  <Sparkles className="w-4 h-4 sm:w-[22px] sm:h-[22px] text-cyan-400 mr-2 sm:mr-4 flex-shrink-0 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
                   
                   {/* Real Input and Animated Placeholder Wrapper */}
                   <div className="flex-1 relative flex items-center h-10">
@@ -239,7 +239,7 @@ export function Hero() {
                     
                     {/* Animated Streaming Placeholder Overlay */}
                     <div className="absolute inset-0 flex items-center pointer-events-none z-10 overflow-hidden transition-opacity duration-200">
-                      <span className="text-xs sm:text-sm text-white/50 font-medium tracking-wide flex items-center whitespace-nowrap">
+                      <span className="text-[11px] sm:text-sm text-white/50 font-medium tracking-tight sm:tracking-wide flex items-center whitespace-nowrap">
                         <span className="text-white/70 flex-shrink-0">{TYPEWRITER_PREFIX}</span>
                         <span className="truncate">{typewriterText}</span>
                         <motion.span
