@@ -12,6 +12,18 @@ import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 import { LangGraph, Zapier, MCP } from "@lobehub/icons";
 
+const TYPEWRITER_PREFIX = "Ask Mac:\u00A0";
+const TYPEWRITER_PHRASES = [
+  "does he know automation?",
+  "does he know n8n?",
+  "how much exp does he have?",
+  "does he know LangChain?",
+  "a good cultural fit?",
+  "can he lead a project?",
+  "what are his hobbies?",
+  "a good communicator?"
+];
+
 export function Hero() {
   const keywords = [
     { text: "LangChain", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/langchain-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="LangChain" /> },
@@ -39,6 +51,38 @@ export function Hero() {
     }, 1800);
     return () => clearInterval(interval);
   }, []);
+
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [typewriterText, setTypewriterText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    const currentFullPhrase = TYPEWRITER_PHRASES[phraseIndex];
+
+    if (isDeleting) {
+      if (typewriterText.length > 0) {
+        timeout = setTimeout(() => setTypewriterText(currentFullPhrase.substring(0, typewriterText.length - 1)), 30);
+      } else {
+        setIsDeleting(false);
+        setPhraseIndex((prev) => {
+          let next;
+          do {
+            next = Math.floor(Math.random() * TYPEWRITER_PHRASES.length);
+          } while (next === prev);
+          return next;
+        });
+      }
+    } else {
+      if (typewriterText.length < currentFullPhrase.length) {
+        timeout = setTimeout(() => setTypewriterText(currentFullPhrase.substring(0, typewriterText.length + 1)), 60);
+      } else {
+        timeout = setTimeout(() => setIsDeleting(true), 2500); // pause before deleting
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [typewriterText, isDeleting, phraseIndex]);
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -180,21 +224,13 @@ export function Hero() {
                     
                     {/* Animated Streaming Placeholder Overlay */}
                     <div className="absolute inset-0 flex items-center pointer-events-none z-10 overflow-hidden transition-opacity duration-200">
-                      <span className="text-sm sm:text-base text-white/50 font-medium tracking-wide flex items-center">
-                        {"Ask Mac: Is Mohit a fit for our team?".split("").map((char, index) => (
-                          <motion.span
-                            key={index}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 + index * 0.05, duration: 0.1 }}
-                          >
-                            {char === " " ? "\u00A0" : char}
-                          </motion.span>
-                        ))}
+                      <span className="text-xs sm:text-sm text-white/50 font-medium tracking-wide flex items-center whitespace-nowrap">
+                        <span className="text-white/70 flex-shrink-0">{TYPEWRITER_PREFIX}</span>
+                        <span className="truncate">{typewriterText}</span>
                         <motion.span
                           animate={{ opacity: [1, 0] }}
                           transition={{ repeat: Infinity, duration: 0.8 }}
-                          className="inline-block w-[2px] h-4 sm:h-5 bg-primary/50 ml-1 sm:translate-y-0.5"
+                          className="inline-block flex-shrink-0 w-[2px] h-3.5 sm:h-4 bg-primary/50 ml-0.5 sm:ml-1 sm:translate-y-0.5"
                         />
                       </span>
                     </div>
