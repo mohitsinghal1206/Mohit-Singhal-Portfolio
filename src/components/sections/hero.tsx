@@ -187,8 +187,11 @@ export function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative lg:col-span-5 flex md:hidden items-center justify-center float-animation"
           >
-            {/* Hexagon Tech Border */}
-            <div className="relative w-[280px] h-[323px] flex items-center justify-center z-10 group">
+            {/* Interactive Hexagon Portal */}
+            <div 
+              className="relative w-[280px] h-[323px] flex items-center justify-center z-10 group cursor-pointer"
+              onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
+            >
               {/* The dynamic theme border background */}
               <div 
                 className="absolute inset-0 bg-gradient-to-br from-primary/50 to-secondary/50 group-hover:from-primary group-hover:to-secondary transition-colors duration-700 animate-pulse" 
@@ -215,9 +218,19 @@ export function Hero() {
                   alt={siteConfig.name}
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover group-hover:scale-110 group-hover:opacity-30 transition-all duration-500"
                   sizes="(max-width: 768px) 300px, 340px"
                 />
+              </div>
+
+              {/* Interactive AI Clone HUD Overlay */}
+              <div 
+                className="absolute inset-[10px] z-20 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm" 
+                style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+              >
+                <Bot size={40} className="text-primary mb-3 drop-shadow-[0_0_15px_rgba(255,197,61,0.8)]" />
+                <span className="text-xs font-bold text-white tracking-[0.2em] uppercase">Initialize</span>
+                <span className="text-[10px] text-primary font-mono mt-1 font-bold">AI_CLONE.EXE</span>
               </div>
             </div>
 
@@ -232,8 +245,24 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="relative lg:col-span-5 hidden md:flex items-center justify-center lg:justify-start float-animation"
           >
-            {/* Hexagon Tech Border */}
-            <div className="relative w-[320px] h-[369px] flex items-center justify-center z-10 group">
+            {/* Floating Hint (Desktop Only) */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 2, duration: 1 }}
+              className="absolute -right-6 top-[20%] translate-x-full hidden xl:flex items-center gap-3 z-20 pointer-events-none"
+            >
+               <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-primary/50 relative">
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary animate-pulse" />
+               </div>
+               <span className="text-primary font-mono text-xs tracking-widest uppercase bg-black/50 px-3 py-1.5 rounded-full border border-primary/30">Wake AI Clone</span>
+            </motion.div>
+
+            {/* Interactive Hexagon Portal */}
+            <div 
+              className="relative w-[320px] h-[369px] flex items-center justify-center z-10 group cursor-pointer"
+              onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
+            >
               {/* The dynamic theme border background */}
               <div 
                 className="absolute inset-0 bg-gradient-to-br from-primary/50 to-secondary/50 group-hover:from-primary group-hover:to-secondary transition-colors duration-700 animate-pulse" 
@@ -252,7 +281,7 @@ export function Hero() {
 
               {/* The actual image inside the inner hexagon */}
               <div 
-                className="absolute inset-[14px] overflow-hidden"
+                className="absolute inset-[14px] overflow-hidden bg-black"
                 style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
               >
                 <Image
@@ -260,9 +289,22 @@ export function Hero() {
                   alt={siteConfig.name}
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover group-hover:scale-110 group-hover:opacity-30 transition-all duration-500"
                   sizes="(max-width: 768px) 300px, 340px"
                 />
+              </div>
+
+              {/* Interactive AI Clone HUD Overlay */}
+              <div 
+                className="absolute inset-[14px] z-20 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm" 
+                style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+              >
+                <div className="absolute inset-4 border border-primary/30 rounded-full scale-150 group-hover:scale-100 transition-transform duration-700 ease-out border-dashed animate-[spin_10s_linear_infinite]" />
+                <div className="absolute inset-8 border border-secondary/30 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 delay-100 animate-[spin_15s_linear_infinite_reverse]" />
+                
+                <Bot size={56} className="text-primary mb-3 drop-shadow-[0_0_15px_rgba(255,197,61,0.8)] group-hover:animate-pulse" />
+                <span className="text-sm font-bold text-white tracking-[0.2em] uppercase">Initialize</span>
+                <span className="text-xs text-primary font-mono mt-1 font-bold">AI_CLONE.EXE</span>
               </div>
             </div>
 
