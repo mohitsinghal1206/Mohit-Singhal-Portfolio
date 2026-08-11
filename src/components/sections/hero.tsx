@@ -144,6 +144,19 @@ export function Hero() {
               <MagneticButton href={siteConfig.resumeUrl} variant="outline" download="Mohit_Singhal_Resume.pdf">
                 Resume
               </MagneticButton>
+              
+              <button 
+                onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
+                className="group relative inline-flex h-11 md:h-12 items-center justify-center overflow-hidden rounded-full bg-primary/10 px-6 font-medium text-primary border border-primary/30 transition-all hover:bg-primary/20 hover:border-primary/50 hover:shadow-[0_0_20px_rgba(255,197,61,0.2)] hover:scale-105 active:scale-95"
+              >
+                <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-150%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(150%)]">
+                  <div className="relative h-full w-8 bg-white/20" />
+                </div>
+                <span className="flex items-center gap-2 relative z-10">
+                  <Bot size={18} className="group-hover:animate-bounce" />
+                  Chat with my AI 
+                </span>
+              </button>
             </motion.div>
 
             <motion.div variants={item} className="flex items-center gap-2 md:gap-4 -ml-2">
