@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Send, Bot, Sparkles, Maximize2, Minimize2 } from "lucide-react";
+import { MessageSquare, X, Send, Sparkles, Maximize2, Minimize2, BrainCircuit } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function ChatbotWidget() {
@@ -69,6 +69,19 @@ export function ChatbotWidget() {
     };
   }, []);
 
+  // Lock body scroll when in theater mode
+  useEffect(() => {
+    if (isOpen && isExpanded) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isOpen, isExpanded]);
+
   const handleOpen = () => {
     playSound(false);
     setIsOpen(!isOpen);
@@ -96,14 +109,14 @@ export function ChatbotWidget() {
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-black/20">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center relative">
-                  <Bot size={22} />
+                <div className="w-10 h-10 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center relative">
+                  <Sparkles size={22} />
                   <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-green-500 border-2 border-card"></span>
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-text flex items-center gap-1.5">
                     Mac
-                    <Sparkles size={12} className="text-primary" />
+                    <Sparkles size={12} className="text-cyan-400" />
                   </h3>
                   <p className="text-[10px] text-muted-dark font-mono uppercase tracking-wider">Mohit&apos;s AI Clone</p>
                 </div>
@@ -137,8 +150,8 @@ export function ChatbotWidget() {
 
               {/* Bot Message */}
               <div className="flex gap-3 max-w-[85%]">
-                <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center flex-shrink-0 mt-1">
-                  <Bot size={16} />
+                <div className="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">
+                  <Sparkles size={16} />
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-4 text-sm md:text-base text-muted leading-relaxed shadow-sm">
                   <p className="mb-3 text-white font-medium">
@@ -147,7 +160,7 @@ export function ChatbotWidget() {
                   <p className="mb-3">
                     I&apos;m currently being trained on his resume, projects, and codebase using a Python/LangChain RAG pipeline. Once active, you can ask me anything about his experience!
                   </p>
-                  <p className="text-primary font-medium flex items-center gap-2">
+                  <p className="text-cyan-400 font-medium flex items-center gap-2">
                     <Sparkles size={14} /> Full Integration Coming soon
                   </p>
                 </div>

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { siteConfig } from "@/data/site-config";
 import { AmbientBackground } from "../animations/ambient-background";
 import { MagneticButton } from "../shared/magnetic-button";
-import { Bot, Database, Link, Network, Building2, Brain, Cloud, GitMerge, MessageSquareCode, Zap } from "lucide-react";
+import { Sparkles, Database, Link, Network, Building2, Brain, Cloud, GitMerge, MessageSquareCode, Zap } from "lucide-react";
 import { SiFastapi, SiPython, SiHuggingface } from "react-icons/si";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { cn } from "@/lib/utils";
@@ -159,7 +159,8 @@ export function Hero() {
                   }}
                   className="relative flex items-center bg-black/90 backdrop-blur-xl border border-primary/40 rounded-full py-2 sm:py-2.5 px-5 sm:px-6 shadow-[0_0_30px_rgba(255,197,61,0.3)] hover:bg-black transition-colors focus-within:bg-black focus-within:border-primary"
                 >
-                  <Bot size={22} className="text-primary mr-3 sm:mr-4 flex-shrink-0 drop-shadow-[0_0_5px_rgba(255,197,61,0.8)]" />
+                  {/* Cyan Icon only */}
+                  <Sparkles size={22} className="text-cyan-400 mr-3 sm:mr-4 flex-shrink-0 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
                   
                   {/* Real Input and Animated Placeholder Wrapper */}
                   <div className="flex-1 relative flex items-center h-10">
@@ -292,9 +293,9 @@ export function Hero() {
                 className="absolute inset-[10px] z-20 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm" 
                 style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
               >
-                <Bot size={40} className="text-primary mb-3 drop-shadow-[0_0_15px_rgba(255,197,61,0.8)]" />
+                <Sparkles size={40} className="text-cyan-400 mb-3 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]" />
                 <span className="text-xs font-bold text-white tracking-[0.2em] uppercase">Initialize</span>
-                <span className="text-[10px] text-primary font-mono mt-1 font-bold">AI_CLONE.EXE</span>
+                <span className="text-[10px] text-cyan-400 font-mono mt-1 font-bold">AI_CLONE.EXE</span>
               </div>
             </div>
 
@@ -364,11 +365,11 @@ export function Hero() {
                 style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
               >
                 <div className="absolute inset-4 border border-primary/30 rounded-full scale-150 group-hover:scale-100 transition-transform duration-700 ease-out border-dashed animate-[spin_10s_linear_infinite]" />
-                <div className="absolute inset-8 border border-secondary/30 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 delay-100 animate-[spin_15s_linear_infinite_reverse]" />
+                <div className="absolute inset-8 border border-cyan-400/30 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 delay-100 animate-[spin_15s_linear_infinite_reverse]" />
                 
-                <Bot size={56} className="text-primary mb-3 drop-shadow-[0_0_15px_rgba(255,197,61,0.8)] group-hover:animate-pulse" />
+                <Sparkles size={56} className="text-cyan-400 mb-3 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)] group-hover:animate-pulse" />
                 <span className="text-sm font-bold text-white tracking-[0.2em] uppercase">Initialize</span>
-                <span className="text-xs text-primary font-mono mt-1 font-bold">AI_CLONE.EXE</span>
+                <span className="text-xs text-cyan-400 font-mono mt-1 font-bold">AI_CLONE.EXE</span>
               </div>
             </div>
 
