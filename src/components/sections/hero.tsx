@@ -14,22 +14,21 @@ import { LangGraph, Zapier, MCP } from "@lobehub/icons";
 
 export function Hero() {
   const keywords = [
-    { text: "LLMs", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="LLM's" /> },
-    { text: "Agentic AI", icon: null },
-    { text: "RAG", icon: null },
     { text: "LangChain", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/langchain-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="LangChain" /> },
-    { text: "LangGraph", icon: <LangGraph size="0.9em" /> },
+    { text: "OpenAI", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="OpenAI" /> },
+    { text: "HuggingFace", icon: <SiHuggingface className="text-[#FFD21E]" size="0.9em" /> },
     { text: "FastAPI", icon: <img src="https://cdn.simpleicons.org/fastapi/009688" style={{ height: '0.9em', width: 'auto' }} alt="FastAPI" /> },
     { text: "Python", icon: <img src="https://cdn.simpleicons.org/python/3776AB" style={{ height: '0.9em', width: 'auto' }} alt="Python" /> },
+    { text: "Agentic AI", icon: null },
+    { text: "RAG", icon: null },
+    { text: "LangGraph", icon: <LangGraph size="0.9em" /> },
     { text: "Power Automate", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-power-automate.svg" style={{ height: '0.9em', width: 'auto' }} alt="Power Automate" /> },
     { text: "Copilot Studio", icon: <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/microsoft-copilot.svg" style={{ height: '0.9em', width: 'auto' }} alt="Copilot" /> },
     { text: "Zapier", icon: <Zapier size="0.9em" /> },
-    { text: "MCP", icon: <MCP size="0.9em" /> },
-    { text: "OpenAI", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="OpenAI" /> },
-    { text: "Azure", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/azure-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="Azure" /> },
-    { text: "HuggingFace", icon: <SiHuggingface className="text-[#FFD21E]" size="0.9em" /> },
     { text: "n8n", icon: <img src="https://cdn.simpleicons.org/n8n/FF6E6B" style={{ height: '0.9em', width: 'auto' }} alt="n8n" /> },
-
+    { text: "Azure", icon: <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/azure-color.svg" style={{ height: '0.9em', width: 'auto' }} alt="Azure" /> },
+    { text: "MCP", icon: <MCP size="0.9em" /> },
+    { text: "LLMs", icon: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg" style={{ height: '0.9em', width: 'auto' }} alt="LLM's" /> },
   ];
 
   const [index, setIndex] = useState(0);
@@ -37,7 +36,7 @@ export function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % keywords.length);
-    }, 2500);
+    }, 1800);
     return () => clearInterval(interval);
   }, []);
 
@@ -108,14 +107,14 @@ export function Hero() {
               Building Enterprise AI <br />
               <span className="inline-flex items-center whitespace-nowrap">
                 with&nbsp;
-                <span className="inline-flex items-center min-h-[1.25em]">
-                  <AnimatePresence mode="wait">
+                <span className="inline-flex items-center min-h-[1.25em] overflow-hidden px-1 -ml-1">
+                  <AnimatePresence mode="popLayout">
                     <motion.span
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.15 }}
+                      exit={{ opacity: 0, y: -40 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       className="inline-flex items-center gap-2 md:gap-3"
                     >
                     {keywords[index].icon && (
