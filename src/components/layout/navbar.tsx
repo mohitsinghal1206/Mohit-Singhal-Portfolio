@@ -60,12 +60,21 @@ export function Navbar() {
           <a 
             href="#" 
             onClick={(e) => handleNavClick(e, "body")}
-            className="text-lg md:text-xl font-bold tracking-tighter flex items-center gap-1.5 font-mono hover:opacity-80 transition-opacity"
+            className="text-lg md:text-xl font-bold tracking-tighter flex items-center font-mono hover:opacity-80 transition-opacity"
           >
-            <span className="text-cyan-400">import</span>
-            <span className="text-primary">AI_Engineer</span>
-            <span className="text-cyan-400">from</span>
-            <span className="text-white">"mohit"</span>
+            {/* Mobile Logo */}
+            <span className="sm:hidden flex items-center">
+              <span className="text-white">mohit</span>
+              <span className="text-cyan-400">.</span>
+              <span className="text-primary">ai</span>
+            </span>
+            {/* Desktop Logo */}
+            <span className="hidden sm:flex items-center gap-1.5">
+              <span className="text-cyan-400">import</span>
+              <span className="text-primary">AI_Engineer</span>
+              <span className="text-cyan-400">from</span>
+              <span className="text-white">"mohit"</span>
+            </span>
           </a>
 
           {/* Desktop Nav */}
