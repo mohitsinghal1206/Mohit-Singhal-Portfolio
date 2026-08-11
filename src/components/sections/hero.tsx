@@ -14,14 +14,15 @@ import { LangGraph, Zapier, MCP } from "@lobehub/icons";
 
 const TYPEWRITER_PREFIX = "Ask Mac:\u00A0";
 const TYPEWRITER_PHRASES = [
-  "does he know automation?",
-  "does he know n8n?",
-  "how much exp does he have?",
-  "does he know LangChain?",
-  "a good cultural fit?",
-  "can he lead a project?",
-  "what are his hobbies?",
-  "a good communicator?"
+  "Does he know automation?",
+  "Does he know n8n?",
+  "How much experience does he have?",
+  "Does he know LangChain?",
+  "Is Mohit a good cultural fit?",
+  "Can he lead a project?",
+  "What are his hobbies?",
+  "Is Mohit a good communicator?",
+  "Is Mohit available for hire?"
 ];
 
 export function Hero() {
