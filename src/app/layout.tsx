@@ -66,9 +66,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased overflow-x-hidden`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        {children}
+        <div className="overflow-x-hidden min-h-screen flex flex-col">
+          {children}
+        </div>
         <ChatbotWidget />
       </body>
     </html>
