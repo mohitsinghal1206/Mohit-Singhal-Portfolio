@@ -160,7 +160,7 @@ export function ChatbotWidget() {
                   </p>
                   <p className="mb-3">
                     <strong className="text-red-400">⚠️ Error 503: Connection Timeout.</strong><br/>
-                    I am currently unable to connect to my Python LangChain backend due to high server load. Please reach out to Mohit directly via email in the meantime!
+                    I am currently unable to connect to my Python LangChain backend. Please reach out to Mohit directly via email in the meantime!
                   </p>
                   <p className="text-red-400 font-medium flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span> Disconnected from Server
