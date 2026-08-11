@@ -141,7 +141,7 @@ export function Hero() {
               {/* "Out of the box" Functional ChatGPT style input CTA */}
               <div className="relative w-full max-w-lg group">
                 {/* Glowing border effect */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/60 via-secondary/60 to-primary/60 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-500 group-hover:duration-200 animate-pulse"></div>
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-500 group-hover:duration-200 animate-pulse"></div>
                 
                 {/* Input Bar Form */}
                 <form 
