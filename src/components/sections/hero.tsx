@@ -239,7 +239,7 @@ export function Hero() {
                     
                     {/* Animated Streaming Placeholder Overlay */}
                     <div className="absolute inset-0 flex items-center pointer-events-none z-10 overflow-hidden transition-opacity duration-200">
-                      <span className="text-xs sm:text-sm text-white/50 font-medium tracking-tight sm:tracking-wide flex items-center whitespace-nowrap">
+                      <span className="text-[13px] sm:text-sm text-white/50 font-medium tracking-tight sm:tracking-wide flex items-center whitespace-nowrap">
                         <span className="text-white/70 flex-shrink-0">{TYPEWRITER_PREFIX}</span>
                         <span className="truncate">{typewriterText}</span>
                         <motion.span
