@@ -161,7 +161,7 @@ export function ChatbotWidget() {
                     I am currently offline while my knowledge base is being updated with Mohit&apos;s latest projects and experience. Please reach out to Mohit directly in the meantime!
                   </p>
                   <p className="text-cyan-400 font-medium flex items-center gap-2">
-                    <Sparkles size={14} /> System Maintenance
+                    <Sparkles size={14} /> Integration in Progress
                   </p>
                 </div>
               </div>
