@@ -46,9 +46,9 @@ export function LiveTerminal() {
       </div>
 
       {/* Terminal Body */}
-      <div className="p-4 md:p-5 relative pb-6">
+      <div className="p-4 md:p-5 relative overflow-x-auto whitespace-nowrap md:overflow-x-hidden md:whitespace-normal scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent pb-6">
         {codeLines.map((line, index) => (
-          <div key={index} className={`mb-1 ${line.color} flex items-center min-h-[16px] md:min-h-[20px]`}>
+          <div key={index} className={`mb-1 ${line.color} flex items-center min-h-[16px] md:min-h-[20px] w-max md:w-auto pr-4 md:pr-0`}>
             <span>{line.text}</span>
             {index === codeLines.length - 1 && (
               <motion.div
