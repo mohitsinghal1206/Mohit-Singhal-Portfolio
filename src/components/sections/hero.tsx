@@ -193,7 +193,7 @@ export function Hero() {
               variants={item}
               className="text-lg md:text-xl text-muted max-w-lg mb-10 leading-relaxed"
             >
-              AI Engineer passionate about building LLM applications, agentic AI systems, and intelligent workflows.
+              AI Engineer passionate about building LLM applications, agentic AI systems, and intelligent automations.
             </motion.p>
 
             <motion.div variants={item} className="flex flex-col items-start gap-6 mb-12 w-full">
