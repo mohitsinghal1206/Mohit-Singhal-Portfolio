@@ -6,23 +6,27 @@ import { useState, useEffect } from "react";
 
 const codeLines = [
   { text: "import os", color: "text-[#C678DD]" },
-  { text: "from langchain.agents import AgentExecutor, create_react_agent", color: "text-[#C678DD]" },
+  { text: "from langchain.agents import (", color: "text-[#C678DD]" },
+  { text: "    AgentExecutor, create_react_agent", color: "text-[#C678DD]" },
+  { text: ")", color: "text-[#C678DD]" },
   { text: "from langchain_openai import ChatOpenAI", color: "text-[#C678DD]" },
-  { text: "from tools import get_market_data, trigger_n8n_workflow", color: "text-[#C678DD]" },
+  { text: "from tools import get_market_data, trigger_n8n", color: "text-[#C678DD]" },
   { text: "", color: "" },
   { text: "# Initialize Core LLM Brain", color: "text-[#5C6370] italic" },
   { text: "llm = ChatOpenAI(model=\"gpt-4o\", temperature=0)", color: "text-[#E5C07B]" },
-  { text: "tools = [get_market_data, trigger_n8n_workflow]", color: "text-[#E5C07B]" },
+  { text: "tools = [get_market_data, trigger_n8n]", color: "text-[#E5C07B]" },
   { text: "", color: "" },
   { text: "# Assemble Cognitive Architecture", color: "text-[#5C6370] italic" },
   { text: "agent = create_react_agent(llm, tools, prompt)", color: "text-[#61AFEF]" },
-  { text: "executor = AgentExecutor(agent=agent, tools=tools, verbose=True)", color: "text-[#61AFEF]" },
+  { text: "executor = AgentExecutor(", color: "text-[#61AFEF]" },
+  { text: "    agent=agent, tools=tools, verbose=True", color: "text-[#61AFEF]" },
+  { text: ")", color: "text-[#61AFEF]" },
   { text: "", color: "" },
-  { text: "# Deploying Intelligent Workflow...", color: "text-[#98C379] font-bold" },
+  { text: "# Deploy Intelligent Workflow...", color: "text-[#98C379] font-bold" },
   { text: "executor.invoke({", color: "text-white" },
-  { text: "    \"input\": \"Analyze live ticks and trigger automation on anomaly.\"", color: "text-[#98C379]" },
+  { text: "    \"input\": \"Analyze ticks, trigger automation.\"", color: "text-[#98C379]" },
   { text: "})", color: "text-white" },
-  { text: "> SYSTEM ONLINE. AWAITING INSTRUCTIONS.", color: "text-[#00F098] font-bold mt-2" },
+  { text: "> SYSTEM ONLINE.", color: "text-[#00F098] font-bold mt-2" },
 ];
 
 export function LiveTerminal() {
@@ -42,9 +46,9 @@ export function LiveTerminal() {
       </div>
 
       {/* Terminal Body */}
-      <div className="p-4 md:p-5 relative overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent pb-6">
+      <div className="p-4 md:p-5 relative pb-6">
         {codeLines.map((line, index) => (
-          <div key={index} className={`mb-1 ${line.color} flex items-center min-h-[16px] md:min-h-[20px] w-max pr-4`}>
+          <div key={index} className={`mb-1 ${line.color} flex items-center min-h-[16px] md:min-h-[20px]`}>
             <span>{line.text}</span>
             {index === codeLines.length - 1 && (
               <motion.div

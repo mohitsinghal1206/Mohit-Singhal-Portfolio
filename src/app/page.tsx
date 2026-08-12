@@ -13,7 +13,7 @@ import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen selection:bg-primary selection:text-white">
+    <main className="min-h-screen bg-background selection:bg-primary selection:text-white">
       <ScrollProgress />
       <Navbar />
       

@@ -68,18 +68,7 @@ export default function RootLayout({
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <div className="overflow-x-hidden min-h-screen flex flex-col relative">
-          {/* Global Fixed Background (Parallax Effect 1) */}
-          <div className="fixed inset-0 -z-50 pointer-events-none bg-[#0A0E17]">
-            {/* Minimal Grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]" />
-            
-            {/* Glowing Ambient Orbs */}
-            <div className="absolute top-[10%] left-[15%] w-[400px] h-[400px] rounded-full bg-primary/5 blur-[120px]" />
-            <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] rounded-full bg-cyan-500/5 blur-[150px]" />
-            <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-500/5 blur-[150px]" />
-          </div>
-          
+        <div className="overflow-x-hidden min-h-screen flex flex-col">
           {children}
         </div>
         <ChatbotWidget />
