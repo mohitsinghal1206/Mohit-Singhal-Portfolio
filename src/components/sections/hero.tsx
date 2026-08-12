@@ -346,7 +346,7 @@ export function Hero() {
               >
                 <Sparkles size={40} className="text-cyan-400 mb-3 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]" />
                 <span className="text-xs font-bold text-white tracking-[0.2em] uppercase">Initialize</span>
-                <span className="text-[10px] text-cyan-400 font-mono mt-1 font-bold">AI_CLONE.EXE</span>
+                <span className="text-[10px] text-cyan-400 font-mono mt-1 font-bold">Mac Agent</span>
               </div>
             </div>
 
@@ -371,7 +371,6 @@ export function Hero() {
                <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-primary/50 relative">
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary animate-pulse" />
                </div>
-               <span className="text-primary font-mono text-xs tracking-widest uppercase bg-black/50 px-3 py-1.5 rounded-full border border-primary/30">Wake AI Clone</span>
             </motion.div>
 
             {/* Interactive Hexagon Portal */}
@@ -420,7 +419,7 @@ export function Hero() {
                 
                 <Sparkles size={56} className="text-cyan-400 mb-3 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)] group-hover:animate-pulse" />
                 <span className="text-sm font-bold text-white tracking-[0.2em] uppercase">Initialize</span>
-                <span className="text-xs text-cyan-400 font-mono mt-1 font-bold">AI_CLONE.EXE</span>
+                <span className="text-xs text-cyan-400 font-mono mt-1 font-bold">Mac_AI</span>
               </div>
             </div>
 
