@@ -142,14 +142,14 @@ export function Lab() {
                     </div>
                     
                     <div className="relative z-10 text-center">
-                      <div className="text-muted-dark text-sm font-mono mb-2">EXECUTION</div>
+                      <div className="text-muted-dark text-sm font-mono mb-2">PROCESSING</div>
                       <div className="text-4xl font-bold font-mono text-text">
                         <motion.span
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
                           viewport={{ once: true }}
                         >
-                          Real-time
+                          Live Ticks
                         </motion.span>
                       </div>
                     </div>
