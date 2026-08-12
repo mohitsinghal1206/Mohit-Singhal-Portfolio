@@ -27,7 +27,7 @@ const codeLines = [
 
 export function LiveTerminal() {
   return (
-    <div className="w-full max-w-[500px] rounded-xl overflow-hidden bg-[#1E1E1E] border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] font-mono text-sm mx-auto">
+    <div className="w-full max-w-[500px] rounded-xl overflow-hidden bg-[#1E1E1E] border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] font-mono text-xs md:text-sm mx-auto">
       {/* Terminal Header */}
       <div className="flex items-center px-4 py-3 bg-[#2D2D2D] border-b border-white/5">
         <div className="flex gap-2">
@@ -35,22 +35,22 @@ export function LiveTerminal() {
           <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
           <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
         </div>
-        <div className="flex-1 flex justify-center items-center gap-2 text-xs text-muted-dark font-medium">
+        <div className="flex-1 flex justify-center items-center gap-2 text-[10px] md:text-xs text-muted-dark font-medium">
           <Terminal size={14} />
           agent_core.py
         </div>
       </div>
 
       {/* Terminal Body */}
-      <div className="p-5 relative">
+      <div className="p-4 md:p-5 relative overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent pb-6">
         {codeLines.map((line, index) => (
-          <div key={index} className={`mb-1 ${line.color} flex items-center min-h-[20px]`}>
+          <div key={index} className={`mb-1 ${line.color} flex items-center min-h-[16px] md:min-h-[20px] w-max pr-4`}>
             <span>{line.text}</span>
             {index === codeLines.length - 1 && (
               <motion.div
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="w-[2px] h-[18px] bg-white ml-1 shrink-0"
+                className="w-[2px] h-[14px] md:h-[18px] bg-white ml-1 shrink-0"
               />
             )}
           </div>
