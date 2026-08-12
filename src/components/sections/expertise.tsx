@@ -98,8 +98,8 @@ export function Expertise() {
             })}
           </div>
           
-          {/* Right: Graphic (Hidden on mobile) */}
-          <div className="hidden lg:flex lg:col-span-5 justify-center w-full">
+          {/* Right: Graphic */}
+          <div className="flex lg:col-span-5 justify-center w-full mt-10 lg:mt-0">
             <ScrollReveal direction="left" delay={0.4} className="w-full flex justify-center">
               <LiveTerminal />
             </ScrollReveal>
