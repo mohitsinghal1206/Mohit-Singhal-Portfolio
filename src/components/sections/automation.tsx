@@ -47,7 +47,7 @@ export function Automation() {
           </div>
 
           {/* Automation Domains Grid */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="lg:col-span-7 grid grid-cols-1 gap-4">
             {automationProjects.map((project, index) => {
               const Icon = iconMap[project.icon] || Plug;
               const isExpanded = expandedId === project.id;
@@ -59,7 +59,7 @@ export function Automation() {
                   direction="up"
                   className="h-full"
                 >
-                  <GlowCard color="purple" className="h-full p-6 flex flex-col group">
+                  <GlowCard color="purple" className="h-full p-5 flex flex-col group">
                     <div 
                       className="cursor-pointer flex items-center justify-between"
                       onClick={() => setExpandedId(isExpanded ? null : project.id)}

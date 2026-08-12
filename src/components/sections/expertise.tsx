@@ -20,7 +20,7 @@ export function Expertise() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <section id="expertise" className="py-24 relative z-10">
+    <section id="expertise" className="pt-8 pb-24 relative z-10">
       <div className="container mx-auto px-6 max-w-6xl">
         <ScrollReveal>
           <SectionHeader
@@ -29,7 +29,7 @@ export function Expertise() {
           />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <div className="grid grid-cols-1 gap-4 mt-12 max-w-4xl">
           {expertise.map((category, index) => {
             const Icon = iconMap[category.icon] || Brain;
             const isExpanded = expandedId === category.id;
@@ -40,7 +40,7 @@ export function Expertise() {
                 delay={index * 0.1}
                 direction="up"
               >
-                <GlowCard className="h-full p-6 md:p-8 flex flex-col group">
+                <GlowCard className="h-full p-5 md:p-6 flex flex-col group">
                   <div 
                     className="cursor-pointer flex items-center justify-between"
                     onClick={() => setExpandedId(isExpanded ? null : category.id)}
