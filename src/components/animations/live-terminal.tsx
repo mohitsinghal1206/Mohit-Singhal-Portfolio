@@ -26,21 +26,6 @@ const codeLines = [
 ];
 
 export function LiveTerminal() {
-  const [linesToShow, setLinesToShow] = useState(0);
-
-  useEffect(() => {
-    // Reveal lines progressively
-    const interval = setInterval(() => {
-      setLinesToShow((prev) => {
-        if (prev < codeLines.length) return prev + 1;
-        clearInterval(interval);
-        return prev;
-      });
-    }, 400); // 400ms per line
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="w-full max-w-[500px] rounded-xl overflow-hidden bg-[#1E1E1E] border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] font-mono text-sm mx-auto">
       {/* Terminal Header */}
@@ -57,28 +42,19 @@ export function LiveTerminal() {
       </div>
 
       {/* Terminal Body */}
-      <div className="p-5 min-h-[350px] relative">
+      <div className="p-5 relative">
         {codeLines.map((line, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: -10 }}
-            animate={index < linesToShow ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-            transition={{ duration: 0.2 }}
-            className={`mb-1 ${line.color}`}
-            style={{ display: index < linesToShow ? "block" : "none" }}
-          >
-            {line.text}
-          </motion.div>
+          <div key={index} className={`mb-1 ${line.color} flex items-center min-h-[20px]`}>
+            <span>{line.text}</span>
+            {index === codeLines.length - 1 && (
+              <motion.div
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="w-[2px] h-[18px] bg-white ml-1 shrink-0"
+              />
+            )}
+          </div>
         ))}
-
-        {/* Blinking Cursor */}
-        {linesToShow < codeLines.length && (
-          <motion.div
-            animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.8, repeat: Infinity }}
-            className="w-2 h-4 bg-white inline-block ml-1 align-middle mt-1"
-          />
-        )}
       </div>
     </div>
   );
