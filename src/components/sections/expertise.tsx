@@ -6,7 +6,7 @@ import { expertise } from "@/data/expertise";
 import { SectionHeader } from "../shared/section-header";
 import { ScrollReveal } from "../shared/scroll-reveal";
 import { GlowCard } from "../shared/glow-card";
-import { AgentBlueprint } from "../animations/agent-blueprint";
+import { LiveTerminal } from "../animations/live-terminal";
 import { Brain, Zap, Server, Cloud, ChevronDown } from "lucide-react";
 
 // Map string icon names to Lucide components
@@ -101,7 +101,7 @@ export function Expertise() {
           {/* Right: Graphic (Hidden on mobile) */}
           <div className="hidden lg:flex lg:col-span-5 justify-center w-full">
             <ScrollReveal direction="left" delay={0.4} className="w-full flex justify-center">
-              <AgentBlueprint />
+              <LiveTerminal />
             </ScrollReveal>
           </div>
         </div>

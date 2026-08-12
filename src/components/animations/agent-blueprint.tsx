@@ -70,15 +70,15 @@ function AnimatedLine({ d, delay }: { d: string; delay: number }) {
 
 export function AgentBlueprint() {
   return (
-    <div className="relative w-full aspect-square max-w-[450px] flex items-center justify-center p-8 mx-auto">
+    <div className="relative w-full aspect-square max-w-[400px] flex items-center justify-center p-4 mx-auto">
       {/* Background glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-20 pointer-events-none" />
       
-      <div className="relative w-full h-full flex items-center justify-center">
+      <div className="relative w-[350px] h-[350px]">
         
         {/* SVG Connecting Lines (Absolute behind nodes) */}
-        <div className="absolute inset-0 -z-10 flex items-center justify-center">
-          <svg className="w-[300px] h-[300px]" viewBox="0 0 300 300" style={{ overflow: 'visible' }}>
+        <div className="absolute inset-0 -z-10">
+          <svg className="w-full h-full" viewBox="0 0 350 350" style={{ overflow: 'visible' }}>
             <defs>
               <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="4" result="blur" />
@@ -86,72 +86,63 @@ export function AgentBlueprint() {
               </filter>
             </defs>
             
-            {/* Top to Center */}
-            <AnimatedLine d="M 150,50 L 150,110" delay={0.2} />
+            {/* Cloud to Backend */}
+            <AnimatedLine d="M 175,40 L 175,175" delay={0.2} />
             
-            {/* Center to Right */}
-            <AnimatedLine d="M 190,150 L 250,150" delay={0.6} />
+            {/* Backend to AI Eng */}
+            <AnimatedLine d="M 175,175 L 75,300" delay={0.6} />
             
-            {/* Center to Bottom */}
-            <AnimatedLine d="M 150,190 L 150,250" delay={0.8} />
-            
-            {/* Center to Left */}
-            <AnimatedLine d="M 110,150 L 50,150" delay={1.0} />
+            {/* Backend to Automation */}
+            <AnimatedLine d="M 175,175 L 275,300" delay={0.8} />
+
+            {/* AI to Automation (Cross-talk) */}
+            <AnimatedLine d="M 75,300 Q 175,330 275,300" delay={1.2} />
           </svg>
         </div>
 
         {/* Nodes */}
         <Node 
+          icon={Cloud} 
+          label="Cloud & DevOps" 
+          delay={0}
+          className="absolute top-[40px] left-[175px] -translate-x-1/2 -translate-y-1/2"
+          color="text-green-400"
+        />
+
+        <motion.div 
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", delay: 0.4, bounce: 0.5 }}
+          className="absolute top-[175px] left-[175px] -translate-x-1/2 -translate-y-1/2 z-10 w-24 h-24 rounded-full bg-black border-2 border-cyan-400/40 flex flex-col items-center justify-center shadow-[0_0_30px_rgba(34,211,238,0.2)] group"
+        >
+          <div className="absolute inset-0 bg-cyan-400/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <Server size={32} className="text-cyan-400 mb-1 animate-pulse" />
+          <span className="text-[9px] font-bold tracking-widest text-cyan-400 uppercase text-center leading-tight">Backend<br/>API</span>
+          <motion.div 
+            animate={{ rotate: -360 }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="absolute -bottom-2 -left-2"
+          >
+            <Sparkles size={16} className="text-cyan-200" />
+          </motion.div>
+        </motion.div>
+        
+        <Node 
           icon={Brain} 
           label="AI Engineering" 
-          delay={0}
-          className="absolute top-0 left-1/2 -translate-x-1/2"
+          delay={0.7}
+          className="absolute top-[300px] left-[75px] -translate-x-1/2 -translate-y-1/2"
           color="text-primary"
         />
         
         <Node 
           icon={Zap} 
           label="Automation" 
-          delay={0.7}
-          className="absolute bottom-0 left-1/2 -translate-x-1/2"
+          delay={0.9}
+          className="absolute top-[300px] left-[275px] -translate-x-1/2 -translate-y-1/2"
           color="text-yellow-400"
         />
-        
-        <Node 
-          icon={Server} 
-          label="Backend Systems" 
-          delay={0.5}
-          className="absolute top-1/2 right-0 -translate-y-1/2"
-          color="text-cyan-400"
-        />
-        
-        <Node 
-          icon={Cloud} 
-          label="Cloud & DevOps" 
-          delay={0.9}
-          className="absolute top-1/2 left-0 -translate-y-1/2"
-          color="text-green-400"
-        />
-
-        {/* Central Hub Node */}
-        <motion.div 
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ type: "spring", delay: 0.3, bounce: 0.5 }}
-          className="relative z-10 w-24 h-24 rounded-full bg-black border-2 border-primary/40 flex flex-col items-center justify-center shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.2)] group"
-        >
-          <div className="absolute inset-0 bg-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <Database size={32} className="text-primary mb-1 animate-pulse" />
-          <span className="text-[9px] font-bold tracking-widest text-primary uppercase text-center leading-tight">System<br/>Arch</span>
-          <motion.div 
-            animate={{ rotate: 360 }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-2 -right-2"
-          >
-            <Sparkles size={16} className="text-yellow-400 drop-shadow-[0_0_5px_rgba(250,204,21,0.8)]" />
-          </motion.div>
-        </motion.div>
 
       </div>
     </div>
