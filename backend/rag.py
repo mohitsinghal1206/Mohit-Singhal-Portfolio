@@ -354,7 +354,7 @@ class ChatRequest(BaseModel):
 # CHAT API
 # ============================================================
 
-@app.post("/chat")
+@app.post("/api/chat")
 def chat(request: ChatRequest):
 
     try:
@@ -456,7 +456,7 @@ def ask_mohit_stream(query: str, session_id: str, model: str | None = None):
         db.close()
         raise e
 
-@app.post("/chat/stream")
+@app.post("/api/chat/stream")
 def chat_stream(request: ChatRequest):
     try:
         session_id = request.session_id if request.session_id else str(uuid4())
@@ -469,7 +469,7 @@ def chat_stream(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/health")
+@app.get("/api/health")
 def health_check():
     try:
         db = SessionLocal()
