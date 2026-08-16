@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -72,6 +74,8 @@ export default function RootLayout({
           {children}
         </div>
         <ChatbotWidget />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
