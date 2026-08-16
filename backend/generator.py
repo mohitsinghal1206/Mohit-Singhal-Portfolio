@@ -3,8 +3,7 @@ import os
 from dotenv import load_dotenv
 from google import genai
 from mistralai.client import Mistral
-from retriever import retrieve, build_context
-
+from backend.retriever import retrieve, build_context
 # ============================================================
 # Configuration
 # ============================================================
@@ -209,6 +208,72 @@ def generate_answer(
     raise RuntimeError(
         f"Unsupported LLM provider: {LLM_PROVIDER}"
     )
+
+def generate_answer_stream(
+    query: str,
+    context: str,
+    model: str | None = None
+):
+    if LLM_PROVIDER == "gemini":
+        prompt = f"""
+{SYSTEM_PROMPT}
+
+Retrieved context:
+
+---------------- CONTEXT ----------------
+
+{context}
+
+-------------- END CONTEXT --------------
+
+User question:
+
+{query}
+
+Answer the user's question using only the retrieved context.
+"""
+        response = gemini_client.models.generate_content_stream(
+            model=GEMINI_MODEL,
+            contents=prompt
+        )
+        for chunk in response:
+            if chunk.text:
+                yield chunk.text
+
+    elif LLM_PROVIDER == "mistral":
+        user_prompt = f"""
+Retrieved context:
+
+---------------- CONTEXT ----------------
+
+{context}
+
+-------------- END CONTEXT --------------
+
+User question:
+
+{query}
+
+Answer the user's question using only the retrieved context.
+"""
+        response = mistral_client.chat.stream(
+            model=MISTRAL_MODEL,
+            messages=[
+                {
+                    "role": "system",
+                    "content": SYSTEM_PROMPT
+                },
+                {
+                    "role": "user",
+                    "content": user_prompt
+                }
+            ]
+        )
+        for chunk in response:
+            if chunk.data.choices[0].delta.content:
+                yield chunk.data.choices[0].delta.content
+    else:
+        raise RuntimeError(f"Unsupported LLM provider: {LLM_PROVIDER}")
 
 
 if __name__ == "__main__":
