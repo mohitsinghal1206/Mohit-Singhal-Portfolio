@@ -136,7 +136,7 @@ Answer the user's question using only the retrieved context.
         model=GEMINI_MODEL,
         contents=prompt,
         config={
-            'temperature':0.2
+            'temperature':0.3
         }
     )
 
@@ -177,7 +177,8 @@ Answer the user's question using only the retrieved context.
                 "role": "user",
                 "content": user_prompt
             }
-        ]
+        ],
+    temperature=0.3
     )
 
     return response.choices[0].message.content.strip()
@@ -238,7 +239,7 @@ Answer the user's question using only the retrieved context.
             model=GEMINI_MODEL,
             contents=prompt,
              config={
-        "temperature": 0.2
+        "temperature": 0.3
     }
         )
         for chunk in response:
@@ -272,7 +273,8 @@ Answer the user's question using only the retrieved context.
                     "role": "user",
                     "content": user_prompt
                 }
-            ]
+            ],
+    temperature=0.2
         )
         for chunk in response:
             if chunk.data.choices[0].delta.content:
