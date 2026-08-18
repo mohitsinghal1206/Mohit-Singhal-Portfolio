@@ -1,5 +1,4 @@
 import os
-
 from dotenv import load_dotenv
 from google import genai
 from mistralai.client import Mistral
@@ -135,7 +134,10 @@ Answer the user's question using only the retrieved context.
 
     response = gemini_client.models.generate_content(
         model=GEMINI_MODEL,
-        contents=prompt
+        contents=prompt,
+        config={
+            'temperature':0.2
+        }
     )
 
     return response.text.strip()
@@ -234,7 +236,10 @@ Answer the user's question using only the retrieved context.
 """
         response = gemini_client.models.generate_content_stream(
             model=GEMINI_MODEL,
-            contents=prompt
+            contents=prompt,
+             config={
+        "temperature": 0.2
+    }
         )
         for chunk in response:
             if chunk.text:
