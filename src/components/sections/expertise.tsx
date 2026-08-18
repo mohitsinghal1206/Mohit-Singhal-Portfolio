@@ -6,6 +6,7 @@ import { expertise } from "@/data/expertise";
 import { SectionHeader } from "../shared/section-header";
 import { ScrollReveal } from "../shared/scroll-reveal";
 import { GlowCard } from "../shared/glow-card";
+import { TechTag } from "../shared/tech-tag";
 import { LiveTerminal } from "../animations/live-terminal";
 import { Brain, Zap, Server, Cloud, ChevronDown } from "lucide-react";
 
@@ -80,12 +81,7 @@ export function Expertise() {
                             </p>
                             <div className="flex flex-wrap gap-2">
                               {category.technologies.map((tech) => (
-                                <span 
-                                  key={tech}
-                                  className="text-xs font-medium text-muted-dark bg-black/40 px-3 py-1.5 rounded-md border border-white/5"
-                                >
-                                  {tech}
-                                </span>
+                                <TechTag key={tech} name={tech} />
                               ))}
                             </div>
                           </div>
