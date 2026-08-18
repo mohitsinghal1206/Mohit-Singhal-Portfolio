@@ -1,8 +1,19 @@
-export interface WorkflowStep {
+﻿export interface WorkflowStep {
   step: string;
   detail: string;
   icon: string;
 }
+
+export interface LabeledWorkflow {
+  title: string;
+  steps: WorkflowStep[];
+}
+
+export interface ParallelGroup {
+  parallel: LabeledWorkflow[];
+}
+
+export type WorkflowNode = WorkflowStep | ParallelGroup;
 
 export interface Project {
   id: string;
@@ -18,7 +29,7 @@ export interface Project {
     demo?: string;
     docs?: string;
   };
-  workflow: WorkflowStep[];
+  workflow: WorkflowNode[];
 }
 
 export const projects: Project[] = [
@@ -27,15 +38,15 @@ export const projects: Project[] = [
     index: "01",
     category: "Enterprise AI",
     title: "AI WhatsApp Customer Support System",
-    description: "A multi-agent AI system built to automate customer support, lead follow-ups, and lead qualification over WhatsApp while maintaining shared conversation context and human handoff for high-value conversations.",
+    description: "A smart WhatsApp assistant I built using multiple AI agents working together. It automatically handles customer support, follows up with old leads, and figures out which customers are ready to buy—handing them over to human sales reps when things get serious.",
     sections: [
       {
         title: "RAG Pipeline",
-        content: "Built an end-to-end RAG pipeline with a document ingestion workflow that loads product documentation and knowledge-base content, chunks the content, generates embeddings using OpenAI text-embedding-3-large, and stores the resulting vectors in Pinecone.\n\nDuring customer conversations, the retrieval pipeline uses semantic search to retrieve relevant product context from the vector database and provides the retrieved information to GPT-4.1-mini for grounded response generation."
+        content: "I built a custom search system (RAG) that securely reads the company's product manuals and stores them in Pinecone. When a customer asks a question on WhatsApp, the AI instantly finds the exact right answer from the official docs instead of guessing."
       },
       {
         title: "Agent Architecture",
-        content: "• Customer Support Agent: Handles product-related customer questions using RAG over approved product documentation.\n• Follow-up Agent: Detects inactive leads and generates contextual follow-up messages based on previous conversation history instead of relying only on static templates.\n• Lead Qualification Agent: Analyzes conversation history, evaluates customer intent and engagement, classifies leads as Hot, Warm, or Cold, and provides qualification information to the sales team.\n\nAll agents use shared conversation context so that information from previous interactions is available across the different workflows. When a conversation requires human intervention or becomes sales-ready, the workflow transfers ownership to the sales team and disables further AI responses."
+        content: "Instead of one massive bot, I designed a team of specialized agents:\n• Support Agent: Answers questions using official docs.\n• Follow-up Agent: Re-engages quiet leads naturally based on their past chats.\n• Sales Agent: Grades leads as Hot, Warm, or Cold for the sales team.\n\nThey all share the same memory, so the customer never has to repeat themselves."
       }
     ],
     technologies: [
@@ -60,27 +71,51 @@ export const projects: Project[] = [
       docs: "https://app.notion.com/p/AI-WhatsApp-Customer-Support-Lead-Qualification-System-3721ed779b4d80e28cb5e1c3a0cd480e",
     },
     workflow: [
-      { step: "WhatsApp via WATI", detail: "Customer interactions trigger webhooks", icon: "whatsapp" },
-      { step: "n8n Orchestration", detail: "Routes messages and manages context", icon: "user" },
-      { step: "Pinecone Retrieval", detail: "Semantic search via text-embedding-3-large", icon: "database" },
-      { step: "GPT-4.1-mini", detail: "Generates grounded responses & classifies leads", icon: "brain" },
-      { step: "Google Sheets / Telegram", detail: "Logs leads and alerts sales team", icon: "message" },
-    ],
+      {
+        parallel: [
+          {
+            title: "Chatbot Agent",
+            steps: [
+              { step: "WATI Webhook", detail: "Customer sends message", icon: "whatsapp" },
+              { step: "LLM + Vector DB", detail: "Retrieves context", icon: "database" },
+              { step: "WATI API", detail: "Sends response", icon: "message" }
+            ]
+          },
+          {
+            title: "Follow-up Agent",
+            steps: [
+              { step: "Cron Job", detail: "Runs daily schedule", icon: "webhook" },
+              { step: "Analyze Chats", detail: "Finds inactive leads", icon: "query" },
+              { step: "WATI API", detail: "Sends follow-up message", icon: "message" }
+            ]
+          },
+          {
+            title: "Lead Qualify",
+            steps: [
+              { step: "Cron Job", detail: "Runs daily schedule", icon: "webhook" },
+              { step: "Analyze Intent", detail: "Scores Hot/Warm/Cold", icon: "critique" },
+              { step: "Google Sheets", detail: "Reports to Sales", icon: "report" }
+            ]
+          }
+        ]
+      },
+      { step: "Shared Context Memory", detail: "Pinecone vector DB syncs all conversation history across all 3 agents", icon: "brain" }
+    ]
   },
   {
     id: "deep-research",
     index: "02",
     category: "Research AI",
     title: "DeepResearch Agent",
-    description: "An autonomous multi-agent research pipeline that searches, retrieves, analyzes, critiques, and synthesizes information into structured research reports.",
+    description: "An autonomous AI researcher I developed that does the heavy lifting for you. You give it a topic, and it searches the web, reads articles, critiques its own findings, and writes a fully structured report.",
     sections: [
       {
         title: "Agentic Architecture",
-        content: "Designed a 4-stage Agentic Architecture comprising a Search Agent, Reader Agent, Writer Chain, and Critic Chain using LCEL and Gemini 2.5 Flash. This enables autonomous task orchestration and tool-based reasoning for complex research queries."
+        content: "I designed a 4-stage pipeline using LangChain and Gemini: a Searcher finds links, a Reader scrapes the text, a Writer drafts the report, and a Critic reviews it for accuracy to prevent hallucinations."
       },
       {
         title: "Autonomous Execution",
-        content: "Implemented tool-using agents with web search and web scraping capabilities for autonomous information retrieval. The system conducts multi-stage reasoning, generates a draft research report, applies automated critique and validation, and delivers a final synthesis—all monitored via a real-time Streamlit dashboard."
+        content: "The whole process runs completely on its own. It handles web scraping and multi-stage reasoning behind the scenes, delivering the final polished research report straight to an interactive Streamlit dashboard."
       }
     ],
     technologies: [
@@ -115,15 +150,15 @@ export const projects: Project[] = [
     index: "03",
     category: "Enterprise AI",
     title: "AI-Powered Employee Assessment",
-    description: "An enterprise RAG-based assessment and compliance platform that transforms organizational policies and departmental knowledge into dynamic employee assessments, automates the assessment lifecycle, and centralizes assessment data within the Zoho ecosystem.",
+    description: "A corporate training tool I built that reads company policies (like HR manuals) and automatically generates dynamic quizzes to test employee knowledge, fully integrated with Zoho.",
     sections: [
       {
         title: "Knowledge Integrations",
-        content: "The system retrieves approved organizational knowledge—including HR Policies, Sales Policies, Manager Guidelines, and Department SOPs—through Azure DevOps Wiki and Microsoft Graph integrations."
+        content: "I connected the AI directly to Azure DevOps Wiki and Microsoft Graph, allowing it to automatically pull the latest approved company policies and guidelines without any manual uploads."
       },
       {
         title: "Assessment Engine",
-        content: "Uses GPT-4.1-mini to generate policy-grounded assessments and contextual explanations. Features include dynamic question generation, semantic retrieval, context-aware questioning, dynamic assessment sizing based on source complexity, answer evaluation, and performance summaries.\n\nThe solution was developed in the Zoho People Sandbox environment using the Zoho ZET CLI SDK and APIs. Assessment data is stored back in Zoho People, displaying final results in Zoho People records for administrator review, deeply integrating with the operational HR workflow."
+        content: "Using GPT-4.1-mini, the system creates context-aware questions on the fly based on the difficulty of the source document. Once an employee finishes the test, their grades and analytics are sent straight back to their Zoho HR profile."
       }
     ],
     technologies: [

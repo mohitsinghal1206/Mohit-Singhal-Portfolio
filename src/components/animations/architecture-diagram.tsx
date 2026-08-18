@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Project } from "@/data/projects";
+import { Project, WorkflowStep, WorkflowNode, ParallelGroup } from "@/data/projects";
 import { User, MessageCircle, GitMerge, Brain, Database, MessageSquare, Search, Sparkles, Globe, FileText, CheckSquare, FileOutput, MessageSquareCode, ClipboardList, GitPullRequest, Users, Activity, Webhook } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 const getNodeIcon = (id: string) => {
   switch (id) {
@@ -33,65 +32,111 @@ interface ArchitectureDiagramProps {
   isInView: boolean;
 }
 
+const renderNode = (step: WorkflowStep, index: number, isInView: boolean, fullWidth: boolean = false) => (
+  <motion.div
+    key={step.step + index}
+    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+    animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
+    transition={{ 
+      duration: 0.5, 
+      delay: index * 0.15,
+      type: "spring",
+      stiffness: 200,
+      damping: 15
+    }}
+    className={`flex items-center gap-3 ${fullWidth ? 'w-full max-w-md' : 'w-full max-w-[240px]'} p-3 rounded-xl border border-border bg-background shadow-lg relative group transition-all hover:border-primary/50`}
+  >
+    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-card-hover border border-border flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+      {getNodeIcon(step.icon)}
+    </div>
+    <div className="flex flex-col min-w-0">
+      <span className="font-semibold text-text text-xs truncate">{step.step}</span>
+      <span className="text-[10px] text-muted leading-tight mt-0.5 truncate">{step.detail}</span>
+    </div>
+  </motion.div>
+);
+
+const renderLinearFlow = (steps: WorkflowStep[], isInView: boolean, colIndex: number = 0) => {
+  return (
+    <div className="flex flex-col items-center w-full">
+      {steps.map((node, index) => {
+        const isLast = index === steps.length - 1;
+        return (
+          <div key={index} className="flex flex-col items-center w-full z-10">
+            {renderNode(node, index + (colIndex * 10), isInView)}
+            
+            {!isLast && (
+              <div className="h-6 md:h-8 w-px relative my-1">
+                <div className="absolute inset-0 bg-gradient-to-b from-border to-border-hover" />
+                {isInView && (
+                  <motion.div
+                    className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
+                    initial={{ top: "0%", opacity: 0 }}
+                    animate={{ top: "100%", opacity: [0, 1, 1, 0] }}
+                    transition={{ duration: 1.5, delay: index * 0.2 + 0.3, repeat: Infinity, repeatDelay: 1 }}
+                  />
+                )}
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 export function ArchitectureDiagram({ workflow, isInView }: ArchitectureDiagramProps) {
   return (
-    <div className="w-full h-full min-h-[400px] relative overflow-hidden bg-card rounded-2xl border border-border flex items-center justify-center p-6">
-      {/* Background grid */}
+    <div className="w-full h-full min-h-[400px] relative overflow-hidden bg-card rounded-2xl border border-border flex items-center justify-center p-4 md:p-6">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,var(--color-border)_1px,transparent_0)] bg-[size:20px_20px] opacity-30" />
       
-      <div className="relative z-10 flex flex-col items-center w-full py-4">
-        {workflow.map((step, index) => {
-          const isLast = index === workflow.length - 1;
-          
+      <div className="relative z-10 w-full py-4 flex flex-col items-center">
+        {workflow.map((node, mainIndex) => {
+          const isParallel = 'parallel' in node;
+          const isLast = mainIndex === workflow.length - 1;
+
           return (
-            <div key={index} className="flex flex-col items-center w-full max-w-[280px]">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: index * 0.15,
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 15
-                }}
-                className="flex items-center gap-4 w-full p-4 rounded-xl border border-border bg-background shadow-lg relative group transition-all hover:border-primary/50"
-              >
-                {/* Node highlight glow */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-                
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-card-hover border border-border flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  {getNodeIcon(step.icon)}
+            <div key={mainIndex} className="flex flex-col items-center w-full">
+              {isParallel ? (
+                <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full justify-center items-start">
+                  {(node as ParallelGroup).parallel.map((group, colIndex) => (
+                    <div key={group.title} className="flex flex-col w-full flex-1 items-center relative">
+                      <motion.div 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+                        transition={{ delay: colIndex * 0.2 }}
+                        className="text-center mb-4 pb-2 border-b border-white/5 w-[80%]"
+                      >
+                        <span className="text-[10px] md:text-xs font-semibold text-primary uppercase tracking-wider">{group.title}</span>
+                      </motion.div>
+                      {renderLinearFlow(group.steps, isInView, colIndex)}
+                    </div>
+                  ))}
                 </div>
-                
-                <div className="flex flex-col">
-                  <span className="font-semibold text-text text-sm">{step.step}</span>
-                  <span className="text-xs text-muted leading-tight mt-0.5">{step.detail}</span>
-                </div>
-              </motion.div>
-              
+              ) : (
+                renderNode(node as WorkflowStep, mainIndex + 20, isInView, true)
+              )}
+
+              {/* Connecting line to the next block */}
               {!isLast && (
-                <div className="h-10 w-px relative my-1">
-                  {/* Static line */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-border to-border-hover" />
-                  
-                  {/* Animated flow */}
-                  {isInView && (
-                    <motion.div
-                      className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
-                      initial={{ top: "0%", opacity: 0 }}
-                      animate={{ top: "100%", opacity: [0, 1, 1, 0] }}
-                      transition={{
-                        duration: 1.5,
-                        delay: index * 0.2 + 0.3,
-                        repeat: Infinity,
-                        repeatDelay: 1
-                      }}
-                    />
+                <div className="flex flex-col items-center w-full">
+                  {isParallel && (
+                    <div className="w-[66%] h-6 border-b border-l border-r border-border rounded-b-xl opacity-30 -mt-2" />
                   )}
-                  
-                  {/* Arrow head */}
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
+                  <div className="h-6 md:h-12 w-px relative my-0 z-0">
+                    <div className="absolute inset-0 bg-gradient-to-b from-border to-border-hover" />
+                    {isInView && (
+                      <motion.div
+                        className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
+                        initial={{ top: "0%", opacity: 0 }}
+                        animate={{ top: "100%", opacity: [0, 1, 1, 0] }}
+                        transition={{ duration: 1.5, delay: 0.5, repeat: Infinity, repeatDelay: 1 }}
+                      />
+                    )}
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
+                  </div>
                 </div>
               )}
             </div>
