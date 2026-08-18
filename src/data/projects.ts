@@ -90,7 +90,7 @@ export const projects: Project[] = [
             ]
           },
           {
-            title: "Lead Qualification Agent",
+            title: "Lead Sort Agent",
             steps: [
               { step: "Cron Job", detail: "Runs daily schedule", icon: "webhook" },
               { step: "Analyze Intent", detail: "Scores Hot/Warm/Cold", icon: "critique" },
