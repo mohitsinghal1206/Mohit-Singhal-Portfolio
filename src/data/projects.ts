@@ -181,23 +181,31 @@ export const projects: Project[] = [
       docs: "https://app.notion.com/p/AI-Powered-Employee-Assessment-Compliance-Agent-3721ed779b4d803d96f6cb5106724150",
     },
     workflow: [
-      { step: "Zoho People", detail: "Initiates webhook for assessment", icon: "user" },
-      { step: "Power Automate", detail: "Orchestrates data flow", icon: "webhook" },
+      { step: "Zoho Webhook", detail: "Employee initiates assessment", icon: "user" },
+      { step: "Power Automate", detail: "Orchestrates assessment flow", icon: "webhook" },
       {
         parallel: [
           {
-            title: "Knowledge Base 1",
-            steps: [{ step: "Azure DevOps Wiki", detail: "Company policies", icon: "devops" }]
+            title: "Azure DevOps Pipeline",
+            steps: [
+              { step: "DevOps API", detail: "Authenticates system", icon: "devops" },
+              { step: "Wiki Search", detail: "Finds policy docs", icon: "query" },
+              { step: "Chunking", detail: "Processes text", icon: "scraper" }
+            ]
           },
           {
-            title: "Knowledge Base 2",
-            steps: [{ step: "Microsoft Graph APIs", detail: "Internal documents", icon: "database" }]
+            title: "Microsoft Graph Pipeline",
+            steps: [
+              { step: "Graph API", detail: "Authenticates system", icon: "database" },
+              { step: "SharePoint Search", detail: "Finds HR guidelines", icon: "query" },
+              { step: "Chunking", detail: "Processes documents", icon: "scraper" }
+            ]
           }
         ]
       },
-      { step: "Copilot Studio", detail: "RAG generates context-aware quiz", icon: "copilot" },
-      { step: "Employee Assessment", detail: "AI conducts dynamic evaluation", icon: "assessment" },
-      { step: "Zoho People", detail: "Records written back for HR review", icon: "report" }
+      { step: "Copilot Studio (RAG)", detail: "Generates context-aware questions", icon: "copilot" },
+      { step: "Assessment Engine", detail: "Employee takes dynamic quiz", icon: "assessment" },
+      { step: "Zoho People", detail: "Writes grades to HR profile", icon: "report" }
     ],
   },
 ];
