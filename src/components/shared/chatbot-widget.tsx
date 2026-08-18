@@ -17,7 +17,7 @@ export function ChatbotWidget() {
   const [serverStatus, setServerStatus] = useState<'checking' | 'online' | 'offline'>('checking');
   
   const [messages, setMessages] = useState<{role: 'user'|'bot'|'error', content: string}[]>([
-    { role: 'bot', content: "Hi there! 👋 I'm Mac (Mohit's AI Clone). How can I help you today?" }
+    { role: 'bot', content: "Hi there! 👋 I'm Mac [Beta] (Mohit's AI Assistant). How can I help you today?" }
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -255,8 +255,11 @@ export function ChatbotWidget() {
                   <h3 className="text-sm font-semibold text-text flex items-center gap-1.5">
                     Mac
                     <Sparkles size={12} className="text-cyan-400" />
+                    <span className="bg-yellow-500/20 text-yellow-500 text-[9px] px-1.5 py-0.5 rounded font-bold tracking-wider ml-1">
+                      BETA
+                    </span>
                   </h3>
-                  <p className="text-[10px] text-muted-dark font-mono uppercase tracking-wider">Mohit&apos;s AI Assistant [BETA]</p>
+                  <p className="text-[10px] text-muted-dark font-mono uppercase tracking-wider">Mohit&apos;s AI Assistant</p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
@@ -312,7 +315,7 @@ export function ChatbotWidget() {
                   </div>
                   <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-4 text-sm md:text-base text-muted leading-relaxed shadow-sm">
                     <p className="mb-3 text-white font-medium">
-                      Hi there! 👋 I&apos;m Mac (Mohit&apos;s AI Clone). 
+                      Hi there! 👋 I&apos;m Mac [Beta] (Mohit&apos;s AI Assistant). 
                     </p>
                     <p className="mb-3">
                       <strong className="text-red-400">⚠️ Error 503: Connection Timeout.</strong><br/>
