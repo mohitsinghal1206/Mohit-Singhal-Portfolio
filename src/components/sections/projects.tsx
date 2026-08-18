@@ -36,7 +36,7 @@ function ProjectShowcase({ project, index }: { project: typeof projects[0], inde
           <span className="text-xs font-bold tracking-widest text-primary uppercase">
             {project.category}
           </span>
-          <span className="text-muted-dark font-mono text-xl opacity-50">
+          <span className="text-white font-mono text-xl font-bold opacity-80">
             {project.index}
           </span>
         </div>
