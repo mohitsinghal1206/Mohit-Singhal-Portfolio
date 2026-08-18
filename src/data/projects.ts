@@ -182,10 +182,22 @@ export const projects: Project[] = [
     },
     workflow: [
       { step: "Zoho People", detail: "Initiates webhook for assessment", icon: "user" },
-      { step: "Integration Layer", detail: "Power Automate orchestrates data flow", icon: "database" },
-      { step: "Copilot Studio", detail: "RAG over Azure DevOps Wiki & Graph", icon: "copilot" },
+      { step: "Power Automate", detail: "Orchestrates data flow", icon: "webhook" },
+      {
+        parallel: [
+          {
+            title: "Knowledge Base 1",
+            steps: [{ step: "Azure DevOps Wiki", detail: "Company policies", icon: "devops" }]
+          },
+          {
+            title: "Knowledge Base 2",
+            steps: [{ step: "Microsoft Graph APIs", detail: "Internal documents", icon: "database" }]
+          }
+        ]
+      },
+      { step: "Copilot Studio", detail: "RAG generates context-aware quiz", icon: "copilot" },
       { step: "Employee Assessment", detail: "AI conducts dynamic evaluation", icon: "assessment" },
-      { step: "Results to Zoho People", detail: "Records written back for HR review", icon: "report" },
+      { step: "Zoho People", detail: "Records written back for HR review", icon: "report" }
     ],
   },
 ];
