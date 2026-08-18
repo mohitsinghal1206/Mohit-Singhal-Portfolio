@@ -151,7 +151,7 @@ export const projects: Project[] = [
     index: "03",
     category: "Enterprise AI",
     title: "AI-Powered Employee Assessment",
-    description: "A corporate training tool I built that reads company policies (like HR manuals) and automatically generates dynamic quizzes to test employee knowledge, fully integrated with Zoho.",
+    description: "A corporate training tool I built that reads company policies (like HR manuals) and automatically generates dynamic quizzes to test employee knowledge, fully integrated with MS Teams, Zoho, and Outlook.",
     sections: [
       {
         title: "Knowledge Integrations",
@@ -159,12 +159,14 @@ export const projects: Project[] = [
       },
       {
         title: "Assessment Engine",
-        content: "Using GPT-4.1-mini, the system creates context-aware questions on the fly based on the difficulty of the source document. Once an employee finishes the test, their grades and analytics are sent straight back to their Zoho HR profile."
+        content: "Using GPT-4.1-mini, the system creates context-aware questions on the fly based on the difficulty of the source document. Employees take the quiz directly inside MS Teams, and once finished, their grades are automatically sent to their Zoho HR profile with an email notification via Outlook."
       }
     ],
     technologies: [
       "Microsoft Copilot Studio",
       "Power Automate",
+      "MS Teams",
+      "Outlook",
       "GPT-4.1-mini",
       "Zoho People",
       "Azure DevOps Wiki",
@@ -204,8 +206,19 @@ export const projects: Project[] = [
         ]
       },
       { step: "Copilot Studio (RAG)", detail: "Generates context-aware questions", icon: "copilot" },
-      { step: "Assessment Engine", detail: "Employee takes dynamic quiz", icon: "assessment" },
-      { step: "Zoho People", detail: "Writes grades to HR profile", icon: "report" }
+      { step: "MS Teams Bot", detail: "Employee takes quiz in Teams chat", icon: "message" },
+      {
+        parallel: [
+          {
+            title: "HR System",
+            steps: [{ step: "Zoho People", detail: "Writes grades to profile", icon: "report" }]
+          },
+          {
+            title: "Notifications",
+            steps: [{ step: "Outlook Alerts", detail: "Emails test results", icon: "user" }]
+          }
+        ]
+      }
     ],
   },
 ];
