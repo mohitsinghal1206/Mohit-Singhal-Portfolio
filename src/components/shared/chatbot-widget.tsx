@@ -73,12 +73,12 @@ export function ChatbotWidget() {
     }
   }, [messages, isLoading, isOpen, isStreaming]);
 
-  const handleSendMessage = async () => {
-    if (!chatbotEnabled || !inputValue.trim() || isLoading || isStreaming) return;
+  const handleSendMessage = async (overrideMessage?: string) => {
+    const textToSend = typeof overrideMessage === 'string' ? overrideMessage : inputValue.trim();
+    if (!chatbotEnabled || !textToSend || isLoading || isStreaming) return;
     
-    const userMessage = inputValue.trim();
-    setInputValue("");
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }, { role: 'bot', content: "" }]);
+    if (typeof overrideMessage !== 'string') setInputValue("");
+    setMessages(prev => [...prev, { role: 'user', content: textToSend }, { role: 'bot', content: "" }]);
     setIsLoading(true);
 
     try {
@@ -88,7 +88,7 @@ export function ChatbotWidget() {
       const response = await fetch(`${apiUrl}/chat/stream`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_id: sessionId, message: userMessage, model: "gemini" }),
+        body: JSON.stringify({ session_id: sessionId, message: textToSend, model: "gemini" }),
       });
 
       if (!response.ok) throw new Error(`API error: ${response.status}`);
@@ -400,6 +400,30 @@ export function ChatbotWidget() {
                       </div>
                     </div>
                   ))}
+                  
+                  {/* Starter Prompts */}
+                  {chatbotEnabled && messages.length === 1 && serverStatus !== 'offline' && (
+                    <div className="flex flex-wrap gap-2 mt-2 w-full max-w-[85%] mx-auto md:ml-11">
+                      {[
+                        "Tell me about Mohit",
+                        "What are his core skills?",
+                        "Explore his AI projects",
+                        "Tell me about his RAG work",
+                        "What AI agents has he built?",
+                        "Why should I hire Mohit?"
+                      ].map((prompt, i) => (
+                        <button
+                          key={i}
+                          onClick={() => handleSendMessage(prompt)}
+                          disabled={isLoading || isStreaming}
+                          className="text-xs md:text-sm bg-primary/5 hover:bg-primary/20 border border-primary/20 hover:border-primary/50 text-cyan-100 px-3 py-1.5 rounded-full transition-all duration-300 text-left disabled:opacity-50 disabled:cursor-not-allowed group flex items-center gap-2"
+                        >
+                          <span>{prompt}</span>
+                          <Send size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </>
               )}
               
@@ -435,7 +459,7 @@ export function ChatbotWidget() {
                       className="w-full bg-black/30 border border-border rounded-full pl-5 pr-12 py-3 text-sm text-white placeholder:text-muted-dark focus:outline-none focus:border-primary/50 transition-colors"
                     />
                     <button 
-                      onClick={handleSendMessage}
+                      onClick={() => handleSendMessage()}
                       disabled={!inputValue.trim() || isLoading || isStreaming}
                       className={cn(
                         "absolute right-2 p-2 rounded-full transition-colors",
