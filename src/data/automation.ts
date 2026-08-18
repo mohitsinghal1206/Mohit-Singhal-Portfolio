@@ -1,4 +1,4 @@
-export interface AutomationProject {
+﻿export interface AutomationProject {
   id: string;
   icon: string;
   title: string;
@@ -11,56 +11,56 @@ export const automationProjects: AutomationProject[] = [
     id: "hr-policy-agent",
     icon: "users",
     title: "HR Policy Agent",
-    description: "Built an AI-powered HR policy assistant using Microsoft Copilot Studio and Power Automate to automate routine HR policy queries and reduce manual HR effort by approximately 30%.",
+    description: "Created an AI assistant that instantly answers routine HR policy questions, cutting down the HR team's manual workload by 30% so they can focus on actual human issues.",
     capabilities: ["Microsoft Copilot Studio", "Power Automate"],
   },
   {
     id: "department-sop-agent-network",
     icon: "network",
     title: "Department SOP Agent Network",
-    description: "Built department-specific AI agents for HR, Manager, Sales, Marketing, and other departmental SOPs, coordinated through a master HR/organizational agent to connect departmental knowledge and workflows.",
+    description: "Designed a network of specialized AI agents for different departments (Sales, Marketing, HR). They all report to a master organizational agent, ensuring workflows and knowledge stay connected across the whole company.",
     capabilities: ["Microsoft Copilot Studio", "Power Automate", "Department SOPs"],
   },
   {
     id: "email-qualification-agent",
     icon: "mail",
     title: "Email Qualification Agent",
-    description: "Built an n8n-based AI email qualification workflow for HR and Sales teams that automatically categorizes incoming emails such as sales, spam, internal, and other relevant categories, allowing teams to focus on understanding and acting on important messages.",
+    description: "Set up an automated n8n workflow that reads, categorizes, and filters incoming emails for Sales and HR. It weeds out the spam and categorizes the rest, letting the team focus only on messages that matter.",
     capabilities: ["n8n", "LLM", "Email APIs"],
   },
   {
     id: "workforce-activity-analysis",
     icon: "activity",
     title: "Workforce Activity Analysis Agent",
-    description: "Built an internal workforce activity analysis workflow using the Worksnaps API to analyze user activity data and generate weekly reports highlighting potentially suspicious activity patterns for review.",
+    description: "Developed a monitoring workflow using the Worksnaps API that analyzes team activity data and automatically flags suspicious patterns, sending weekly summary reports directly to management.",
     capabilities: ["Worksnaps API", "AI Analysis", "Automation", "Reporting"],
   },
   {
     id: "automated-news-social-media",
     icon: "globe",
     title: "Automated News & Social Media Agent",
-    description: "Built an automated content discovery and publishing workflow that collects approximately 100 daily topics from configured sources, uses SERP APIs for current information retrieval, ranks topics, and automates content publishing on a scheduled cron-based workflow.",
+    description: "Built a fully autonomous content engine that scrapes 100+ daily topics, researches them via SERP APIs, ranks the best ones, and automatically schedules and publishes content to social media without human intervention.",
     capabilities: ["n8n", "SERP API", "LLM", "Cron", "Google Sheets", "Social APIs"],
   },
   {
     id: "youtube-research",
     icon: "youtube",
     title: "YouTube Research & Content Ideation Agent",
-    description: "Built an AI-powered YouTube research workflow that analyzes competitor videos, trending topics, and audience comments to generate video ideas, titles, hooks, improvement opportunities, and short script concepts.",
+    description: "Created a YouTube research tool that analyzes competitor videos, trending topics, and audience comments. It automatically generates high-retention video ideas, catchy hooks, and script concepts for creators.",
     capabilities: ["YouTube Search API", "LLM", "Sentiment Analysis", "Google Sheets", "Telegram"],
   },
   {
     id: "linkedin-content",
     icon: "linkedin",
     title: "LinkedIn Content Research Agent",
-    description: "Built a scheduled Copilot Studio agent for the marketing team that researches articles from predefined sources, identifies relevant/trending topics, and generates complete LinkedIn post drafts following the company's preferred brand language and communication style.",
+    description: "Developed a Copilot Studio agent for marketing teams that hunts for trending industry articles and writes complete LinkedIn post drafts that perfectly match the brand's unique tone and voice.",
     capabilities: ["Microsoft Copilot Studio", "Power Automate", "LLM", "News/Web Sources"],
   },
   {
     id: "make-n8n-migration",
     icon: "refresh-cw",
     title: "Make.com → n8n Migration",
-    description: "Migrated a client's automation workflows from Make.com to self-hosted n8n after platform usage limitations became a constraint. The migration provided greater control over workflow execution and helped reduce recurring automation costs.",
+    description: "Helped a client break free from Make.com's expensive platform limits by migrating their entire automation infrastructure to a self-hosted n8n instance, giving them total control and massively reducing monthly costs.",
     capabilities: ["Make.com", "n8n", "Self-hosted Infrastructure", "APIs", "Webhooks"],
   },
 ];
