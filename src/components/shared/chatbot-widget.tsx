@@ -243,6 +243,10 @@ export function ChatbotWidget() {
     setIsOpen(!isOpen);
     if (!isOpen) {
       setHasUnread(false);
+      // Automatically open in expanded mode on mobile devices
+      if (typeof window !== 'undefined' && window.innerWidth < 640) {
+        setIsExpanded(true);
+      }
     }
   };
 
