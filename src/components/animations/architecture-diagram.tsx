@@ -57,16 +57,18 @@ const renderNode = (step: WorkflowStep, index: number, isInView: boolean, fullWi
   </motion.div>
 );
 
-const renderLinearFlow = (steps: WorkflowStep[], isInView: boolean, colIndex: number = 0) => {
+const renderLinearFlow = (steps: WorkflowStep[], isInView: boolean, colIndex: number = 0, isInsideParallel: boolean = false) => {
   return (
     <div className="flex flex-col items-center w-full">
       {steps.map((node, index) => {
         const isLast = index === steps.length - 1;
+        const drawLine = !isLast || isInsideParallel;
+
         return (
           <div key={index} className="flex flex-col items-center w-full z-10">
             {renderNode(node, index + (colIndex * 10), isInView)}
             
-            {!isLast && (
+            {drawLine && (
               <div className="h-6 md:h-8 w-px relative my-1">
                 <div className="absolute inset-0 bg-gradient-to-b from-border to-border-hover" />
                 {isInView && (
@@ -77,7 +79,10 @@ const renderLinearFlow = (steps: WorkflowStep[], isInView: boolean, colIndex: nu
                     transition={{ duration: 1.5, delay: index * 0.2 + 0.3, repeat: Infinity, repeatDelay: 1 }}
                   />
                 )}
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
+                {/* Only draw arrow head if it's NOT the last item of a parallel column connecting to the horizontal line */}
+                {(!isLast || !isInsideParallel) && (
+                   <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
+                )}
               </div>
             )}
           </div>
@@ -100,20 +105,25 @@ export function ArchitectureDiagram({ workflow, isInView }: ArchitectureDiagramP
           return (
             <div key={mainIndex} className="flex flex-col items-center w-full">
               {isParallel ? (
-                <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full justify-center items-start">
-                  {(node as ParallelGroup).parallel.map((group, colIndex) => (
-                    <div key={group.title} className="flex flex-col w-full flex-1 items-center relative">
-                      <motion.div 
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
-                        transition={{ delay: colIndex * 0.2 }}
-                        className="text-center mb-4 pb-2 border-b border-white/5 w-[80%]"
-                      >
-                        <span className="text-[10px] md:text-xs font-semibold text-primary uppercase tracking-wider">{group.title}</span>
-                      </motion.div>
-                      {renderLinearFlow(group.steps, isInView, colIndex)}
-                    </div>
-                  ))}
+                <div className="flex flex-col w-full items-center">
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full justify-center items-start">
+                    {(node as ParallelGroup).parallel.map((group, colIndex) => (
+                      <div key={group.title} className="flex flex-col w-full flex-1 items-center relative">
+                        <motion.div 
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+                          transition={{ delay: colIndex * 0.2 }}
+                          className="text-center mb-4 pb-2 border-b border-white/5 w-[80%]"
+                        >
+                          <span className="text-[10px] md:text-xs font-semibold text-primary uppercase tracking-wider">{group.title}</span>
+                        </motion.div>
+                        {/* Pass true for isInsideParallel so the last node gets a connecting drop line */}
+                        {renderLinearFlow(group.steps, isInView, colIndex, true)}
+                      </div>
+                    ))}
+                  </div>
+                  {/* The Horizontal Convergence Line that connects the 3 columns */}
+                  <div className="hidden md:block w-[66%] h-[2px] bg-border-hover opacity-50 z-0" />
                 </div>
               ) : (
                 renderNode(node as WorkflowStep, mainIndex + 20, isInView, true)
@@ -121,22 +131,17 @@ export function ArchitectureDiagram({ workflow, isInView }: ArchitectureDiagramP
 
               {/* Connecting line to the next block */}
               {!isLast && (
-                <div className="flex flex-col items-center w-full">
-                  {isParallel && (
-                    <div className="w-[66%] h-6 border-b border-l border-r border-border rounded-b-xl opacity-30 -mt-2" />
+                <div className="h-6 md:h-12 w-px relative my-0 z-0">
+                  <div className="absolute inset-0 bg-gradient-to-b from-border to-border-hover" />
+                  {isInView && (
+                    <motion.div
+                      className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
+                      initial={{ top: "0%", opacity: 0 }}
+                      animate={{ top: "100%", opacity: [0, 1, 1, 0] }}
+                      transition={{ duration: 1.5, delay: 0.5, repeat: Infinity, repeatDelay: 1 }}
+                    />
                   )}
-                  <div className="h-6 md:h-12 w-px relative my-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-border to-border-hover" />
-                    {isInView && (
-                      <motion.div
-                        className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
-                        initial={{ top: "0%", opacity: 0 }}
-                        animate={{ top: "100%", opacity: [0, 1, 1, 0] }}
-                        transition={{ duration: 1.5, delay: 0.5, repeat: Infinity, repeatDelay: 1 }}
-                      />
-                    )}
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
-                  </div>
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
                 </div>
               )}
             </div>
