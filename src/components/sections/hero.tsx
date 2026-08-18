@@ -208,7 +208,9 @@ export function Hero() {
                     e.preventDefault();
                     const input = e.currentTarget.querySelector('input');
                     if (input && input.value.trim().length > 0) {
-                      window.dispatchEvent(new CustomEvent('open-chatbot'));
+                      window.dispatchEvent(new CustomEvent('open-chatbot', { 
+                        detail: { message: input.value.trim() } 
+                      }));
                       // Clear the input after submission
                       input.value = "";
                       // Restore the placeholder overlay

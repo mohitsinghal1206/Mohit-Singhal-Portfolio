@@ -23,6 +23,24 @@ export function ChatbotWidget() {
   const [isLoading, setIsLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   
+  const floatingPrompts = [
+    "Ask me about Mohit's AI projects! 🚀",
+    "Want to know Mohit's tech stack? 💻",
+    "I can tell you about his RAG work! 🧠",
+    "Curious about his experience? 💼",
+    "What AI agents has he built? 🤖"
+  ];
+  const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
+
+  useEffect(() => {
+    if (!isOpen) {
+      const interval = setInterval(() => {
+        setCurrentPromptIndex(prev => (prev + 1) % floatingPrompts.length);
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+  }, [isOpen, floatingPrompts.length]);
+  
   const [sessionId] = useState(() => {
     if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
@@ -181,12 +199,20 @@ export function ChatbotWidget() {
       }
     };
     
-    const handleOpenChatbot = () => {
+    const handleOpenChatbot = (e: Event) => {
        if (!chatbotEnabled) return;
        setIsOpen(true);
        setIsExpanded(true); // Open in theater mode when opened externally (e.g. from Hero)
        setHasUnread(false);
        playSound(false);
+       
+       const customEvent = e as CustomEvent;
+       if (customEvent.detail?.message) {
+         // Auto-send the message after opening
+         setTimeout(() => {
+           handleSendMessage(customEvent.detail.message);
+         }, 300);
+       }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -340,90 +366,92 @@ export function ChatbotWidget() {
                         </div>
                       )}
                       
-                      <div className={cn(
-                        "border rounded-2xl p-4 text-sm md:text-base leading-relaxed shadow-sm overflow-x-auto",
-                        msg.role === 'user' 
-                          ? "bg-primary/10 border-primary/20 text-white rounded-tr-sm" 
-                          : msg.role === 'error'
-                            ? "bg-red-500/10 border-red-500/20 text-red-400 rounded-tl-sm"
-                            : "bg-white/5 border-white/10 text-muted rounded-tl-sm w-full"
-                      )}>
-                        {msg.role === 'bot' ? (
-                           <div className="prose prose-invert prose-sm md:prose-base max-w-none prose-p:mb-3 last:prose-p:mb-0 prose-code:text-pink-400 prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-ul:my-2 prose-li:my-0.5">
-                             {msg.content === "" && isLoading ? (
-                               <div className="flex items-center gap-1 h-6">
-                                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '0ms' }} />
-                                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '150ms' }} />
-                                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '300ms' }} />
-                               </div>
-                             ) : (
-                               <>
-                                 <ReactMarkdown 
-                                   remarkPlugins={[remarkGfm]}
-                                   components={{
-                                     a: ({node, ...props}) => {
-                                       const href = props.href || "";
-                                       const isEmail = href.startsWith('mailto:');
-                                       
-                                       // Check if the LLM outputted a raw URL instead of a descriptive markdown link
-                                       let isRawUrl = false;
-                                       if (typeof props.children === 'string' && (props.children.startsWith('http') || props.children.includes('@'))) isRawUrl = true;
-                                       if (Array.isArray(props.children) && typeof props.children[0] === 'string' && (props.children[0].startsWith('http') || props.children[0].includes('@'))) isRawUrl = true;
-                                       
-                                       const displayText = isRawUrl ? (isEmail ? "Email Mohit" : "View Link") : props.children;
+                      <div className="flex flex-col gap-2 w-full">
+                        <div className={cn(
+                          "border rounded-2xl p-4 text-sm md:text-base leading-relaxed shadow-sm overflow-x-auto",
+                          msg.role === 'user' 
+                            ? "bg-primary/10 border-primary/20 text-white rounded-tr-sm self-end" 
+                            : msg.role === 'error'
+                              ? "bg-red-500/10 border-red-500/20 text-red-400 rounded-tl-sm self-start"
+                              : "bg-white/5 border-white/10 text-muted rounded-tl-sm self-start"
+                        )}>
+                          {msg.role === 'bot' ? (
+                             <div className="prose prose-invert prose-sm md:prose-base max-w-none prose-p:mb-3 last:prose-p:mb-0 prose-code:text-pink-400 prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-ul:my-2 prose-li:my-0.5">
+                               {msg.content === "" && isLoading ? (
+                                 <div className="flex items-center gap-1 h-6">
+                                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '0ms' }} />
+                                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '150ms' }} />
+                                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '300ms' }} />
+                                 </div>
+                               ) : (
+                                 <>
+                                   <ReactMarkdown 
+                                     remarkPlugins={[remarkGfm]}
+                                     components={{
+                                       a: ({node, ...props}) => {
+                                         const href = props.href || "";
+                                         const isEmail = href.startsWith('mailto:');
+                                         
+                                         // Check if the LLM outputted a raw URL instead of a descriptive markdown link
+                                         let isRawUrl = false;
+                                         if (typeof props.children === 'string' && (props.children.startsWith('http') || props.children.includes('@'))) isRawUrl = true;
+                                         if (Array.isArray(props.children) && typeof props.children[0] === 'string' && (props.children[0].startsWith('http') || props.children[0].includes('@'))) isRawUrl = true;
+                                         
+                                         const displayText = isRawUrl ? (isEmail ? "Email Mohit" : "View Link") : props.children;
 
-                                       return (
-                                         <a 
-                                           href={href}
-                                           target="_blank" 
-                                           rel="noopener noreferrer"
-                                           className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-medium underline underline-offset-4 decoration-cyan-400/30 transition-colors no-underline"
-                                         >
-                                           <span>{displayText}</span>
-                                           {!isEmail && <ExternalLink size={12} className="opacity-70 mb-0.5" />}
-                                         </a>
-                                       );
-                                     }
-                                   }}
-                                 >
-                                   {msg.content}
-                                 </ReactMarkdown>
-                                 {isStreaming && idx === messages.length - 1 && (
-                                    <span className="inline-block w-1.5 h-4 ml-1 bg-cyan-400 animate-pulse align-middle"></span>
-                                 )}
-                               </>
-                             )}
-                           </div>
-                        ) : (
-                           <span className={msg.role === 'user' ? "text-white" : ""}>{msg.content}</span>
+                                         return (
+                                           <a 
+                                             href={href}
+                                             target="_blank" 
+                                             rel="noopener noreferrer"
+                                             className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-medium underline underline-offset-4 decoration-cyan-400/30 transition-colors no-underline"
+                                           >
+                                             <span>{displayText}</span>
+                                             {!isEmail && <ExternalLink size={12} className="opacity-70 mb-0.5" />}
+                                           </a>
+                                         );
+                                       }
+                                     }}
+                                   >
+                                     {msg.content}
+                                   </ReactMarkdown>
+                                   {isStreaming && idx === messages.length - 1 && (
+                                      <span className="inline-block w-1.5 h-4 ml-1 bg-cyan-400 animate-pulse align-middle"></span>
+                                   )}
+                                 </>
+                               )}
+                             </div>
+                          ) : (
+                             <span className={msg.role === 'user' ? "text-white" : ""}>{msg.content}</span>
+                          )}
+                        </div>
+                        
+                        {/* Starter Prompts - Attached to first message forever */}
+                        {idx === 0 && (
+                          <div className="flex flex-wrap gap-2 mt-1">
+                            {[
+                              "Tell me about Mohit",
+                              "What are his core skills?",
+                              "Explore his AI projects",
+                              "Tell me about his RAG work",
+                              "What AI agents has he built?",
+                              "Why should I hire Mohit?"
+                            ].map((prompt, i) => (
+                              <button
+                                key={i}
+                                onClick={() => handleSendMessage(prompt)}
+                                disabled={!chatbotEnabled || isLoading || isStreaming}
+                                className="text-[11px] md:text-xs bg-black/40 hover:bg-primary/20 border border-border hover:border-primary/50 text-cyan-50 px-3 py-1.5 rounded-full transition-all duration-300 text-left disabled:opacity-50 disabled:cursor-not-allowed group flex items-center gap-2 shadow-[0_0_10px_rgba(34,211,238,0.05)] hover:shadow-[0_0_15px_rgba(34,211,238,0.2)]"
+                              >
+                                <span>{prompt}</span>
+                                <Send size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
+                              </button>
+                            ))}
+                          </div>
                         )}
                       </div>
                     </div>
                   ))}
-                  
-                  {/* Starter Prompts */}
-                  {chatbotEnabled && messages.length === 1 && serverStatus !== 'offline' && (
-                    <div className="flex flex-wrap gap-2 mt-2 w-full max-w-[85%] mx-auto md:ml-11">
-                      {[
-                        "Tell me about Mohit",
-                        "What are his core skills?",
-                        "Explore his AI projects",
-                        "Tell me about his RAG work",
-                        "What AI agents has he built?",
-                        "Why should I hire Mohit?"
-                      ].map((prompt, i) => (
-                        <button
-                          key={i}
-                          onClick={() => handleSendMessage(prompt)}
-                          disabled={isLoading || isStreaming}
-                          className="text-xs md:text-sm bg-primary/5 hover:bg-primary/20 border border-primary/20 hover:border-primary/50 text-cyan-100 px-3 py-1.5 rounded-full transition-all duration-300 text-left disabled:opacity-50 disabled:cursor-not-allowed group flex items-center gap-2"
-                        >
-                          <span>{prompt}</span>
-                          <Send size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
-                        </button>
-                      ))}
-                    </div>
-                  )}
                 </>
               )}
               
@@ -477,6 +505,34 @@ export function ChatbotWidget() {
                 Currently in Beta testing phase. Built by Mohit to showcase RAG concepts.
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Prompt Bubble (when closed) */}
+      <AnimatePresence mode="wait">
+        {!isOpen && chatbotEnabled && (
+          <motion.div
+            key={currentPromptIndex}
+            initial={{ opacity: 0, y: 20, rotateX: -45, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, rotateX: 45, scale: 0.9 }}
+            transition={{ type: "spring", damping: 15, stiffness: 200 }}
+            style={{ transformPerspective: 1000 }}
+            className="absolute bottom-20 right-0 w-max max-w-[250px] bg-white text-black text-xs sm:text-sm p-3 rounded-2xl rounded-br-sm shadow-[0_10px_40px_rgba(34,211,238,0.2)] cursor-pointer border border-white/20 group z-40"
+            onClick={() => {
+              setIsOpen(true);
+            }}
+          >
+            <div className="font-bold mb-1 text-purple-600 flex items-center gap-1.5">
+              <Sparkles size={12} />
+              Hey there!
+            </div>
+            <div className="text-gray-700 font-medium group-hover:text-black transition-colors">
+              {floatingPrompts[currentPromptIndex]}
+            </div>
+            {/* Little triangle pointer pointing to the button */}
+            <div className="absolute -bottom-2 right-4 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-white" />
           </motion.div>
         )}
       </AnimatePresence>
