@@ -36,7 +36,7 @@ export function ChatbotWidget() {
     if (!isOpen) {
       const interval = setInterval(() => {
         setCurrentPromptIndex(prev => (prev + 1) % floatingPrompts.length);
-      }, 4000);
+      }, 2500); // Reduced from 4000 to make cards swap faster
       return () => clearInterval(interval);
     }
   }, [isOpen, floatingPrompts.length]);
@@ -258,8 +258,8 @@ export function ChatbotWidget() {
             className={cn(
               "rounded-2xl border border-border bg-card/95 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300",
               isExpanded 
-                ? "fixed inset-4 sm:inset-10 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[900px] md:h-[700px] z-[60]" 
-                : "absolute bottom-16 right-0 mb-4 w-[90vw] sm:w-96 h-[500px]"
+                ? "fixed inset-4 sm:inset-10 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[1100px] md:h-[800px] z-[60] max-h-[95vh] max-w-[95vw]" 
+                : "absolute bottom-16 right-0 mb-4 w-[90vw] sm:w-[420px] h-[600px] max-h-[85vh]"
             )}
           >
             {/* Header */}
@@ -510,7 +510,7 @@ export function ChatbotWidget() {
       </AnimatePresence>
 
       {/* Floating Prompt Bubble (when closed) */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {!isOpen && chatbotEnabled && (
           <motion.div
             key={currentPromptIndex}
