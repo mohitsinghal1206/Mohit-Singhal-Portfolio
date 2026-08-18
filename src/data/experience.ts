@@ -19,13 +19,13 @@ export const experiences: Experience[] = [
     period: "Jun 2025 – Present",
     current: true,
     description:
-      "Building enterprise AI applications, AI Agents, RAG pipelines, and intelligent automation solutions for production environments.",
+      "Designed and delivered AI-driven tools to solve real business problems. My work focused on understanding client needs, automating manual processes, and bringing AI concepts into production.",
     highlights: [
-      "Designing and deploying multi-agent AI systems for enterprise clients",
-      "Building RAG pipelines with semantic search and vector databases",
-      "Developing intelligent automation workflows using n8n and Power Automate",
-      "Integrating Microsoft Copilot Studio with Azure DevOps and Graph APIs",
-      "Creating FastAPI backends with PostgreSQL for AI-powered applications",
+      "Worked closely with business stakeholders to analyze their demands and built custom, department-specific workflows to solve their exact bottlenecks",
+      "Developed custom search systems (RAG) so that our chatbots could securely read and answer questions directly from private company documents",
+      "Automated hours of repetitive manual work by designing intelligent workflows using n8n and Microsoft Power Automate",
+      "Integrated Microsoft Copilot directly with Azure DevOps and Graph APIs to create seamless internal assistants for our teams",
+      "Set up the core backend architecture and databases required to keep our AI tools running smoothly and securely",
     ],
     technologies: [
       "Python",
