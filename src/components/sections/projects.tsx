@@ -32,10 +32,27 @@ function ProjectShowcase({ project, index }: { project: typeof projects[0], inde
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full lg:w-1/2 flex flex-col gap-4"
       >
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-bold tracking-widest text-primary uppercase">
-            {project.category}
-          </span>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-4">
+            <span className="text-xs font-bold tracking-widest text-primary uppercase">
+              {project.category}
+            </span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.dispatchEvent(new CustomEvent('open-chatbot', { 
+                  detail: { 
+                    message: `Tell me more about the ${project.title} project`, 
+                    autoSend: false 
+                  } 
+                }));
+              }}
+              className="flex items-center gap-2 text-[10px] sm:text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors group/btn bg-cyan-950/20 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full border border-cyan-500/20 hover:border-cyan-500/50"
+            >
+              <Sparkles size={12} className="group-hover/btn:animate-pulse" />
+              Ask Mac
+            </button>
+          </div>
           <span className="text-white font-mono text-xl font-bold opacity-80">
             {project.index}
           </span>
@@ -62,36 +79,18 @@ function ProjectShowcase({ project, index }: { project: typeof projects[0], inde
           {project.description}
         </p>
 
-        <div className="flex items-center gap-4 py-4 border-y border-border/50 mb-4">
-          <div 
-            className="cursor-pointer group flex items-center gap-4 flex-1"
-            onClick={() => setIsExpanded(!isExpanded)}
+        <div 
+          className="cursor-pointer group flex items-center justify-between py-4 border-y border-border/50 mb-4"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          <span className="font-semibold text-text group-hover:text-primary transition-colors">View Project Details</span>
+          <motion.div
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-8 h-8 rounded-full bg-background border border-border flex items-center justify-center text-muted group-hover:text-white transition-colors"
           >
-            <span className="font-semibold text-text group-hover:text-primary transition-colors">View Project Details</span>
-            <motion.div
-              animate={{ rotate: isExpanded ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="w-8 h-8 rounded-full bg-background border border-border flex items-center justify-center text-muted group-hover:text-white transition-colors"
-            >
-              <ChevronDown size={16} />
-            </motion.div>
-          </div>
-          
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              window.dispatchEvent(new CustomEvent('open-chatbot', { 
-                detail: { 
-                  message: `Tell me more about the ${project.title} project`, 
-                  autoSend: false 
-                } 
-              }));
-            }}
-            className="flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors group/btn bg-cyan-950/20 px-3 py-1.5 rounded-full border border-cyan-500/20 hover:border-cyan-500/50 shrink-0"
-          >
-            <Sparkles size={14} className="group-hover/btn:animate-pulse" />
-            Ask Mac
-          </button>
+            <ChevronDown size={16} />
+          </motion.div>
         </div>
 
         <AnimatePresence>
