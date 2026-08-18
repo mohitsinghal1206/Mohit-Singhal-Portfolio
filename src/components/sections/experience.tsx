@@ -21,6 +21,22 @@ export function Experience() {
             title="Experience"
             centered
           />
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent('open-chatbot', { 
+                  detail: { 
+                    message: `Tell me more about your work experience and background`, 
+                    autoSend: false 
+                  } 
+                }));
+              }}
+              className="flex items-center gap-2 text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors group/btn bg-cyan-950/20 px-4 py-2 rounded-full border border-cyan-500/20 hover:border-cyan-500/50"
+            >
+              <Sparkles size={16} className="group-hover/btn:animate-pulse" />
+              Ask Mac about my experience
+            </button>
+          </div>
         </ScrollReveal>
 
         <div className="relative mt-16">
@@ -121,28 +137,11 @@ export function Experience() {
                                 ))}
                               </ul>
 
-                              <div className="flex flex-wrap gap-2 mb-6">
+                              <div className="flex flex-wrap gap-2">
                                 {exp.technologies.map((tech) => (
                                   <TechTag key={tech} name={tech} />
                                 ))}
                               </div>
-
-                              {/* Context-Aware Ask Mac Button */}
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation(); // Prevent closing the accordion
-                                  window.dispatchEvent(new CustomEvent('open-chatbot', { 
-                                    detail: { 
-                                      message: `Tell me more about your experience as a ${exp.role} at ${exp.company}`, 
-                                      autoSend: false 
-                                    } 
-                                  }));
-                                }}
-                                className="flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors group/btn bg-cyan-950/20 px-3 py-1.5 rounded-md border border-cyan-500/20 hover:border-cyan-500/50 w-max"
-                              >
-                                <Sparkles size={12} className="group-hover/btn:animate-pulse" />
-                                Ask Mac about this role
-                              </button>
                             </div>
                           </motion.div>
                         )}
