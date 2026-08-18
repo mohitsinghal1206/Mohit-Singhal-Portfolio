@@ -134,6 +134,22 @@ function ProjectShowcase({ project, index }: { project: typeof projects[0], inde
                     Documentation
                   </a>
                 )}
+                
+                {/* Context-Aware Ask Mac Button */}
+                <button
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent('open-chatbot', { 
+                      detail: { 
+                        message: `Tell me more about the ${project.title} project`, 
+                        autoSend: false 
+                      } 
+                    }));
+                  }}
+                  className="flex items-center gap-2 text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors group ml-auto bg-cyan-950/30 px-3 py-1.5 rounded-full border border-cyan-500/20 hover:border-cyan-500/50"
+                >
+                  <Sparkles size={14} className="group-hover:animate-pulse" />
+                  Ask Mac
+                </button>
               </div>
             </motion.div>
           )}

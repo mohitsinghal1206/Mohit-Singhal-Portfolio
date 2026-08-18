@@ -98,13 +98,30 @@ export function Automation() {
                               {project.description}
                             </p>
                             
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2 mb-6">
                               {project.capabilities.map(cap => (
                                 <span key={cap} className="text-xs font-medium px-2 py-1 rounded bg-background border border-border text-muted-dark group-hover:border-secondary/30 group-hover:text-secondary transition-colors">
                                   {cap}
                                 </span>
                               ))}
                             </div>
+                            
+                            {/* Context-Aware Ask Mac Button */}
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation(); // Prevent closing the accordion
+                                window.dispatchEvent(new CustomEvent('open-chatbot', { 
+                                  detail: { 
+                                    message: `Tell me more about the automation: ${project.title}`, 
+                                    autoSend: false 
+                                  } 
+                                }));
+                              }}
+                              className="flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors group/btn bg-cyan-950/20 px-3 py-1.5 rounded-md border border-cyan-500/20 hover:border-cyan-500/50 w-max"
+                            >
+                              <Sparkles size={12} className="group-hover/btn:animate-pulse" />
+                              Ask Mac about this
+                            </button>
                           </div>
                         </motion.div>
                       )}

@@ -208,10 +208,17 @@ export function ChatbotWidget() {
        
        const customEvent = e as CustomEvent;
        if (customEvent.detail?.message) {
-         // Auto-send the message after opening
-         setTimeout(() => {
-           handleSendMessage(customEvent.detail.message);
-         }, 300);
+         const shouldAutoSend = customEvent.detail.autoSend !== false; // true by default for backwards compatibility with hero search
+         
+         if (shouldAutoSend) {
+           // Auto-send the message after opening
+           setTimeout(() => {
+             handleSendMessage(customEvent.detail.message);
+           }, 300);
+         } else {
+           // Just pre-fill the input box
+           setInputValue(customEvent.detail.message);
+         }
        }
     };
 
