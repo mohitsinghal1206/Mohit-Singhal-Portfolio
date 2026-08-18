@@ -74,9 +74,8 @@ const renderLinearFlow = (steps: WorkflowStep[], isInView: boolean, colIndex: nu
                 {isInView && (
                   <motion.div
                     className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
-                    initial={{ top: "0%", opacity: 0 }}
-                    animate={{ top: "100%", opacity: [0, 1, 1, 0] }}
-                    transition={{ duration: 1.5, delay: index * 0.2 + 0.3, repeat: Infinity, repeatDelay: 1 }}
+                    animate={{ top: ["0%", "100%", "100%", "100%"], opacity: [0, 1, 0, 0] }}
+                    transition={{ duration: 3, times: [0, 0.33, 0.34, 1], repeat: Infinity, ease: "linear" }}
                   />
                 )}
                 {/* Only draw arrow head if it's NOT the last item of a parallel column connecting to the horizontal line */}
@@ -123,7 +122,24 @@ export function ArchitectureDiagram({ workflow, isInView }: ArchitectureDiagramP
                     ))}
                   </div>
                   {/* The Horizontal Convergence Line that connects the 3 columns */}
-                  <div className="hidden md:block w-[66%] h-[2px] bg-border-hover opacity-50 z-0" />
+                  <div className="hidden md:block w-[66%] h-[2px] bg-border-hover opacity-50 z-0 relative">
+                     {/* Dot moving from left to center */}
+                     {isInView && (
+                       <motion.div
+                         className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
+                         animate={{ left: ["0%", "0%", "50%", "50%"], opacity: [0, 0, 1, 0] }}
+                         transition={{ duration: 3, times: [0, 0.33, 0.66, 1], repeat: Infinity, ease: "linear" }}
+                       />
+                     )}
+                     {/* Dot moving from right to center */}
+                     {isInView && (
+                       <motion.div
+                         className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
+                         animate={{ right: ["0%", "0%", "50%", "50%"], opacity: [0, 0, 1, 0] }}
+                         transition={{ duration: 3, times: [0, 0.33, 0.66, 1], repeat: Infinity, ease: "linear" }}
+                       />
+                     )}
+                  </div>
                 </div>
               ) : (
                 renderNode(node as WorkflowStep, mainIndex + 20, isInView, true)
@@ -136,9 +152,8 @@ export function ArchitectureDiagram({ workflow, isInView }: ArchitectureDiagramP
                   {isInView && (
                     <motion.div
                       className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
-                      initial={{ top: "0%", opacity: 0 }}
-                      animate={{ top: "100%", opacity: [0, 1, 1, 0] }}
-                      transition={{ duration: 1.5, delay: 0.5, repeat: Infinity, repeatDelay: 1 }}
+                      animate={{ top: ["0%", "0%", "100%", "100%"], opacity: [0, 0, 1, 0] }}
+                      transition={{ duration: 3, times: [0, 0.66, 0.99, 1], repeat: Infinity, ease: "linear" }}
                     />
                   )}
                   <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />

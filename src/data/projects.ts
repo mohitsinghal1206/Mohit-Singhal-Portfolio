@@ -1,4 +1,4 @@
-﻿export interface WorkflowStep {
+export interface WorkflowStep {
   step: string;
   detail: string;
   icon: string;
@@ -74,19 +74,19 @@ export const projects: Project[] = [
       {
         parallel: [
           {
-            title: "Chatbot Agent",
-            steps: [
-              { step: "WATI Webhook", detail: "Customer sends message", icon: "whatsapp" },
-              { step: "LLM + Vector DB", detail: "Retrieves context", icon: "database" },
-              { step: "WATI API", detail: "Sends response", icon: "message" }
-            ]
-          },
-          {
             title: "Follow-up Agent",
             steps: [
               { step: "Cron Job", detail: "Runs daily schedule", icon: "webhook" },
               { step: "Analyze Chats", detail: "Finds inactive leads", icon: "query" },
               { step: "WATI API", detail: "Sends follow-up message", icon: "message" }
+            ]
+          },
+          {
+            title: "Chatbot Agent",
+            steps: [
+              { step: "WATI Webhook", detail: "Customer sends message", icon: "whatsapp" },
+              { step: "LLM + Vector DB", detail: "Retrieves context", icon: "database" },
+              { step: "WATI API", detail: "Sends response", icon: "message" }
             ]
           },
           {
@@ -138,6 +138,7 @@ export const projects: Project[] = [
       demo: "https://deepresearch-agent-ew4cwegqrcdoplftnz26iv.streamlit.app/",
     },
     workflow: [
+      { step: "User Input", detail: "Provides research topic", icon: "user" },
       { step: "Search Agent", detail: "Tavily web search retrieves sources", icon: "globe" },
       { step: "Reader Agent", detail: "BeautifulSoup scrapes source content", icon: "scraper" },
       { step: "Writer Chain", detail: "Synthesizes information into draft", icon: "brain" },
