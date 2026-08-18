@@ -256,7 +256,7 @@ export function ChatbotWidget() {
                     Mac
                     <Sparkles size={12} className="text-cyan-400" />
                   </h3>
-                  <p className="text-[10px] text-muted-dark font-mono uppercase tracking-wider">Mohit&apos;s AI Clone</p>
+                  <p className="text-[10px] text-muted-dark font-mono uppercase tracking-wider">Mohit&apos;s AI Assistant [BETA]</p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
@@ -445,6 +445,9 @@ export function ChatbotWidget() {
                     </button>
                   </>
                 )}
+              </div>
+              <div className="mt-2 text-center text-[10px] text-muted-dark opacity-70">
+                Currently in Beta testing phase. Built by Mohit to showcase RAG concepts.
               </div>
             </div>
           </motion.div>
