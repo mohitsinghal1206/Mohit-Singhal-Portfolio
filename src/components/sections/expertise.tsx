@@ -26,7 +26,7 @@ export function Expertise() {
         <ScrollReveal>
           <SectionHeader
             label="Expertise"
-            title="Technical Capabilities"
+            title="How I Build Things"
           />
         </ScrollReveal>
 
