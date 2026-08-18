@@ -82,15 +82,15 @@ export const projects: Project[] = [
             ]
           },
           {
-            title: "Chatbot Agent",
+            title: "Chatbot",
             steps: [
-              { step: "WATI Webhook", detail: "Customer sends message", icon: "whatsapp" },
+              { step: "WhatsApp WATI Webhook", detail: "Customer sends message", icon: "whatsapp" },
               { step: "LLM + Vector DB", detail: "Retrieves context", icon: "database" },
               { step: "WATI API", detail: "Sends response", icon: "message" }
             ]
           },
           {
-            title: "Lead Qualify",
+            title: "Lead Qualification Agent",
             steps: [
               { step: "Cron Job", detail: "Runs daily schedule", icon: "webhook" },
               { step: "Analyze Intent", detail: "Scores Hot/Warm/Cold", icon: "critique" },
