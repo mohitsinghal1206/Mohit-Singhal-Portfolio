@@ -519,7 +519,7 @@ export function ChatbotWidget() {
             exit={{ opacity: 0, y: -20, rotateX: 45, scale: 0.9 }}
             transition={{ type: "spring", damping: 15, stiffness: 200 }}
             style={{ transformPerspective: 1000 }}
-            className="absolute bottom-20 right-0 w-max max-w-[250px] bg-white text-black text-xs sm:text-sm p-3 rounded-2xl rounded-br-sm shadow-[0_10px_40px_rgba(34,211,238,0.2)] cursor-pointer border border-white/20 group z-40"
+            className="hidden sm:block absolute bottom-20 right-0 w-max max-w-[250px] bg-white text-black text-xs sm:text-sm p-3 rounded-2xl rounded-br-sm shadow-[0_10px_40px_rgba(34,211,238,0.2)] cursor-pointer border border-white/20 group z-40"
             onClick={() => {
               setIsOpen(true);
             }}
