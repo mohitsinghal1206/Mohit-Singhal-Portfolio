@@ -6,7 +6,7 @@ import { SectionHeader } from "../shared/section-header";
 import { ScrollReveal } from "../shared/scroll-reveal";
 import { GlowCard } from "../shared/glow-card";
 import { WorkflowVisualization } from "../animations/workflow-visualization";
-import { MessageCircle, Mail, Building, Plug, Users, Network, Activity, Globe, Video, Briefcase, RefreshCw, ChevronDown } from "lucide-react";
+import { MessageCircle, Mail, Building, Plug, Users, Network, Activity, Globe, Video, Briefcase, RefreshCw, ChevronDown, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const iconMap: Record<string, React.ElementType> = {

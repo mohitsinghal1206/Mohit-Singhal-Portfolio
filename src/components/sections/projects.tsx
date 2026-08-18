@@ -5,7 +5,7 @@ import { projects } from "@/data/projects";
 import { SectionHeader } from "../shared/section-header";
 import { TechTag } from "../shared/tech-tag";
 import { ArchitectureDiagram } from "../animations/architecture-diagram";
-import { ExternalLink, FileText, CheckCircle2, ChevronDown } from "lucide-react";
+import { ExternalLink, FileText, CheckCircle2, ChevronDown, Sparkles } from "lucide-react";
 import { GithubIcon } from "../shared/brand-icons";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";

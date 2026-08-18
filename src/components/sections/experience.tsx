@@ -7,7 +7,7 @@ import { TechTag } from "../shared/tech-tag";
 import { GlowCard } from "../shared/glow-card";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { ChevronDown, MapPin, Calendar } from "lucide-react";
+import { ChevronDown, MapPin, Calendar, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Experience() {
