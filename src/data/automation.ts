@@ -1,4 +1,4 @@
-﻿export interface AutomationProject {
+export interface AutomationProject {
   id: string;
   icon: string;
   title: string;
@@ -55,6 +55,13 @@ export const automationProjects: AutomationProject[] = [
     title: "LinkedIn Content Research Agent",
     description: "Developed a Copilot Studio agent for marketing teams that hunts for trending industry articles and writes complete LinkedIn post drafts that perfectly match the brand's unique tone and voice.",
     capabilities: ["Microsoft Copilot Studio", "Power Automate", "LLM", "News/Web Sources"],
+  },
+  {
+    id: "marketplace-leads-fetch",
+    icon: "globe",
+    title: "Marketplace Leads Fetch Agent",
+    description: "Built an automated web scraping workflow that continuously monitors online marketplaces for potential leads, extracts their contact data, and syncs them directly into the CRM for the sales team.",
+    capabilities: ["Web Scraping", "Automation", "Data Extraction", "CRM Integration"],
   },
   {
     id: "make-n8n-migration",
