@@ -11,6 +11,7 @@ export function ChatbotWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasUnread, setHasUnread] = useState(false);
+  const [isTooltipDismissed, setIsTooltipDismissed] = useState(false);
   
   const chatbotEnabled = process.env.NEXT_PUBLIC_CHATBOT_ENABLED !== "false";
   
@@ -522,7 +523,7 @@ export function ChatbotWidget() {
 
       {/* Floating Prompt Bubble (when closed) */}
       <AnimatePresence>
-        {!isOpen && chatbotEnabled && (
+        {!isOpen && chatbotEnabled && !isTooltipDismissed && (
           <motion.div
             key={currentPromptIndex}
             initial={{ opacity: 0, y: 20, rotateX: -45, scale: 0.9 }}
@@ -530,11 +531,21 @@ export function ChatbotWidget() {
             exit={{ opacity: 0, y: -20, rotateX: 45, scale: 0.9 }}
             transition={{ type: "spring", damping: 15, stiffness: 200 }}
             style={{ transformPerspective: 1000 }}
-            className="hidden sm:block absolute bottom-20 right-0 w-max max-w-[250px] bg-white text-black text-xs sm:text-sm p-3 rounded-2xl rounded-br-sm shadow-[0_10px_40px_rgba(34,211,238,0.2)] cursor-pointer border border-white/20 group z-40"
+            className="hidden sm:block absolute bottom-20 right-0 w-max max-w-[250px] bg-white text-black text-xs sm:text-sm p-3 rounded-2xl rounded-br-sm shadow-[0_10px_40px_rgba(34,211,238,0.2)] cursor-pointer border border-white/20 group z-40 pr-8"
             onClick={() => {
               setIsOpen(true);
             }}
           >
+            <button 
+              className="absolute top-2 right-2 text-gray-400 hover:text-black transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsTooltipDismissed(true);
+              }}
+              title="Dismiss"
+            >
+              <X size={14} />
+            </button>
             <div className="font-bold mb-1 text-purple-600 flex items-center gap-1.5">
               <Sparkles size={12} />
               Hey there!
