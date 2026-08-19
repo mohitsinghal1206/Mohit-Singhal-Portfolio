@@ -34,7 +34,7 @@ export function Education() {
                   </div>
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-background/50 shadow-inner w-fit">
                     <span className="text-xs font-semibold text-muted-dark uppercase tracking-wider">CGPA</span>
-                    <span className="text-2xl font-bold text-text font-mono">8.5</span>
+                    <span className="text-2xl font-bold text-text font-mono">8.8</span>
                   </div>
                 </div>
                 <div className="text-muted flex items-center gap-2 text-sm font-mono">
