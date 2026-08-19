@@ -143,25 +143,25 @@ export function Hero() {
             className="flex flex-col items-start lg:col-span-7"
           >
             <motion.div variants={item} className="mb-6 flex items-center gap-3">
-              <div className="flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 rounded-full border border-border bg-card glass shadow-sm">
-                <span className="relative flex h-3 w-3 mr-3">
+              <div className="flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-border bg-card glass shadow-sm">
+                <span className="relative flex h-2.5 w-2.5 mr-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
                 </span>
-                <span className="text-base md:text-lg font-bold text-foreground">Open to opportunities</span>
+                <span className="text-sm md:text-base font-bold text-foreground">Open to opportunities</span>
               </div>
             </motion.div>
 
             <motion.h2 
               variants={item} 
-              className="text-3xl md:text-5xl font-medium text-muted mb-4 font-display"
+              className="text-2xl md:text-4xl font-medium text-muted mb-4 font-display"
             >
               Hi, I&apos;m <span className="font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{siteConfig.name}</span>
             </motion.h2>
 
             <motion.h1 
               variants={item}
-              className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tighter mb-8 font-display leading-tight"
+              className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-8 font-display leading-tight"
             >
               Building Enterprise AI <br />
               <span className="inline-flex items-center whitespace-nowrap">
@@ -191,7 +191,7 @@ export function Hero() {
 
             <motion.p 
               variants={item}
-              className="text-lg md:text-xl text-muted max-w-lg mb-10 leading-relaxed"
+              className="text-base md:text-lg text-muted max-w-lg mb-10 leading-relaxed"
             >
               AI Engineer passionate about building LLM applications, agentic AI systems, and intelligent automations.
             </motion.p>

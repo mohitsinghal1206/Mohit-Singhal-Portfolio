@@ -60,7 +60,7 @@ export function Navbar() {
           <a 
             href="#" 
             onClick={(e) => handleNavClick(e, "body")}
-            className="text-lg md:text-xl font-bold tracking-tighter flex items-center font-mono hover:opacity-80 transition-opacity"
+            className="text-base font-bold tracking-tighter flex items-center font-mono hover:opacity-80 transition-opacity"
           >
             {/* Mobile Logo */}
             <span className="sm:hidden flex items-center">
@@ -85,7 +85,7 @@ export function Navbar() {
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className="text-sm font-medium text-muted transition-colors hover:text-text relative group py-2"
+                    className="text-base font-medium text-muted transition-colors hover:text-text relative group py-2"
                   >
                     {item.label}
                     <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
