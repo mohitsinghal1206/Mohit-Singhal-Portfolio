@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Send, Sparkles, Maximize2, Minimize2, BrainCircuit, ExternalLink } from "lucide-react";
+import { MessageSquare, X, Send, Sparkles, Maximize2, Minimize2, BrainCircuit, ExternalLink, Copy, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -23,6 +23,7 @@ export function ChatbotWidget() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   
   const floatingPrompts = [
     "Ask me about Mohit's AI projects! 🚀",
@@ -91,6 +92,12 @@ export function ChatbotWidget() {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isLoading, isOpen, isStreaming]);
+
+  const handleCopy = (text: string, index: number) => {
+    navigator.clipboard.writeText(text);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
 
   const handleSendMessage = async (overrideMessage?: string) => {
     const textToSend = typeof overrideMessage === 'string' ? overrideMessage : inputValue.trim();
@@ -437,6 +444,23 @@ export function ChatbotWidget() {
                              <span className={msg.role === 'user' ? "text-white" : ""}>{msg.content}</span>
                           )}
                         </div>
+                        
+                        {/* Copy Button */}
+                        {msg.role === 'bot' && msg.content && (!isStreaming || idx !== messages.length - 1) && (
+                          <div className="flex items-center gap-2 self-start mt-0.5 ml-2">
+                            <button
+                              onClick={() => handleCopy(msg.content, idx)}
+                              className="text-[10px] text-muted hover:text-white flex items-center gap-1.5 transition-colors opacity-70 hover:opacity-100"
+                              title="Copy message"
+                            >
+                              {copiedIndex === idx ? (
+                                <><Check size={12} className="text-green-400" /> <span className="text-green-400">Copied</span></>
+                              ) : (
+                                <><Copy size={12} /> Copy</>
+                              )}
+                            </button>
+                          </div>
+                        )}
                         
                         {/* Starter Prompts - Attached to first message forever */}
                         {idx === 0 && (
