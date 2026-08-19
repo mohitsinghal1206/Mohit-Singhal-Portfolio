@@ -76,17 +76,17 @@ export const projects: Project[] = [
           {
             title: "Chatbot",
             steps: [
-              { step: "WhatsApp WATI Webhook", detail: "Customer sends message", icon: "whatsapp" },
+              { step: "WhatsApp Webhook", detail: "Customer sends message", icon: "whatsapp" },
               { step: "LLM + Vector DB", detail: "Retrieves context", icon: "database" },
-              { step: "WATI API", detail: "Sends response", icon: "message" }
+              { step: "WhatsApp API", detail: "Sends response", icon: "message" }
             ]
           },
           {
             title: "Follow-up Agent",
             steps: [
-              { step: "Cron Job", detail: "Runs daily schedule", icon: "webhook" },
-              { step: "Analyze Chats", detail: "Finds inactive leads", icon: "query" },
-              { step: "WATI API", detail: "Sends follow-up message", icon: "message" }
+              { step: "Cron Job", detail: "Runs hourly schedule", icon: "webhook" },
+              { step: "Analyze Chats", detail: "", icon: "query" },
+              { step: "WhatsApp API", detail: "Sends follow-up message", icon: "message" }
             ]
           },
           {
@@ -99,7 +99,7 @@ export const projects: Project[] = [
           }
         ]
       },
-      { step: "Shared Context Memory", detail: "Pinecone vector DB syncs all conversation history across all 3 agents", icon: "brain" }
+      { step: "Shared Context Memory", detail: "Syncs all conversation history across all 3 agents", icon: "brain" }
     ]
   },
   {

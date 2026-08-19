@@ -44,15 +44,15 @@ const renderNode = (step: WorkflowStep, index: number, isInView: boolean, fullWi
       stiffness: 200,
       damping: 15
     }}
-    className={`flex items-center gap-3 ${fullWidth ? 'w-full max-w-md' : 'w-full max-w-[240px]'} p-3 rounded-xl border border-border bg-background shadow-lg relative group transition-all hover:border-primary/50`}
+    className={`flex items-center gap-3 ${fullWidth ? 'w-full max-w-[280px]' : 'w-full max-w-[240px]'} p-3 rounded-xl border border-border bg-background shadow-lg relative group transition-all hover:border-primary/50`}
   >
     <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
     <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-card-hover border border-border flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
       {getNodeIcon(step.icon)}
     </div>
-    <div className="flex flex-col min-w-0">
-      <span className="font-semibold text-text text-xs truncate">{step.step}</span>
-      <span className="text-[10px] text-muted leading-tight mt-0.5 truncate">{step.detail}</span>
+    <div className="flex flex-col min-w-0 flex-1 text-center items-center justify-center pr-8">
+      <span className="font-semibold text-text text-xs truncate w-full">{step.step}</span>
+      <span className="text-[10px] text-muted leading-tight mt-0.5 truncate w-full">{step.detail}</span>
     </div>
   </motion.div>
 );
@@ -108,6 +108,20 @@ export function ArchitectureDiagram({ workflow, isInView }: ArchitectureDiagramP
                   <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full justify-center items-start">
                     {(node as ParallelGroup).parallel.map((group, colIndex) => (
                       <div key={group.title} className="flex flex-col w-full flex-1 items-center relative">
+                        {/* Connection drop from diverging bracket */}
+                        {mainIndex > 0 && (
+                          <div className="hidden md:flex flex-col items-center mb-2">
+                            <div className="h-4 w-px bg-border-hover opacity-50" />
+                            <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover opacity-50" />
+                          </div>
+                        )}
+                        {/* For mobile, if mainIndex > 0, we should draw a normal line between sections! */}
+                        {mainIndex > 0 && (
+                          <div className="flex md:hidden flex-col items-center mb-4">
+                            <div className="h-8 w-px bg-gradient-to-b from-border to-border-hover" />
+                            <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border-hover" />
+                          </div>
+                        )}
                         <motion.div 
                           initial={{ opacity: 0, y: -10 }}
                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
@@ -166,7 +180,7 @@ export function ArchitectureDiagram({ workflow, isInView }: ArchitectureDiagramP
 
                   {/* DIVERGING logic if the NEXT node is parallel */}
                   {workflow[mainIndex + 1] && 'parallel' in workflow[mainIndex + 1] && (
-                    <div className={`h-4 border-t border-l border-r border-border rounded-t-xl opacity-30 mt-0 ${(workflow[mainIndex + 1] as ParallelGroup).parallel.length === 2 ? 'w-[50%]' : 'w-[66%]'}`} />
+                    <div className={`hidden md:block h-4 border-t border-l border-r border-border rounded-t-xl opacity-30 mt-0 ${(workflow[mainIndex + 1] as ParallelGroup).parallel.length === 2 ? 'w-[50%]' : 'w-[66%]'}`} />
                   )}
                 </div>
               )}
