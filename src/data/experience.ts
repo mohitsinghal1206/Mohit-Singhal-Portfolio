@@ -17,7 +17,7 @@ export const experiences: Experience[] = [
     role: "Software Engineer",
     location: "Noida, India",
     period: "Jun 2025 – Jun 2026",
-    current: true,
+    current: false,
     description:
       "Designed and delivered AI-driven tools to solve real business problems. My work focused on understanding client needs, automating manual processes, and bringing AI concepts into production.",
     highlights: [
