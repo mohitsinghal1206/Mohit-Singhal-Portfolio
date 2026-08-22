@@ -16,7 +16,7 @@ export const experiences: Experience[] = [
     company: "CodeStore Technologies Pvt. Ltd.",
     role: "Software Engineer",
     location: "Noida, India",
-    period: "Jun 2025 – Present",
+    period: "Jun 2025 – Jun 2026",
     current: true,
     description:
       "Designed and delivered AI-driven tools to solve real business problems. My work focused on understanding client needs, automating manual processes, and bringing AI concepts into production.",
