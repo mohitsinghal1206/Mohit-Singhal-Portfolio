@@ -16,6 +16,13 @@ He has experience working in fast-paced Agile software development environments,
 
 **Current role:** Software Engineer
 
+**Roles & Timeline:**
+* **Software Engineer Trainee** (Jun 2025 – Dec 2025)
+* **Software Engineer** (Dec 2025 – Present)
+
+**Key Highlight:** 
+Founding member (1st person) of the AI division. Pioneered the first intelligent automation workflows, led the AI team's initiatives, and mentored incoming teammates on RAG and LLM integration best practices.
+
 **Professional focus:**
 
 * Generative AI
@@ -30,6 +37,7 @@ He has experience working in fast-paced Agile software development environments,
 * REST APIs
 * Scalable software architecture
 * Cloud and platform services
+* LLMOps (LangSmith, Traceability, Observability, Latency & Costs)
 
 **Portfolio:** [https://mohitsinghal-portfolio.vercel.app/](https://mohitsinghal-portfolio.vercel.app/)
 

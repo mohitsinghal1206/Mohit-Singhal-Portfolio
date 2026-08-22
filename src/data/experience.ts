@@ -25,8 +25,9 @@ export const experiences: Experience[] = [
     period: "Jun 2025 – Jun 2026",
     current: false,
     breakdown: [
-      { role: "Software Engineer", period: "Dec 2025 – Jun 2026" },
-      { role: "Software Engineer Trainee", period: "Jun 2025 – Dec 2025" }
+      { role: "Software Engineer Trainee", period: "Jun 2025 – Dec 2025" },
+      { role: "Software Engineer", period: "Dec 2025 – Jun 2026" }
+      
     ],
     description:
       "Designed and delivered AI-driven tools to solve real business problems. My work focused on understanding client needs, automating manual processes, and bringing AI concepts into production.",
