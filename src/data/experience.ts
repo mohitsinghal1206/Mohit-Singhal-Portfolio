@@ -1,3 +1,8 @@
+export interface ExperienceBreakdown {
+  role: string;
+  period: string;
+}
+
 export interface Experience {
   id: string;
   company: string;
@@ -5,6 +10,7 @@ export interface Experience {
   location: string;
   period: string;
   current: boolean;
+  breakdown?: ExperienceBreakdown[];
   description: string;
   highlights: string[];
   technologies: string[];
@@ -18,9 +24,14 @@ export const experiences: Experience[] = [
     location: "Noida, India",
     period: "Jun 2025 – Jun 2026",
     current: false,
+    breakdown: [
+      { role: "Software Engineer", period: "Dec 2025 – Jun 2026" },
+      { role: "Software Engineer Trainee", period: "Jun 2025 – Dec 2025" }
+    ],
     description:
       "Designed and delivered AI-driven tools to solve real business problems. My work focused on understanding client needs, automating manual processes, and bringing AI concepts into production.",
     highlights: [
+      "Founding member of the AI division; pioneered the first intelligent automation workflows and mentored incoming teammates on RAG and LLM integration best practices",
       "Worked closely with business stakeholders to analyze their demands and built custom, department-specific workflows to solve their exact bottlenecks",
       "Developed custom search systems (RAG) so that our chatbots could securely read and answer questions directly from private company documents",
       "Automated hours of repetitive manual work by designing intelligent workflows using n8n and Microsoft Power Automate",

@@ -124,6 +124,24 @@ export function Experience() {
                             className="overflow-hidden"
                           >
                             <div className="pt-6 mt-6 border-t border-border">
+                              {exp.breakdown && (
+                                <div className="mb-6 relative">
+                                  <div className="absolute left-[9px] top-2 bottom-2 w-px bg-border-hover" />
+                                  <div className="flex flex-col gap-5">
+                                    {exp.breakdown.map((item, i) => (
+                                      <div key={i} className="flex items-start gap-5 relative">
+                                        <div className="w-[19px] h-[19px] rounded-full bg-background border-2 border-primary/50 shrink-0 relative z-10 mt-0.5 flex items-center justify-center">
+                                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                        </div>
+                                        <div>
+                                          <div className="text-text font-medium text-base">{item.role}</div>
+                                          <div className="text-primary text-xs font-mono mt-1 opacity-80">{item.period}</div>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
                               <p className="text-text text-base mb-6 leading-relaxed">
                                 {exp.description}
                               </p>
