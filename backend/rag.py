@@ -453,9 +453,21 @@ def ask_mohit_stream(query: str, session_id: str, model: str | None = None):
     except Exception as e:
         db.close()
         raise e
+
+def trace_chat_input(inputs: dict) -> dict:
+    request = inputs.get("request")
+
+    if request is None:
+        return inputs
+
+    return {
+        "message": getattr(request, "message", None),
+        "model": getattr(request, "model", None),
+    }
+
     
 @app.post("/chat/stream")
-@traceable(name="Portfolio Chat Stream")
+@traceable(name="Portfolio Chat Stream",process_inputs=trace_chat_input)
 def chat_stream(request: ChatRequest):
     try:
         session_id = request.session_id if request.session_id else str(uuid4())
