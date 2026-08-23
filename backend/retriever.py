@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from pinecone import Pinecone
-
+from langsmith import traceable
 
 # ============================================================
 # Configuration
@@ -57,6 +57,7 @@ index = pc.Index(INDEX_NAME)
 # Retrieval
 # ============================================================
 
+@traceable(name="Pinecone Retrieval", run_type="retriever")
 def retrieve(
     query: str,
     top_k: int = TOP_K

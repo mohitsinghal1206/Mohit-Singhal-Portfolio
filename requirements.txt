@@ -7,3 +7,4 @@ pinecone
 tiktoken
 mistralai
 google-genai
+langsmith

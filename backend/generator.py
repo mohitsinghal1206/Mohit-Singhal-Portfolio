@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from google import genai
 from mistralai.client import Mistral
 from backend.retriever import retrieve, build_context
+from langsmith import traceable
 # ============================================================
 # Configuration
 # ============================================================
@@ -188,6 +189,7 @@ Answer the user's question using only the retrieved context.
 # Unified Generator
 # ============================================================
 
+@traceable(name="Generate Answer", run_type="llm")
 def generate_answer(
     query: str,
     context: str,
@@ -211,7 +213,16 @@ def generate_answer(
     raise RuntimeError(
         f"Unsupported LLM provider: {LLM_PROVIDER}"
     )
+    
+    
+def concatenate_strings(outputs: list) -> str:
+    return "".join(outputs)
 
+@traceable(
+    name="Generate Answer Stream",
+    run_type="llm",
+    reduce_fn=concatenate_strings
+)
 def generate_answer_stream(
     query: str,
     context: str,

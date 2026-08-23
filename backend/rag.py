@@ -2,7 +2,7 @@ from pathlib import Path
 from uuid import uuid4
 import json
 import time
-
+from langsmith import traceable
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -352,6 +352,7 @@ class ChatRequest(BaseModel):
 # ============================================================
 
 @app.post("/chat")
+@traceable(name="Portfolio Chat")
 def chat(request: ChatRequest):
 
     try:
@@ -452,8 +453,9 @@ def ask_mohit_stream(query: str, session_id: str, model: str | None = None):
     except Exception as e:
         db.close()
         raise e
-
+    
 @app.post("/chat/stream")
+@traceable(name="Portfolio Chat Stream")
 def chat_stream(request: ChatRequest):
     try:
         session_id = request.session_id if request.session_id else str(uuid4())
