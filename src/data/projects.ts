@@ -34,72 +34,51 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "whatsapp-agent",
+    id: "enterprise-ai-chatbot",
     index: "01",
     category: "Enterprise AI",
-    title: "AI WhatsApp Customer Support System",
-    description: "A smart WhatsApp assistant I built using multiple AI agents working together. It automatically handles customer support, follows up with old leads, and figures out which customers are ready to buy—handing them over to human sales reps when things get serious.",
+    title: "Enterprise AI Chatbot System",
+    description: "A comprehensive virtual assistant platform built for enterprise use, featuring conversational interfaces, RAG capabilities, and automated error logging.",
     sections: [
       {
         title: "RAG Pipeline",
-        content: "I built a custom search system (RAG) that securely reads the company's product manuals and stores them in Pinecone. When a customer asks a question on WhatsApp, the AI instantly finds the exact right answer from the official docs instead of guessing."
+        content: "Implemented a standard Retrieval-Augmented Generation (RAG) pipeline to securely retrieve relevant context from internal documents for accurate query resolution."
       },
       {
-        title: "Agent Architecture",
-        content: "Instead of one massive bot, I designed a team of specialized agents:\n• Support Agent: Answers questions using official docs.\n• Follow-up Agent: Re-engages quiet leads naturally based on their past chats.\n• Sales Agent: Grades leads as Hot, Warm, or Cold for the sales team.\n\nThey all share the same memory, so the customer never has to repeat themselves."
+        title: "System Observability",
+        content: "Integrated extensive logging and monitoring tools to track system health, monitor request latency, and handle runtime errors efficiently."
       }
     ],
     technologies: [
-      "GPT-4.1-mini",
-      "n8n",
-      "PostgreSQL",
-      "Pinecone",
-      "WATI API",
-      "Webhooks",
-      "Google Sheets",
-      "Telegram",
+      "LLMs",
+      "Vector Databases",
+      "Backend Frameworks",
+      "Messaging APIs",
+      "Observability Tools",
     ],
     results: [
-      "Reduced manual lead qualification workload by approximately 25%",
-      "Automated repetitive customer support interactions",
-      "Automated follow-up workflows",
-      "Improved lead prioritization",
-      "Reduced operational workload and support costs",
-      "Enabled 24/7 AI-assisted customer interactions"
+      "Streamlined internal query resolution",
+      "Automated standard support interactions",
+      "Improved system traceability and error logging",
     ],
     links: {
-      docs: "https://app.notion.com/p/AI-WhatsApp-Customer-Support-Lead-Qualification-System-3721ed779b4d80e28cb5e1c3a0cd480e",
+      docs: "https://app.notion.com/p/Enterprise-Chatbot-Overview",
     },
     workflow: [
+      { step: "User Interface", detail: "Receives user query", icon: "user" },
+      { step: "AI Engine & Vector DB", detail: "Processes intent and context", icon: "database" },
       {
         parallel: [
           {
-            title: "Chatbot",
-            steps: [
-              { step: "WhatsApp Webhook", detail: "Customer sends message", icon: "whatsapp" },
-              { step: "LLM + Vector DB", detail: "Retrieves context", icon: "database" },
-              { step: "WhatsApp API", detail: "Sends response", icon: "message" }
-            ]
+            title: "Response Handling",
+            steps: [{ step: "Messaging API", detail: "Delivers response", icon: "message" }]
           },
           {
-            title: "Follow-up Agent",
-            steps: [
-              { step: "Cron Job", detail: "Runs hourly schedule", icon: "webhook" },
-              { step: "Analyze Chats", detail: "", icon: "query" },
-              { step: "WhatsApp API", detail: "Sends follow-up message", icon: "message" }
-            ]
-          },
-          {
-            title: "Lead-sort Agent",
-            steps: [
-              { step: "Cron Job", detail: "Runs daily schedule", icon: "webhook" },
-              { step: "Analyze Intent", detail: "Scores Hot/Warm/Cold", icon: "critique" },
-              { step: "Google Sheets", detail: "Reports to Sales", icon: "report" }
-            ]
+            title: "System Monitoring",
+            steps: [{ step: "Observability Platform", detail: "Logs latency & errors", icon: "report" }]
           }
         ]
-      },
-      { step: "Shared Context Memory", detail: "Syncs all conversation history across all 3 agents", icon: "brain" }
+      }
     ]
   },
   {
@@ -147,75 +126,49 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "employee-assessment",
+    id: "hr-workflow-system",
     index: "03",
     category: "Enterprise AI",
-    title: "AI-Powered Employee Assessment",
-    description: "A corporate training tool I built that reads company policies (like HR manuals) and automatically generates dynamic quizzes to test employee knowledge, fully integrated with MS Teams, Zoho, and Outlook.",
+    title: "HR Workflow Automation System",
+    description: "An internal corporate workflow automation tool that integrates company knowledge bases to streamline standard HR processes and notifications.",
     sections: [
       {
-        title: "Knowledge Integrations",
-        content: "I connected the AI directly to Azure DevOps Wiki and Microsoft Graph, allowing it to automatically pull the latest approved company policies and guidelines without any manual uploads."
+        title: "Workflow Engine",
+        content: "Developed automated workflows to handle routine internal processes and logic, significantly reducing manual intervention."
       },
       {
-        title: "Assessment Engine",
-        content: "Using GPT-4.1-mini, the system creates context-aware questions on the fly based on the difficulty of the source document. Employees take the quiz directly inside MS Teams, and once finished, their grades are automatically sent to their Zoho HR profile with an email notification via Outlook."
+        title: "Knowledge Integration",
+        content: "Connected the system to secure cloud repositories and databases to dynamically fetch required guidelines and policies."
       }
     ],
     technologies: [
-      "Microsoft Copilot Studio",
-      "Power Automate",
-      "MS Teams",
-      "Outlook",
-      "GPT-4.1-mini",
-      "Zoho People",
-      "Azure DevOps Wiki",
-      "Microsoft Graph APIs",
-      "React",
+      "Workflow Automations",
+      "Cloud Knowledge Bases",
+      "Internal APIs",
+      "Enterprise Chat Platforms",
+      "LLMs",
     ],
     results: [
-      "Dynamic policy-based assessments from knowledge bases",
-      "Automated compliance reporting and analytics",
-      "Integration with Azure DevOps and HR systems",
-      "React dashboard for employee analytics",
+      "Automated standard internal workflows",
+      "Secure integration with internal document repositories",
+      "Streamlined multi-platform notification system",
     ],
     links: {
-      docs: "https://app.notion.com/p/AI-Powered-Employee-Assessment-Compliance-Agent-3721ed779b4d803d96f6cb5106724150",
+      docs: "https://app.notion.com/p/HR-Workflow-System",
     },
     workflow: [
-      { step: "Zoho Webhook", detail: "Employee initiates assessment", icon: "user" },
-      { step: "Power Automate", detail: "Orchestrates assessment flow", icon: "webhook" },
+      { step: "Employee Portal", detail: "Initiates workflow request", icon: "user" },
+      { step: "API Gateway", detail: "Authenticates and routes request", icon: "devops" },
+      { step: "AI Processing Engine", detail: "Retrieves internal documents", icon: "database" },
       {
         parallel: [
           {
-            title: "Azure DevOps Pipeline",
-            steps: [
-              { step: "DevOps API", detail: "Authenticates system", icon: "devops" },
-              { step: "Wiki Search", detail: "Finds policy docs", icon: "query" },
-              { step: "Chunking", detail: "Processes text", icon: "scraper" }
-            ]
+            title: "HR System Update",
+            steps: [{ step: "Internal APIs", detail: "Logs workflow completion", icon: "report" }]
           },
           {
-            title: "Microsoft Graph Pipeline",
-            steps: [
-              { step: "Graph API", detail: "Authenticates system", icon: "database" },
-              { step: "SharePoint Search", detail: "Finds HR guidelines", icon: "query" },
-              { step: "Chunking", detail: "Processes documents", icon: "scraper" }
-            ]
-          }
-        ]
-      },
-      { step: "Copilot Studio (RAG)", detail: "Generates context-aware questions", icon: "copilot" },
-      { step: "MS Teams Bot", detail: "Employee takes quiz in Teams chat", icon: "message" },
-      {
-        parallel: [
-          {
-            title: "HR System",
-            steps: [{ step: "Zoho People", detail: "Writes grades to profile", icon: "report" }]
-          },
-          {
-            title: "Notifications",
-            steps: [{ step: "Outlook Alerts", detail: "Emails test results", icon: "user" }]
+            title: "Alerts & Notifications",
+            steps: [{ step: "Email Services", detail: "Sends automated updates", icon: "message" }]
           }
         ]
       }
