@@ -74,19 +74,6 @@ Mohit is open to:
 
 - LLM orchestration
 
-### Availability
-
-Mohit is open to:
-
-- Full-time AI and Automation opportunities
-
-- Generative AI / LLM / RAG roles
-
-- AI automation projects
-
-- Freelance work
-
-- Project-based or consulting work
 
 ## 2. Professional Experience
 
@@ -190,7 +177,7 @@ His RAG work includes:
 
 Major RAG projects include:
 
-- AI-WhatsApp Customer Support Agent
+- Enterprise AI Chatbot System
 
 - AI-Powered HR Workflow System
 
@@ -218,41 +205,23 @@ Mohit uses LangGraph for agentic AI and multi-agent workflow orchestration.
 
 The DeepResearch Agent uses LangGraph for its multi-stage research workflow.
 
-### AI Agents and Multi-Agent Systems
+### AI Agent Experience
 
 Mohit's AI agent work includes:
 
-- Customer Support Agent
+- Customer support agents
+- Follow-up automation agents
+- Lead sorting and qualification agents
+- Search and retrieval agents
+- Research agents
+- Content generation agents
+- Critic and review agents
+- HR policy and knowledge agents
+- Department-specific automation agents
+- Social media and content research agents
 
-- Follow-up Agent
-
-- Lead Qualification Agent
-
-- Search Agent
-
-- Reader Agent
-
-- Writer Chain
-
-- Critic Chain
-
-- Employee Assessment Agent
-
-- HR Policy Agent
-
-- Department SOP Agent Network
-
-- Email Qualification Agent
-
-- Workforce Activity Analysis Agent
-
-- Automated News & Social Media Agent
-
-- YouTube Research & Content Ideation Agent
-
-- LinkedIn Content Research Agent
-
-His agentic work spans customer support, lead qualification, employee assessment, policy knowledge management, research, and enterprise automation.
+These agents are used for customer support, business process automation,
+knowledge management, research, content workflows, and repetitive business tasks.
 
 ## 4. LangSmith, LLM Evaluation, and RAG Evaluation
 
@@ -480,7 +449,7 @@ This is a side research project and should not be interpreted as primary profess
 
 ## 8. Technologies and Tools
 
-### Primary Professional Technologies
+### Primary Technical Skills/Technologies
 
 - Python
 
@@ -530,7 +499,6 @@ This is a side research project and should not be interpreted as primary profess
 
 These technologies come primarily from side or hobby projects:
 
-- FastAPI
 
 - Flask
 
@@ -614,9 +582,9 @@ AWS fundamentals are part of Mohit's cloud learning background. He has completed
 
 - Microsoft Copilot Studio agents for HR and departmental use cases helped automate routine HR queries by approximately 30%.
 
-- AI-WhatsApp Customer Support Agent reduced manual lead qualification effort by approximately 25%.
+- Enterprise AI Chatbot System reduced manual effort in repetitive support and query-handling workflows by approximately 25%.
 
-- AI-WhatsApp Customer Support Agent reported a 40% reduction in support costs.
+- Enterprise AI Chatbot System contributed to improved support efficiency and reduced manual support workload.
 
 ## 11. Technology and Experience Classification
 
@@ -652,45 +620,32 @@ When answering questions about Mohit's skills, distinguish between primary profe
 
 - Business requirements and stakeholder collaboration
 
-### Professional Project Experience
+### Professional Tools and Technologies
 
-- Microsoft Copilot Studio
-
-- Power Automate
-
-- Power Apps
-
-- React
-
+- Python
+- FastAPI
+- LangChain
+- LangGraph
+- LangSmith
+- RAG
+- LLMs
+- AI Agents
 - n8n
-
+- Microsoft Copilot Studio
+- Power Automate
+- Power Apps
 - REST APIs
-
 - Webhooks
-
-- PostgreSQL
-
+- PostgreSQL / SQL
 - Pinecone
-
 - Azure
-
-- Azure DevOps
-
-- Microsoft 365
-
-- Teams
-
-- Outlook
-
-- Zoho
-
-- Microsoft Graph APIs
-
+- React
+- MCP Server
 - WATI API
+- Basic working knowledge of Voice AI Agents (Retell,Vapi,SarvamAI,Whisper,ElevenLabs)
 
 ### Side / Hobby Project Experience
 
-- FastAPI
 
 - Flask
 
@@ -765,6 +720,34 @@ Mohit is open to:
 - Project-based work
 
 - Consulting work
+
+### How Mohit Approaches AI and Automation
+
+Mohit works with business and technical stakeholders to:
+
+- Understand business requirements
+- Identify repetitive or manual work
+- Find opportunities for AI and automation
+- Design department-specific solutions
+- Connect AI systems with APIs and business tools
+- Build, test, and monitor the solution
+- Improve reliability and reduce manual effort
+
+### Business Problems Mohit Works On
+
+Mohit focuses on using AI and automation to reduce repetitive manual work and improve business workflows.
+
+Common problems he works on include:
+
+- Repetitive customer and employee queries
+- Manual follow-ups
+- Lead sorting and qualification
+- HR workflow requests
+- Knowledge and policy lookup
+- Manual notifications
+- Repetitive data and document processing
+- Department-specific workflow automation
+- Connecting AI systems with existing business tools and APIs
 
 ## 13. Professional Strengths
 
