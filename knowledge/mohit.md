@@ -1,6 +1,4 @@
-**# Mohit — Portfolio Knowledge Base V2**
-
-**## 1. Profile and Positioning**
+**# Mohit — Portfolio Knowledge Base V2** ****## 1. Profile and Positioning****
 
 Mohit Singhal is an AI and Automation Engineer focused on Generative AI, Large Language Models (LLMs), RAG, AI agents, agentic systems, and intelligent automation.
 
@@ -12,748 +10,701 @@ He works with business and technical stakeholders to understand requirements, id
 
 Examples of department-specific automation work include:
 
-\- HR chatbots and HR query automation
+- HR chatbots and HR query automation
 
-\- Email lead sorting and qualification agents
+- Email lead sorting and qualification agents
 
-\- Marketing content generation agents
+- Marketing content generation agents
 
-\- Customer support automation
+- Customer support automation
 
-\- AI-Driven HR Workflow Automation
+- AI-Driven HR Workflow Automation
 
-\- Policy and knowledge management automation
+- Policy and knowledge management automation
+**## Availability** Mohit is open to:
 
-**## Availability**
+- Full-time AI and Automation opportunities
 
-Mohit is open to:
+- Generative AI / LLM / RAG roles
 
-\- Full-time AI and Automation opportunities
+- AI automation projects
 
-\- Generative AI / LLM / RAG roles
+- Freelance work
 
-\- AI automation projects
+- Project-based work
 
-\- Freelance work
+- Consulting work
+**### Primary Professional Expertise** - Generative AI
 
-\- Project-based work
+- Large Language Models (LLMs)
 
-\- Consulting work
+- Retrieval-Augmented Generation (RAG)
 
-**### Primary Professional Expertise**
+- AI agents
 
-\- Generative AI
+- Multi-agent systems
 
-\- Large Language Models (LLMs)
+- Agentic AI
 
-\- Retrieval-Augmented Generation (RAG)
+- Conversational AI
 
-\- AI agents
+- Intelligent automation
 
-\- Multi-agent systems
+- Enterprise AI
 
-\- Agentic AI
+- LangChain
 
-\- Conversational AI
+- LangGraph
 
-\- Intelligent automation
+- LangSmith
 
-\- Enterprise AI
+- LLM evaluation
 
-\- LangChain
+- RAG evaluation
 
-\- LangGraph
+- Prompt engineering
 
-\- LangSmith
+- LLM orchestration
+**## 2. Professional Experience** ****### Software Engineer — Previous Professional Experience****
 
-\- LLM evaluation
+******Duration:*\***** June 2025 – June 2026
 
-\- RAG evaluation
+******Location:*\***** Noida, India
 
-\- Prompt engineering
+******Career progression:*\***** Software Engineer Trainee → Software Engineer
 
-\- LLM orchestration
-
-
-
-**## 2. Professional Experience**
-
-**### Software Engineer — Previous Professional Experience**
-
-**\*\*Duration:\*\*** June 2025 – June 2026
-
-**\*\*Location:\*\*** Noida, India
-
-**\*\*Career progression:\*\*** Software Engineer Trainee → Software Engineer
-
-**\*\*Work arrangement:\*\*** On-site
+******Work arrangement:*\***** On-site
 
 Mohit's professional work includes AI-powered software, enterprise automation, backend services, REST APIs, full-stack applications, cloud platform services, and scalable automation infrastructure.
 
 He works with business stakeholders and technical teams to:
 
-\- Gather and understand business requirements
+- Gather and understand business requirements
 
-\- Identify manual or repetitive workflows
+- Identify manual or repetitive workflows
 
-\- Design AI and automation solutions for specific departments
+- Design AI and automation solutions for specific departments
 
-\- Integrate APIs, internal tools, and business systems
+- Integrate APIs, internal tools, and business systems
 
-\- Build and maintain automation infrastructure
+- Build and maintain automation infrastructure
 
-\- Improve reliability, monitoring, deployment efficiency, and operational performance
+- Improve reliability, monitoring, deployment efficiency, and operational performance
 
 His work includes:
 
-\- Microsoft Copilot Studio agents for HR and departmental use cases
+- Microsoft Copilot Studio agents for HR and departmental use cases
 
-\- AI-powered full-stack applications
+- AI-powered full-stack applications
 
-\- Backend services and REST APIs
+- Backend services and REST APIs
 
-\- Automation pipelines and workflow automation
+- Automation pipelines and workflow automation
 
-\- Scalable microservices
+- Scalable microservices
 
-\- Dashboards and web scraping applications
+- Dashboards and web scraping applications
 
-\- Enterprise productivity and business-system integrations
+- Enterprise productivity and business-system integrations
 
-\- AI research and proof-of-concept development
+- AI research and proof-of-concept development
 
-\- Software validation, QA testing, troubleshooting, and technical documentation
-
-**## 3. AI, Generative AI, RAG, and Agents**
-
-**### Generative AI and LLMs**
+- Software validation, QA testing, troubleshooting, and technical documentation
+**## 3. AI, Generative AI, RAG, and Agents** ****### Generative AI and LLMs****
 
 Mohit works with LLM applications for:
 
-\- Customer support
+- Customer support
 
-\- Lead qualification and classification
+- Lead qualification and classification
 
-\- Employee workflow automation
+- Employee workflow automation
 
-\- Research and research report generation
+- Research and research report generation
 
-\- Policy-grounded responses
+- Policy-grounded responses
 
-\- AI-generated performance summaries
+- AI-generated performance summaries
 
-\- Agentic workflows
+- Agentic workflows
 
-\- Enterprise automation
+- Enterprise automation
 
 Documented model usage includes:
 
-\- GPT-4.1-mini
+- GPT-4.1-mini
 
-\- Gemini 2.5 Flash
-
-**### Retrieval-Augmented Generation (RAG)**
-
-Mohit has hands-on experience building RAG systems.
+- Gemini 2.5 Flash
+**### Retrieval-Augmented Generation (RAG)** Mohit has hands-on experience building RAG systems.
 
 His RAG work includes:
 
-\- Documentation chunking
+- Documentation chunking
 
-\- Embedding generation
+- Embedding generation
 
-\- Semantic retrieval
+- Semantic retrieval
 
-\- Vector database usage
+- Vector database usage
 
-\- Contextual answer generation
+- Contextual answer generation
 
-\- Product knowledge retrieval
+- Product knowledge retrieval
 
-\- Policy knowledge retrieval
+- Policy knowledge retrieval
 
-\- Policy-grounded responses
+- Policy-grounded responses
 
-\- Knowledge management workflows
+- Knowledge management workflows
 
 Major RAG projects include:
 
-\- Enterprise AI Chatbot System
+- Enterprise AI Chatbot System
 
-\- AI-Powered HR Workflow System
+- AI-Powered HR Workflow System
+**### LangChain** Mohit uses LangChain for:
 
-**### LangChain**
+- LLM application development
 
-Mohit uses LangChain for:
+- Agent development
 
-\- LLM application development
+- Agent orchestration
 
-\- Agent development
+- Tool-using agents
 
-\- Agent orchestration
+- LLM orchestration
 
-\- Tool-using agents
+- LCEL-based workflows
 
-\- LLM orchestration
-
-\- LCEL-based workflows
-
-\- RAG-related applications
-
-**### LangGraph**
-
-Mohit uses LangGraph for agentic AI and multi-agent workflow orchestration.
+- RAG-related applications
+**### LangGraph** Mohit uses LangGraph for agentic AI and multi-agent workflow orchestration.
 
 The DeepResearch Agent uses LangGraph for its multi-stage research workflow.
+**### AI Agent Experience** Mohit's AI agent work includes:
 
-**### AI Agent Experience**
+- Customer support agents
 
-Mohit's AI agent work includes:
+- Follow-up automation agents
 
-\- Customer support agents
+- Lead sorting and qualification agents
 
-\- Follow-up automation agents
+- Search and retrieval agents
 
-\- Lead sorting and qualification agents
+- Research agents
 
-\- Search and retrieval agents
+- Content generation agents
 
-\- Research agents
+- Critic and review agents
 
-\- Content generation agents
+- HR policy and knowledge agents
 
-\- Critic and review agents
+- Department-specific automation agents
 
-\- HR policy and knowledge agents
-
-\- Department-specific automation agents
-
-\- Social media and content research agents
+- Social media and content research agents
 
 These agents are used for customer support, business process automation,
 
 knowledge management, research, content workflows, and repetitive business tasks.
-
-**## 4. LangSmith, LLM Evaluation, and RAG Evaluation**
-
-Mohit uses LangSmith for LLM tracing and observability.
+**## 4. LangSmith, LLM Evaluation, and RAG Evaluation** Mohit uses LangSmith for LLM tracing and observability.
 
 His LangSmith work includes:
 
-\- Tracing application runs
+- Tracing application runs
 
-\- Inspecting retrieval and generation steps
+- Inspecting retrieval and generation steps
 
-\- Monitoring latency
+- Monitoring latency
 
-\- Monitoring token usage
+- Monitoring token usage
 
-\- Monitoring LLM costs
+- Monitoring LLM costs
 
-\- Inspecting prompts, retrieved context, and model outputs
+- Inspecting prompts, retrieved context, and model outputs
 
-\- LLM evaluation
+- LLM evaluation
 
-\- RAG evaluation
+- RAG evaluation
 
-\- Evaluating grounding and hallucination
+- Evaluating grounding and hallucination
 
-\- Evaluating answer relevance and correctness
+- Evaluating answer relevance and correctness
 
 His portfolio chatbot is instrumented with LangSmith to trace retrieval and streaming generation and to measure token usage, latency, and cost.
-
-**## 5. AI and Business Automation**
-
-Mohit's automation work focuses on connecting AI decision-making with business workflows, APIs, enterprise tools, CRM systems, and notification systems.
+**## 5. AI and Business Automation** Mohit's automation work focuses on connecting AI decision-making with business workflows, APIs, enterprise tools, CRM systems, and notification systems.
 
 Examples include:
+**### HR Automation** - HR chatbots
 
-**### HR Automation**
+- HR query automation
 
-\- HR chatbots
+- HR policy agents
 
-\- HR query automation
+- Department-specific HR workflows
 
-\- HR policy agents
+- Employee workflow automation
+**### Lead and Sales Automation** - Email lead sorting
 
-\- Department-specific HR workflows
+- Lead qualification agents
 
-\- Employee workflow automation automation
+- Lead classification
 
-**### Lead and Sales Automation**
+- Customer follow-up workflows
+**### Marketing Automation** - Marketing content generation agents
 
-\- Email lead sorting
+- Research and content ideation workflows
 
-\- Lead qualification agents
+- Social media automation
+**### Enterprise Automation** - Workflow automation pipelines
 
-\- Lead classification
+- API and business-system integrations
 
-\- Customer follow-up workflows
+- Enterprise productivity and business-system integrations
 
-**### Marketing Automation**
-
-\- Marketing content generation agents
-
-\- Research and content ideation workflows
-
-\- Social media automation
-
-**### Enterprise Automation**
-
-\- Workflow automation pipelines
-
-\- API and business-system integrations
-
-\- Enterprise productivity and business-system integrations
-
-\- Enterprise knowledge and policy workflows
+- Enterprise knowledge and policy workflows
 
 Mohit works with stakeholders to understand business requirements and translate them into practical AI and automation workflows that reduce manual work.
-
-**## 6. Professional Projects**
-
-**### Enterprise AI Chatbot System**
+**## 6. Professional Projects** ****### Enterprise AI Chatbot System****
 
 An enterprise AI chatbot built to automate repetitive support queries and help users get answers from internal documentation.
 
-**\*\*What the project does\*\***
+******What the project does*\*****
 
-\- Provides a conversational interface for handling user and support queries.
+- Provides a conversational interface for handling user and support queries.
 
-\- Uses RAG to retrieve relevant information from internal documents.
+- Uses RAG to retrieve relevant information from internal documents.
 
-\- Uses an LLM to generate responses based on the retrieved information.
+- Uses an LLM to generate responses based on the retrieved information.
 
-\- Automates standard support interactions and repetitive queries.
+- Automates standard support interactions and repetitive queries.
 
-\- Supports follow-up workflows where required.
+- Supports follow-up workflows where required.
 
-\- Includes logging and monitoring for errors and response latency.
+- Includes logging and monitoring for errors and response latency.
 
-**\*\*Business Problems Solved\*\***
+******Business Problems Solved*\*****
 
-\- Reduces repetitive support queries handled manually.
+- Reduces repetitive support queries handled manually.
 
-\- Helps users quickly find information from internal documentation.
+- Helps users quickly find information from internal documentation.
 
-\- Automates standard customer/support interactions.
+- Automates standard customer/support interactions.
 
-\- Reduces manual effort in repetitive workflows.
+- Reduces manual effort in repetitive workflows.
 
-\- Improves visibility into system errors and performance.
+- Improves visibility into system errors and performance.
 
-**\*\*Technology\*\***
+******Technology*\*****
 
-\- n8n
+- n8n
 
-\- LLMs
+- LLMs
 
-\- RAG
+- RAG
 
-\- Vector Databases
+- Vector Databases
 
-\- Backend Frameworks
+- Backend Frameworks
 
-\- Messaging APIs
+- Messaging APIs
 
-\- REST APIs / Webhooks
+- REST APIs / Webhooks
 
-\- MCP Server
+- MCP Server
 
-\- Observability Tools
+- Observability Tools
 
-\- Human Hand-off and Error Loggings
+- Human Hand-off and Error Loggings
+**### AI-Powered HR Workflow System** An internal HR automation system built to reduce repetitive HR work and automate standard employee workflows, queries, and notifications.
 
+******What the project does*\*****
 
+- Automates routine HR workflow requests.
 
-**### AI-Powered HR Workflow System**
+- Uses AI and RAG to retrieve relevant HR policies and guidelines.
 
-An internal HR automation system built to reduce repetitive HR work and automate standard employee workflows, queries, and notifications.
+- Helps employees get information from internal knowledge sources.
 
-**\*\*What the project does\*\***
+- Automates standard notifications and workflow updates.
 
-\- Automates routine HR workflow requests.
+- Connects different internal systems through APIs and automation workflows.
 
-\- Uses AI and RAG to retrieve relevant HR policies and guidelines.
+******Business Problems Solved*\*****
 
-\- Helps employees get information from internal knowledge sources.
+- Reduces repetitive manual HR work.
 
-\- Automates standard notifications and workflow updates.
+- Automates standard employee requests and workflows.
 
-\- Connects different internal systems through APIs and automation workflows.
+- Makes HR policies and guidelines easier to access.
 
-**\*\*Business Problems Solved\*\***
+- Reduces manual follow-ups and notification work.
 
-\- Reduces repetitive manual HR work.
+- Improves consistency in routine HR processes.
 
-\- Automates standard employee requests and workflows.
+******Technology*\*****
 
-\- Makes HR policies and guidelines easier to access.
+- Microsoft Copilot Studio
 
-\- Reduces manual follow-ups and notification work.
+- Power Automate
 
-\- Improves consistency in routine HR processes.
+- Power Apps
 
-**\*\*Technology\*\***
+- LLMs
 
-\- Microsoft Copilot Studio
+- RAG
 
-\- Power Automate
+- Cloud Knowledge Bases
 
-\- Power Apps
+- REST APIs
 
-\- LLMs
+- Internal HRMS Integrations
 
-\- RAG
+- Workflow Automation
 
-\- Cloud Knowledge Bases
+- Enterprise Chat Platforms
+**## 7. Side and Hobby Projects** The following projects are side or hobby projects and should be treated as project-based exposure rather than primary professional specialization.
+**### Algorithmic Trading Platform** An in-development personal project exploring:
 
-\- REST APIs
+- Real-time market data
 
-\- Internal HRMS Integrations
+- Automated order execution
 
-\- Workflow Automation
+- Position management
 
-\- Enterprise Chat Platforms
+- Risk management
 
-**## 7. Side and Hobby Projects**
+- Real-time processing
 
-The following projects are side or hobby projects and should be treated as project-based exposure rather than primary professional specialization.
+- Distributed backend services
 
-**### Algorithmic Trading Platform**
-
-An in-development personal project exploring:
-
-\- Real-time market data
-
-\- Automated order execution
-
-\- Position management
-
-\- Risk management
-
-\- Real-time processing
-
-\- Distributed backend services
-
-\- Cloud deployment
+- Cloud deployment
 
 Technologies explored:
 
-\- Python
+- Python
 
-\- FastAPI
+- FastAPI
 
-\- Flask
+- Flask
 
-\- REST APIs
+- REST APIs
 
-\- WebSockets
+- WebSockets
 
-\- AsyncIO
+- AsyncIO
 
-\- PostgreSQL
+- PostgreSQL
 
-\- OAuth 2.0
+- OAuth 2.0
 
-\- Protocol Buffers
+- Protocol Buffers
 
-\- Azure Virtual Machines
+- Azure Virtual Machines
 
-\- Linux / Ubuntu
+- Linux / Ubuntu
 
-\- Nginx
+- Nginx
 
-\- Git / GitHub
+- Git / GitHub
 
-\- Cron Jobs
+- Cron Jobs
 
-\- Upstox Broker APIs
+- Upstox Broker APIs
 
 These technologies represent project-level exposure and working knowledge gained through personal experimentation.
-
-**### Quantitative Strategy Research and Backtesting**
-
-A personal research project exploring systematic trading strategies using Python, Pandas, and NumPy.
+**### Quantitative Strategy Research and Backtesting** A personal research project exploring systematic trading strategies using Python, Pandas, and NumPy.
 
 It includes:
 
-\- Historical market data analysis
+- Historical market data analysis
 
-\- Strategy research
+- Strategy research
 
-\- Strategy design
+- Strategy design
 
-\- Backtesting
+- Backtesting
 
-\- Strategy optimization
+- Strategy optimization
 
-\- Transaction-level evaluation
+- Transaction-level evaluation
 
-\- Execution quality analysis
+- Execution quality analysis
 
-\- Risk management analysis
-
-
-
-
-
-
-
+- Risk management analysis
 
 
 This is a side research project and should not be interpreted as primary professional data-science or quantitative-finance expertise.
-
-**## 8. Technologies and Tools**
-
-**### Professional Technologies
+**## 8. Technologies and Tools** **### Professional Technologies
 
 Mohit's professional technical skills include:
 
 - Python
+
 - FastAPI
+
 - LangChain
+
 - LangGraph
+
 - LangSmith
+
 - RAG
+
 - LLMs
+
 - AI Agents
+
 - Prompt Engineering
+
 - n8n
+
 - Microsoft Copilot Studio
+
 - Power Automate
+
 - Power Apps
+
 - React
+
 - REST APIs
+
 - Webhooks
+
 - PostgreSQL / SQL
+
 - Pinecone
+
 - Azure
+
 - MCP Server
+
 - Basic working knowledge of Voice AI Agents
-
 ### MCP Server**
-
 Mohit has used MCP Server in the Enterprise AI Chatbot System and in certain flows across other automation projects to connect AI systems with tools and external services.
+**### AWS** AWS fundamentals are part of Mohit's cloud learning background. He has completed AWS Certified Cloud Practitioner training through Udemy. This should not be interpreted as production AWS experience.
+**## 9. Education** ****### B.Tech in Computer Science and Engineering — Uttaranchal University****
 
-**### AWS**
+- Duration: 2021 – 2025
 
-AWS fundamentals are part of Mohit's cloud learning background. He has completed AWS Certified Cloud Practitioner training through Udemy. This should not be interpreted as production AWS experience.
+- Location: Dehradun, Uttarakhand
 
-**## 9. Education**
+- CGPA: 8.5
+**### Senior Secondary School — Nirmal Ashram Deepmala Public School** - Duration: 2020 – 2021
 
-**### B.Tech in Computer Science and Engineering — Uttaranchal University**
+- Location: Rishikesh, Uttarakhand
 
-\- Duration: 2021 – 2025
+- Percentage: 83%
+**### High School — Nirmal Ashram Deepmala Public School** - Duration: 2018 – 2019
 
-\- Location: Dehradun, Uttarakhand
+- Location: Rishikesh, Uttarakhand
 
-\- CGPA: 8.5
+- Percentage: 91.8%
+**## 10. Certifications and Achievements** ****### Microsoft Certified: Azure AI Fundamentals (AI-900)****
 
-**### Senior Secondary School — Nirmal Ashram Deepmala Public School**
+- Organization: Microsoft
 
-\- Duration: 2020 – 2021
+- Status: Certified
+**### AWS Certified Cloud Practitioner Training** - Provider: Udemy
 
-\- Location: Rishikesh, Uttarakhand
+- Status: Training
+**### Selected Outcomes** - Microsoft Copilot Studio agents for HR and departmental use cases helped automate routine HR queries by approximately 30%.
 
-\- Percentage: 83%
+- Enterprise AI Chatbot System reduced manual effort in repetitive support and query-handling workflows by approximately 25%.
 
-**### High School — Nirmal Ashram Deepmala Public School**
-
-\- Duration: 2018 – 2019
-
-\- Location: Rishikesh, Uttarakhand
-
-\- Percentage: 91.8%
-
-**## 10. Certifications and Achievements**
-
-**### Microsoft Certified: Azure AI Fundamentals (AI-900)**
-
-\- Organization: Microsoft
-
-\- Status: Certified
-
-**### AWS Certified Cloud Practitioner Training**
-
-\- Provider: Udemy
-
-\- Status: Training
-
-**### Selected Outcomes**
-
-\- Microsoft Copilot Studio agents for HR and departmental use cases helped automate routine HR queries by approximately 30%.
-
-\- Enterprise AI Chatbot System reduced manual effort in repetitive support and query-handling workflows by approximately 25%.
-
-\- Enterprise AI Chatbot System contributed to improved support efficiency and reduced manual support workload.
+- Enterprise AI Chatbot System contributed to improved support efficiency and reduced manual support workload.
 
 **## 11. Technology and Experience Classification
 
 When answering questions about Mohit's skills, distinguish between primary professional expertise and project-based exposure.
-
 ### Primary Professional Expertise
-
 - Generative AI
+
 - LLM applications
+
 - RAG
+
 - AI agents
+
 - Multi-agent systems
+
 - Intelligent automation
+
 - Enterprise AI
+
 - LangChain
+
 - LangGraph
+
 - LangSmith
+
 - LLM evaluation
+
 - RAG evaluation
+
 - Prompt engineering
+
 - Business requirements and stakeholder collaboration
-
 ### Professional Tools and Technologies
-
 Mohit's professional technical skills include:
 
 - Python
+
 - FastAPI
+
 - LangChain
+
 - LangGraph
+
 - LangSmith
+
 - RAG
+
 - LLMs
+
 - AI Agents
+
 - n8n
+
 - Microsoft Copilot Studio
+
 - Power Automate
+
 - Power Apps
+
 - REST APIs
+
 - Webhooks
+
 - PostgreSQL / SQL
+
 - Pinecone
+
 - Azure
+
 - React
+
 - MCP Server
+
 - Basic working knowledge of Voice AI Agents
-
 ### Side / Hobby Project Experience
-
 The following are project-level or hobby-project technologies and should not automatically be interpreted as deep professional specialization:
 
 - Flask
+
 - WebSockets
+
 - AsyncIO
+
 - OAuth 2.0
+
 - Protocol Buffers
+
 - Azure Virtual Machines
+
 - Linux
+
 - Nginx
+
 - Pandas
+
 - NumPy
+
 - Streamlit
+
 - MobaXterm
+
 - Cron Jobs
-
 ### Technologies Not Established as Production Experience
-
 - AWS Lambda
+
 - Kubernetes
+
 - Other technologies not explicitly supported by the knowledge base
 
 Do not claim professional experience with a technology unless the knowledge base supports it.
-
 ## 12. Career Interests and Work Preferences**
-
 Mohit is interested in:
 
-\- AI Engineering
+- AI Engineering
 
-\- AI and Automation Engineering
+- AI and Automation Engineering
 
-\- Generative AI
+- Generative AI
 
-\- LLM applications
+- LLM applications
 
-\- RAG systems
+- RAG systems
 
-\- Agentic AI
+- Agentic AI
 
-\- Enterprise AI
+- Enterprise AI
 
-\- Intelligent automation
+- Intelligent automation
 
-\- Complex system architectures
+- Complex system architectures
 
-\- Scalable AI systems
+- Scalable AI systems
 
 Mohit is open to:
 
-\- Full-time opportunities
+- Full-time opportunities
 
-\- AI and automation roles
+- AI and automation roles
 
-\- Freelance work
+- Freelance work
 
-\- Project-based work
+- Project-based work
 
-\- Consulting work
+- Consulting work
+**### How Mohit Approaches AI and Automation** Mohit works with business and technical stakeholders to:
 
-**### How Mohit Approaches AI and Automation**
+- Understand business requirements
 
-Mohit works with business and technical stakeholders to:
+- Identify repetitive or manual work
 
-\- Understand business requirements
+- Find opportunities for AI and automation
 
-\- Identify repetitive or manual work
+- Design department-specific solutions
 
-\- Find opportunities for AI and automation
+- Connect AI systems with APIs and business tools
 
-\- Design department-specific solutions
+- Build, test, and monitor the solution
 
-\- Connect AI systems with APIs and business tools
-
-\- Build, test, and monitor the solution
-
-\- Improve reliability and reduce manual effort
-
-**### Business Problems Mohit Works On**
-
-Mohit focuses on using AI and automation to reduce repetitive manual work and improve business workflows.
+- Improve reliability and reduce manual effort
+**### Business Problems Mohit Works On** Mohit focuses on using AI and automation to reduce repetitive manual work and improve business workflows.
 
 Common problems he works on include:
 
-\- Repetitive customer and employee queries
+- Repetitive customer and employee queries
 
-\- Manual follow-ups
+- Manual follow-ups
 
-\- Lead sorting and qualification
+- Lead sorting and qualification
 
-\- HR workflow requests
+- HR workflow requests
 
-\- Knowledge and policy lookup
+- Knowledge and policy lookup
 
-\- Manual notifications
+- Manual notifications
 
-\- Repetitive data and document processing
+- Repetitive data and document processing
 
-\- Department-specific workflow automation
+- Department-specific workflow automation
 
-\- Connecting AI systems with existing business tools and APIs
+- Connecting AI systems with existing business tools and APIs
+**## 13. Professional Strengths** - Stakeholder collaboration
 
-**## 13. Professional Strengths**
+- Teamwork
 
-\- Stakeholder collaboration
+- Adaptability
 
-\- Teamwork
+- Technical documentation
 
-\- Adaptability
+- Requirements gathering
 
-\- Technical documentation
+- Technical and business stakeholder communication
 
-\- Requirements gathering
+- Cross-functional collaboration
 
-\- Technical and business stakeholder communication
+- Monitoring
 
-\- Cross-functional collaboration
-
-\- Monitoring
-
-\- Performance optimization
+- Performance optimization
